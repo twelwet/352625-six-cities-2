@@ -84,7 +84,7 @@ const App = () => {
                 </div>
                 <div className="place-card__rating rating">
                   <div className="place-card__stars rating__stars">
-                    <span style={`width: 93%`}/>
+                    <span style={{width: `93%`}}/>
                     <span className="visually-hidden">Rating</span>
                   </div>
                 </div>
@@ -116,7 +116,7 @@ const App = () => {
                 </div>
                 <div className="place-card__rating rating">
                   <div className="place-card__stars rating__stars">
-                    <span style={`width: 80%`}/>
+                    <span style={{width: `80%`}}/>
                     <span className="visually-hidden">Rating</span>
                   </div>
                 </div>
@@ -148,7 +148,7 @@ const App = () => {
                 </div>
                 <div className="place-card__rating rating">
                   <div className="place-card__stars rating__stars">
-                    <span style={`width: 80%`}/>
+                    <span style={{width: `80%`}}/>
                     <span className="visually-hidden">Rating</span>
                   </div>
                 </div>
@@ -183,7 +183,7 @@ const App = () => {
                 </div>
                 <div className="place-card__rating rating">
                   <div className="place-card__stars rating__stars">
-                    <span style={`width: 100%`}/>
+                    <span style={{width: `100%`}}/>
                     <span className="visually-hidden">Rating</span>
                   </div>
                 </div>
@@ -215,7 +215,7 @@ const App = () => {
                 </div>
                 <div className="place-card__rating rating">
                   <div className="place-card__stars rating__stars">
-                    <span style={`width: 80%`}/>
+                    <span style={{width: `80%`}}/>
                     <span className="visually-hidden">Rating</span>
                   </div>
                 </div>
