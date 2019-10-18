@@ -1,47 +1,49 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const accommodations = [
-  {
-    description: `Beautiful & luxurious apartment at great location`,
-    type: `Apartment`,
-    price: 120,
-    image: `img/apartment-01.jpg`,
-    width: `93%`,
-  },
-  {
-    description: `Wood and stone place`,
-    type: `Private room`,
-    price: 80,
-    image: `img/room.jpg`,
-    width: `80%`,
-  },
-  {
-    description: `Canal View Prinsengracht`,
-    type: `Apartment`,
-    price: 132,
-    image: `img/apartment-02.jpg`,
-    width: `80%`,
-  },
-  {
-    description: `Nice, cozy, warm big bed apartment`,
-    type: `Apartment`,
-    price: 180,
-    image: `img/apartment-03.jpg`,
-    width: `100%`,
-  },
-  {
-    description: `Wood and stone place`,
-    type: `Private room`,
-    price: 80,
-    image: `img/room.jpg`,
-    width: `80%`,
-  },
-];
 
-const descriptions = accommodations.map((it) => it.description);
+// const accommodations = [
+//   {
+//     description: `Beautiful & luxurious apartment at great location`,
+//     type: `Apartment`,
+//     price: 120,
+//     image: `img/apartment-01.jpg`,
+//     width: `93%`,
+//   },
+//   {
+//     description: `Wood and stone place`,
+//     type: `Private room`,
+//     price: 80,
+//     image: `img/room.jpg`,
+//     width: `80%`,
+//   },
+//   {
+//     description: `Canal View Prinsengracht`,
+//     type: `Apartment`,
+//     price: 132,
+//     image: `img/apartment-02.jpg`,
+//     width: `80%`,
+//   },
+//   {
+//     description: `Nice, cozy, warm big bed apartment`,
+//     type: `Apartment`,
+//     price: 180,
+//     image: `img/apartment-03.jpg`,
+//     width: `100%`,
+//   },
+//   {
+//     description: `Wood and stone place`,
+//     type: `Private room`,
+//     price: 80,
+//     image: `img/room.jpg`,
+//     width: `80%`,
+//   },
+// ];
+//
+// const descriptions = accommodations.map((it) => it.description);
 
-const Articles = () => {
-  return descriptions.map((item, index) => <article key={index} className="cities__place-card place-card">
+const Article = (description) => {
+  return <article className="cities__place-card place-card">
     <div className="place-card__mark">
       <span>Premium</span>
     </div>
@@ -70,14 +72,24 @@ const Articles = () => {
         </div>
       </div>
       <h2 className="place-card__name">
-        <a href="#">{item}</a>
+        <a href="#">{description}</a>
       </h2>
       <p className="place-card__type">Apartment</p>
     </div>
-  </article>);
+  </article>;
 };
 
-const MainScreen = () => {
+const Articles = (props) => {
+  const descriptions = props.descriptions;
+  return <div>
+    <Article description={descriptions[0]}/>;
+    <Article description={descriptions[1]}/>;
+    <Article description={descriptions[2]}/>;
+    <Article description={descriptions[3]}/>;
+  </div>
+};
+
+const MainScreen = (props) => {
   return <main className="page__main page__main--index">
     <h1 className="visually-hidden">Cities</h1>
     <div className="tabs">
@@ -138,7 +150,7 @@ const MainScreen = () => {
           </form>
           <div className="cities__places-list places__list tabs__content">
 
-            <Articles/>
+            <Articles {props.descriptions}/>
 
           </div>
         </section>
@@ -149,5 +161,7 @@ const MainScreen = () => {
     </div>
   </main>;
 };
+
+MainScreen.propTypes = {descriptions: PropTypes.array};
 
 export default MainScreen;
