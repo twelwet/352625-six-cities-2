@@ -44,10 +44,8 @@ const descriptions = accommodations.map((it) => it.description);
 
 const init = () => {
 
-  const mock = {descriptions};
-
   ReactDOM.render(
-      <App {mock}
+      <App descriptions={descriptions}
       />,
       document.querySelector(`#root`)
   );
