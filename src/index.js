@@ -9,7 +9,9 @@ const accommodations = [
     type: `Apartment`,
     price: 120,
     image: `img/apartment-01.jpg`,
-    width: `93%`,
+    rating: 100,
+    isPremium: true,
+    isBookmark: false
   },
   {
     id: 2,
@@ -17,7 +19,9 @@ const accommodations = [
     type: `Private room`,
     price: 80,
     image: `img/room.jpg`,
-    width: `80%`,
+    rating: 50,
+    isPremium: false,
+    isBookmark: true,
   },
   {
     id: 3,
@@ -25,7 +29,9 @@ const accommodations = [
     type: `Apartment`,
     price: 132,
     image: `img/apartment-02.jpg`,
-    width: `80%`,
+    rating: 80,
+    isPremium: false,
+    isBookmark: false
   },
   {
     id: 4,
@@ -33,7 +39,9 @@ const accommodations = [
     type: `Apartment`,
     price: 180,
     image: `img/apartment-03.jpg`,
-    width: `100%`,
+    rating: 100,
+    isPremium: true,
+    isBookmark: false
   },
   {
     id: 5,
@@ -41,12 +49,13 @@ const accommodations = [
     type: `Private room`,
     price: 80,
     image: `img/room.jpg`,
-    width: `80%`,
+    rating: 80,
+    isPremium: false,
+    isBookmark: false
   },
 ];
 
 const init = () => {
-
   ReactDOM.render(
       <App accommodations={accommodations}
       />,

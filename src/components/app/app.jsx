@@ -17,7 +17,9 @@ App.propTypes = {
             type: PropTypes.string,
             price: PropTypes.number,
             image: PropTypes.string,
-            width: PropTypes.string
+            rating: PropTypes.number,
+            isPremium: PropTypes.bool,
+            isBookmark: PropTypes.bool
           }
       )
     )
