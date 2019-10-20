@@ -4,6 +4,7 @@ import App from "./components/app/app.jsx";
 
 const accommodations = [
   {
+    id: 1,
     description: `Beautiful & luxurious apartment at great location`,
     type: `Apartment`,
     price: 120,
@@ -11,6 +12,7 @@ const accommodations = [
     width: `93%`,
   },
   {
+    id: 2,
     description: `Wood and stone place`,
     type: `Private room`,
     price: 80,
@@ -18,6 +20,7 @@ const accommodations = [
     width: `80%`,
   },
   {
+    id: 3,
     description: `Canal View Prinsengracht`,
     type: `Apartment`,
     price: 132,
@@ -25,6 +28,7 @@ const accommodations = [
     width: `80%`,
   },
   {
+    id: 4,
     description: `Nice, cozy, warm big bed apartment`,
     type: `Apartment`,
     price: 180,
@@ -32,6 +36,7 @@ const accommodations = [
     width: `100%`,
   },
   {
+    id: 5,
     description: `Wood and stone place`,
     type: `Private room`,
     price: 80,
@@ -40,12 +45,10 @@ const accommodations = [
   },
 ];
 
-const descriptions = accommodations.map((it) => it.description);
-
 const init = () => {
 
   ReactDOM.render(
-      <App descriptions={descriptions}
+      <App accommodations={accommodations}
       />,
       document.querySelector(`#root`)
   );

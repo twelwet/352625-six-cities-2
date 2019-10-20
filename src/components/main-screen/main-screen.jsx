@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Articles = (props) => {
-  const {descriptions} = props;
-  return descriptions.map((item, index) => <article key={index} className="cities__place-card place-card">
+  const {accommodations} = props;
+  const descriptionsToIds = accommodations.map((it) => [it.description, it.id]);
+  return descriptionsToIds.map(([description, id]) => <article key={id} className="cities__place-card place-card">
     <div className="place-card__mark">
       <span>Premium</span>
     </div>
@@ -32,7 +33,7 @@ const Articles = (props) => {
         </div>
       </div>
       <h2 className="place-card__name">
-        <a href="#">{item}</a>
+        <a href="#">{description}</a>
       </h2>
       <p className="place-card__type">Apartment</p>
     </div>
@@ -40,7 +41,7 @@ const Articles = (props) => {
 };
 
 const MainScreen = (props) => {
-  const {descriptions} = props;
+  const {accommodations} = props;
   return <main className="page__main page__main--index">
     <h1 className="visually-hidden">Cities</h1>
     <div className="tabs">
@@ -101,7 +102,7 @@ const MainScreen = (props) => {
           </form>
           <div className="cities__places-list places__list tabs__content">
 
-            <Articles descriptions={descriptions}/>
+            <Articles accommodations={accommodations}/>
 
           </div>
         </section>
@@ -113,6 +114,20 @@ const MainScreen = (props) => {
   </main>;
 };
 
-MainScreen.propTypes = {descriptions: PropTypes.arrayOf(PropTypes.string)};
+MainScreen.propTypes = {
+  accommodations: PropTypes
+    .arrayOf(PropTypes
+      .shape(
+          {
+            id: PropTypes.number,
+            description: PropTypes.string,
+            type: PropTypes.string,
+            price: PropTypes.number,
+            image: PropTypes.string,
+            width: PropTypes.string
+          }
+      )
+    )
+};
 
 export default MainScreen;
