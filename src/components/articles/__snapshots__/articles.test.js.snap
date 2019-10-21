@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Articles correctly renders after relaunch 1`] = `
-Array [
+<div>
   <article
     className="cities__place-card place-card"
   >
@@ -103,7 +103,7 @@ Array [
         Apartment
       </p>
     </div>
-  </article>,
+  </article>
   <article
     className="cities__place-card place-card"
   >
@@ -199,7 +199,7 @@ Array [
         Private room
       </p>
     </div>
-  </article>,
+  </article>
   <article
     className="cities__place-card place-card"
   >
@@ -295,7 +295,7 @@ Array [
         Apartment
       </p>
     </div>
-  </article>,
+  </article>
   <article
     className="cities__place-card place-card"
   >
@@ -397,7 +397,7 @@ Array [
         Apartment
       </p>
     </div>
-  </article>,
+  </article>
   <article
     className="cities__place-card place-card"
   >
@@ -493,6 +493,6 @@ Array [
         Private room
       </p>
     </div>
-  </article>,
-]
+  </article>
+</div>
 `;
