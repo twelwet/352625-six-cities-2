@@ -2,21 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Articles = ({accommodations, onDescriptionClick}) => {
-  const data = accommodations.map((it) => [it.id, it.description, it.type, it.price, it.image, it.rating, it.isPremium, it.isBookmark]);
-  let articles = data.map(([id, description, type, price, image, rating, isPremium, isBookmark]) => <article key={id} className="cities__place-card place-card">
-    {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
+  const articles = accommodations.map((item) => <article key={item.id} className="cities__place-card place-card">
+    {item.isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
     <div className="cities__image-wrapper place-card__image-wrapper">
       <a href="#">
-        <img className="place-card__image" src={image} width="260" height="200" alt="Place image"/>
+        <img className="place-card__image" src={item.image} width="260" height="200" alt="Place image"/>
       </a>
     </div>
     <div className="place-card__info">
       <div className="place-card__price-wrapper">
         <div className="place-card__price">
-          <b className="place-card__price-value">&euro;{price}</b>
+          <b className="place-card__price-value">&euro;{item.price}</b>
           <span className="place-card__price-text">&#47;&nbsp;night</span>
         </div>
-        <button className={isBookmark
+        <button className={item.isBookmark
           ? `place-card__bookmark-button place-card__bookmark-button--active button`
           : `place-card__bookmark-button button`} type="button">
           <svg className="place-card__bookmark-icon" width="18" height="19">
@@ -27,14 +26,14 @@ const Articles = ({accommodations, onDescriptionClick}) => {
       </div>
       <div className="place-card__rating rating">
         <div className="place-card__stars rating__stars">
-          <span style={{width: rating + `%`}}/>
+          <span style={{width: item.rating + `%`}}/>
           <span className="visually-hidden">Rating</span>
         </div>
       </div>
       <h2 className="place-card__name">
-        <a onClick={onDescriptionClick} href="#">{description}</a>
+        <a onClick={onDescriptionClick} href="#">{item.description}</a>
       </h2>
-      <p className="place-card__type">{type}</p>
+      <p className="place-card__type">{item.type}</p>
     </div>
   </article>);
 
