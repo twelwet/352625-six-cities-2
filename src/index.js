@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
-import {accommodations} from "./mocks.js";
+import {accommodations, onDescriptionClick} from "./mocks.js";
 
 const init = () => {
   ReactDOM.render(
-      <App accommodations={accommodations}
+      <App
+        accommodations={accommodations}
+        onDescriptionClick={onDescriptionClick}
       />,
       document.querySelector(`#root`)
   );

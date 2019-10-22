@@ -3,8 +3,11 @@ import PropTypes from "prop-types";
 import MainScreen from "../main-screen/main-screen.jsx";
 
 const App = (props) => {
-  const {accommodations} = props;
-  return <MainScreen accommodations={accommodations}/>;
+  const {accommodations, onDescriptionClick} = props;
+  return <MainScreen
+    accommodations={accommodations}
+    onDescriptionClick={onDescriptionClick}
+  />;
 };
 
 App.propTypes = {
@@ -22,7 +25,8 @@ App.propTypes = {
             isBookmark: PropTypes.bool
           }
       )
-    )
+    ),
+  onDescriptionClick: PropTypes.func
 };
 
 export default App;

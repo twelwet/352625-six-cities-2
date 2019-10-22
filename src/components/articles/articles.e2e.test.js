@@ -6,7 +6,7 @@ import {accommodations} from "../../mocks";
 
 Enzyme.configure({adapter: new Adapter()});
 
-it(`First article's link "h2.place-card__name.a" is clickable`, () => {
+it(`Article's description is clickable`, () => {
   const clickHandler = jest.fn();
 
   const articles = shallow(<Articles

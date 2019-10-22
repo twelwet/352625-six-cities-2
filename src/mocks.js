@@ -51,4 +51,8 @@ const accommodations = [
   },
 ];
 
-export {accommodations};
+const onDescriptionClick = (evt) => {
+  evt.currentTarget.style.color = `red`;
+};
+
+export {accommodations, onDescriptionClick};

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Articles = (props) => {
-  const {accommodations} = props;
+  const {accommodations, onDescriptionClick} = props;
   const data = accommodations.map((it) => [it.id, it.description, it.type, it.price, it.image, it.rating, it.isPremium, it.isBookmark]);
   let articles = data.map(([id, description, type, price, image, rating, isPremium, isBookmark]) => <article key={id} className="cities__place-card place-card">
     {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
@@ -33,7 +33,7 @@ const Articles = (props) => {
         </div>
       </div>
       <h2 className="place-card__name">
-        <a href="#">{description}</a>
+        <a onClick={onDescriptionClick} href="#">{description}</a>
       </h2>
       <p className="place-card__type">{type}</p>
     </div>
@@ -57,7 +57,8 @@ Articles.propTypes = {
             isBookmark: PropTypes.bool
           }
       )
-    )
+    ),
+  onDescriptionClick: PropTypes.func
 };
 
 export default Articles;

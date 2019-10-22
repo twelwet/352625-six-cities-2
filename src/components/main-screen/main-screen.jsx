@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Articles from "../articles/articles.jsx";
 
 const MainScreen = (props) => {
-  const {accommodations} = props;
+  const {accommodations, onDescriptionClick} = props;
   return <main className="page__main page__main--index">
     <h1 className="visually-hidden">Cities</h1>
     <div className="tabs">
@@ -64,7 +64,10 @@ const MainScreen = (props) => {
           </form>
           <div className="cities__places-list places__list tabs__content">
 
-            <Articles accommodations={accommodations}/>
+            <Articles
+              accommodations={accommodations}
+              onDescriptionClick={onDescriptionClick}
+            />
 
           </div>
         </section>
@@ -91,7 +94,8 @@ MainScreen.propTypes = {
             isBookmark: PropTypes.bool
           }
       )
-    )
+    ),
+  onDescriptionClick: PropTypes.func
 };
 
 export default MainScreen;
