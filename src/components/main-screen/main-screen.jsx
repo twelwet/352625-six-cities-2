@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Articles from "../articles/articles.jsx";
 
-const MainScreen = (props) => {
-  const {accommodations, onDescriptionClick} = props;
+const MainScreen = ({accommodations, onDescriptionClick}) => {
   return <main className="page__main page__main--index">
     <h1 className="visually-hidden">Cities</h1>
     <div className="tabs">
@@ -66,7 +65,7 @@ const MainScreen = (props) => {
 
             <Articles
               accommodations={accommodations}
-              onDescriptionClick={onDescriptionClick}
+              onClick={onDescriptionClick}
             />
 
           </div>

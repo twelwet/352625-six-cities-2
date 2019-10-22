@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Articles = (props) => {
-  const {accommodations, onDescriptionClick} = props;
+const Articles = ({accommodations, onDescriptionClick}) => {
   const data = accommodations.map((it) => [it.id, it.description, it.type, it.price, it.image, it.rating, it.isPremium, it.isBookmark]);
   let articles = data.map(([id, description, type, price, image, rating, isPremium, isBookmark]) => <article key={id} className="cities__place-card place-card">
     {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}

@@ -2,11 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import MainScreen from "../main-screen/main-screen.jsx";
 
-const App = (props) => {
-  const {accommodations, onDescriptionClick} = props;
+const App = ({accommodations, onDescriptionClick}) => {
   return <MainScreen
     accommodations={accommodations}
-    onDescriptionClick={onDescriptionClick}
+    onClick={onDescriptionClick}
   />;
 };
 
