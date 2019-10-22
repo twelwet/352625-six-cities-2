@@ -11,7 +11,7 @@ it(`Article's description is clickable`, () => {
 
   const articles = shallow(<Articles
     accommodations={accommodations}
-    onClick={clickHandler}
+    onDescriptionClick={clickHandler}
   />);
 
   const linkElement = articles.find(`.place-card__name a`).first();

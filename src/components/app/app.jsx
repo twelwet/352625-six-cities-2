@@ -5,7 +5,7 @@ import MainScreen from "../main-screen/main-screen.jsx";
 const App = ({accommodations, onDescriptionClick}) => {
   return <MainScreen
     accommodations={accommodations}
-    onClick={onDescriptionClick}
+    onDescriptionClick={onDescriptionClick}
   />;
 };
 

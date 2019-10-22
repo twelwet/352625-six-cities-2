@@ -7,7 +7,7 @@ const init = () => {
   ReactDOM.render(
       <App
         accommodations={accommodations}
-        onClick={onDescriptionClick}
+        onDescriptionClick={onDescriptionClick}
       />,
       document.querySelector(`#root`)
   );

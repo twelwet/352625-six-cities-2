@@ -65,7 +65,7 @@ const MainScreen = ({accommodations, onDescriptionClick}) => {
 
             <Articles
               accommodations={accommodations}
-              onClick={onDescriptionClick}
+              onDescriptionClick={onDescriptionClick}
             />
 
           </div>
