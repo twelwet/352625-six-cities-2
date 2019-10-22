@@ -38,7 +38,7 @@ const Articles = ({accommodations, onDescriptionClick}) => {
     </div>
   </article>);
 
-  return <div>{articles}</div>;
+  return <div className="cities__places-list places__list tabs__content">{articles}</div>;
 };
 
 Articles.propTypes = {
@@ -46,18 +46,18 @@ Articles.propTypes = {
     .arrayOf(PropTypes
       .shape(
           {
-            id: PropTypes.number,
-            description: PropTypes.string,
-            type: PropTypes.string,
-            price: PropTypes.number,
-            image: PropTypes.string,
-            rating: PropTypes.number,
-            isPremium: PropTypes.bool,
-            isBookmark: PropTypes.bool
+            id: PropTypes.number.isRequired,
+            description: PropTypes.string.isRequired,
+            type: PropTypes.string.isRequired,
+            price: PropTypes.number.isRequired,
+            image: PropTypes.string.isRequired,
+            rating: PropTypes.number.isRequired,
+            isPremium: PropTypes.bool.isRequired,
+            isBookmark: PropTypes.bool.isRequired
           }
       )
     ),
-  onDescriptionClick: PropTypes.func
+  onDescriptionClick: PropTypes.func.isRequired
 };
 
 export default Articles;

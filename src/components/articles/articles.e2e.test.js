@@ -15,7 +15,6 @@ it(`Article's description is clickable`, () => {
   />);
 
   const linkElement = articles.find(`.place-card__name a`).first();
-  linkElement.debug();
   linkElement.simulate(`click`);
 
   expect(clickHandler).toHaveBeenCalledTimes(1);

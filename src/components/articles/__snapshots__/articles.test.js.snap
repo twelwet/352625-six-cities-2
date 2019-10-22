@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Articles correctly renders after relaunch 1`] = `
-<div>
+<div
+  className="cities__places-list places__list tabs__content"
+>
   <article
     className="cities__place-card place-card"
   >
