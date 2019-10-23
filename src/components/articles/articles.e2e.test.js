@@ -2,7 +2,7 @@ import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Articles from "./articles.jsx";
-import {accommodations} from "../../mocks";
+import {offers} from "../../mocks/offers";
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -10,7 +10,7 @@ it(`Article's description is clickable`, () => {
   const clickHandler = jest.fn();
 
   const articles = shallow(<Articles
-    accommodations={accommodations}
+    offers={offers}
     onDescriptionClick={clickHandler}
   />);
 

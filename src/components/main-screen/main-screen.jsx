@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Articles from "../articles/articles.jsx";
 
-const MainScreen = ({accommodations, onDescriptionClick}) => {
+const MainScreen = ({offers, onDescriptionClick}) => {
   return <main className="page__main page__main--index">
     <h1 className="visually-hidden">Cities</h1>
     <div className="tabs">
@@ -64,7 +64,7 @@ const MainScreen = ({accommodations, onDescriptionClick}) => {
           <div className="cities__places-list places__list tabs__content">
 
             <Articles
-              accommodations={accommodations}
+              offers={offers}
               onDescriptionClick={onDescriptionClick}
             />
 
@@ -79,7 +79,7 @@ const MainScreen = ({accommodations, onDescriptionClick}) => {
 };
 
 MainScreen.propTypes = {
-  accommodations: PropTypes
+  offers: PropTypes
     .arrayOf(PropTypes
       .shape(
           {

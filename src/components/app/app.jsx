@@ -2,15 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import MainScreen from "../main-screen/main-screen.jsx";
 
-const App = ({accommodations, onDescriptionClick}) => {
+const App = ({offers, onDescriptionClick}) => {
   return <MainScreen
-    accommodations={accommodations}
+    offers={offers}
     onDescriptionClick={onDescriptionClick}
   />;
 };
 
 App.propTypes = {
-  accommodations: PropTypes
+  offers: PropTypes
     .arrayOf(PropTypes
       .shape(
           {
