@@ -1,16 +1,13 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Offer from "../offer/offer";
-import Offers from "../offers/offers";
-import MainScreen from "../main-screen/main-screen";
-import App from "./app.jsx";
+import Offers from "./offers.jsx";
 import {offers} from "../../mocks/offers.js";
 import {descriptionClickHandler} from "../../mocks/callbacks.js";
 
-it(`App correctly renders after relaunch`, () => {
+it(`Articles correctly renders after relaunch`, () => {
   const tree = renderer
-    .create(<App>
-      <MainScreen>
+    .create(
         <Offers>
           {offers.map((item) => {
             return <Offer
@@ -27,8 +24,6 @@ it(`App correctly renders after relaunch`, () => {
             />;
           })}
         </Offers>
-      </MainScreen>
-    </App>
     )
     .toJSON();
 

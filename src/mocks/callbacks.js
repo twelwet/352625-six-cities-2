@@ -1,7 +1,7 @@
-const onDescriptionClick = (evt) => {
+const descriptionClickHandler = (evt) => {
   evt.preventDefault();
   evt.currentTarget.style.color = `red`;
 };
 
-export {onDescriptionClick};
+export {descriptionClickHandler};
 

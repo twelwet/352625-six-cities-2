@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Articles from "../articles/articles.jsx";
 
-const MainScreen = ({offers, onDescriptionClick}) => {
+const MainScreen = (props) => {
   return <main className="page__main page__main--index">
     <h1 className="visually-hidden">Cities</h1>
     <div className="tabs">
@@ -62,12 +61,7 @@ const MainScreen = ({offers, onDescriptionClick}) => {
             </ul>
           </form>
           <div className="cities__places-list places__list tabs__content">
-
-            <Articles
-              offers={offers}
-              onDescriptionClick={onDescriptionClick}
-            />
-
+            {props.children}
           </div>
         </section>
         <div className="cities__right-section">
@@ -79,22 +73,7 @@ const MainScreen = ({offers, onDescriptionClick}) => {
 };
 
 MainScreen.propTypes = {
-  offers: PropTypes
-    .arrayOf(PropTypes
-      .shape(
-          {
-            id: PropTypes.number.isRequired,
-            description: PropTypes.string.isRequired,
-            type: PropTypes.string.isRequired,
-            price: PropTypes.number.isRequired,
-            image: PropTypes.string.isRequired,
-            rating: PropTypes.number.isRequired,
-            isPremium: PropTypes.bool.isRequired,
-            isBookmark: PropTypes.bool.isRequired
-          }
-      )
-    ),
-  onDescriptionClick: PropTypes.func.isRequired
+  children: PropTypes.element
 };
 
 export default MainScreen;
