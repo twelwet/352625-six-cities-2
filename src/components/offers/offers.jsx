@@ -37,8 +37,6 @@ Offers.propTypes = {
         rating: PropTypes.number.isRequired,
         isPremium: PropTypes.bool.isRequired,
         isBookmark: PropTypes.bool.isRequired,
-        onOfferHover: PropTypes.func.isRequired,
-        onOfferLeave: PropTypes.func.isRequired
       })
     )
 };

@@ -12,9 +12,7 @@ const testOffers = [
     image: `img/apartment-01.jpg`,
     rating: 100,
     isPremium: true,
-    isBookmark: false,
-    onOfferHover: () => {},
-    onOfferLeave: () => {}
+    isBookmark: false
   },
   {
     id: 2,
@@ -24,9 +22,7 @@ const testOffers = [
     image: `img/room.jpg`,
     rating: 50,
     isPremium: false,
-    isBookmark: true,
-    onOfferHover: () => {},
-    onOfferLeave: () => {}
+    isBookmark: true
   },
   {
     id: 3,
@@ -36,9 +32,7 @@ const testOffers = [
     image: `img/apartment-02.jpg`,
     rating: 80,
     isPremium: false,
-    isBookmark: false,
-    onOfferHover: () => {},
-    onOfferLeave: () => {}
+    isBookmark: false
   },
 ];
 
