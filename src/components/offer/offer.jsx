@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 const Offer = (props) => {
   return <article
-    key={props.id}
     onMouseOver={props.onOfferHover}
     onMouseLeave={props.onOfferLeave}
     className="cities__place-card place-card"
