@@ -17,7 +17,8 @@ const offer = {
 Enzyme.configure({adapter: new Adapter()});
 
 it(`First offer card description is clickable`, () => {
-  const clickHandler = jest.fn();
+  const mouseOverHandler = jest.fn();
+  const mouseLeaveHandler = jest.fn();
 
   const article = shallow(<Offer
     id={offer.id}
@@ -29,12 +30,15 @@ it(`First offer card description is clickable`, () => {
     rating={offer.rating}
     isPremium={offer.isPremium}
     isBookmark={offer.isBookmark}
-    descriptionClickHandler={clickHandler}
+    onOfferHover={mouseOverHandler}
+    onOfferLeave={mouseLeaveHandler}
   />
   );
 
-  const linkElement = article.find(`.place-card__name a`);
-  linkElement.simulate(`click`);
+  const offerElement = article.find(`.place-card`);
+  offerElement.simulate(`mouseover`);
+  offerElement.simulate(`mouseleave`);
 
-  expect(clickHandler).toHaveBeenCalledTimes(1);
+  expect(mouseOverHandler).toHaveBeenCalledTimes(1);
+  expect(mouseLeaveHandler).toHaveBeenCalledTimes(1);
 });

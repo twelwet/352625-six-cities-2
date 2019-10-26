@@ -1,7 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {descriptionClickHandler} from "../../mocks/callbacks.js";
 import Offer from "../offer/offer";
+
+const onOfferHover = () => {};
+const onOfferLeave = () => {};
 
 const offer = {
   id: 1,
@@ -14,7 +16,7 @@ const offer = {
   isBookmark: false
 };
 
-it(`Article correctly renders after relaunch`, () => {
+it(`Offer correctly renders after relaunch`, () => {
   const tree = renderer
     .create(
         <Offer
@@ -27,7 +29,8 @@ it(`Article correctly renders after relaunch`, () => {
           rating={offer.rating}
           isPremium={offer.isPremium}
           isBookmark={offer.isBookmark}
-          descriptionClickHandler={descriptionClickHandler}
+          onOfferHover={onOfferHover}
+          onOfferLeave={onOfferLeave}
         />
     )
     .toJSON();

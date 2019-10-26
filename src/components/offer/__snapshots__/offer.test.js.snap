@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Article correctly renders after relaunch 1`] = `
+exports[`Offer correctly renders after relaunch 1`] = `
 <article
   className="cities__place-card place-card"
+  onMouseLeave={[Function]}
+  onMouseOver={[Function]}
 >
   <div
     className="place-card__mark"
@@ -92,7 +94,6 @@ exports[`Article correctly renders after relaunch 1`] = `
     >
       <a
         href="#"
-        onClick={[Function]}
       >
         Beautiful & luxurious apartment at great location
       </a>

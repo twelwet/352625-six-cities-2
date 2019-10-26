@@ -2,7 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Offer = (props) => {
-  return <article key={props.id} className="cities__place-card place-card">
+  return <article
+    key={props.id}
+    onMouseOver={props.onOfferHover}
+    onMouseLeave={props.onOfferLeave}
+    className="cities__place-card place-card"
+  >
     {props.isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
     <div className="cities__image-wrapper place-card__image-wrapper">
       <a href="#">
@@ -31,7 +36,7 @@ const Offer = (props) => {
         </div>
       </div>
       <h2 className="place-card__name">
-        <a onClick={props.descriptionClickHandler} href="#">{props.description}</a>
+        <a href="#">{props.description}</a>
       </h2>
       <p className="place-card__type">{props.type}</p>
     </div>
@@ -47,7 +52,8 @@ Offer.propTypes = {
   rating: PropTypes.number.isRequired,
   isPremium: PropTypes.bool.isRequired,
   isBookmark: PropTypes.bool.isRequired,
-  descriptionClickHandler: PropTypes.func.isRequired
+  onOfferHover: PropTypes.func.isRequired,
+  onOfferLeave: PropTypes.func.isRequired
 };
 
 export default Offer;

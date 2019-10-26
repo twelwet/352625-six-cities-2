@@ -1,29 +1,26 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Offer from "../offer/offer";
-import Offers from "./offers.jsx";
 import {offers} from "../../mocks/offers.js";
-import {descriptionClickHandler} from "../../mocks/callbacks.js";
 
-it(`Articles correctly renders after relaunch`, () => {
+const onOfferHover = () => {};
+const onOfferLeave = () => {};
+
+it(`Offers correctly renders after relaunch`, () => {
   const tree = renderer
-    .create(
-        <Offers>
-          {offers.map((item) => {
-            return <Offer
-              id={item.id}
-              key={item.id}
-              description={item.description}
-              type={item.type}
-              price={item.price}
-              image={item.image}
-              rating={item.rating}
-              isPremium={item.isPremium}
-              isBookmark={item.isBookmark}
-              descriptionClickHandler={descriptionClickHandler}
-            />;
-          })}
-        </Offers>
+    .create(<div className="cities__places-list places__list tabs__content">
+      {offers.map((item) => {
+        return (
+          <Offer
+            {...item}
+            key={item.id}
+            onOfferHover={onOfferHover}
+            onOfferLeave={onOfferLeave}
+          />
+        );
+      })}
+      <div>Active offer Id: 1</div>
+    </div>
     )
     .toJSON();
 
