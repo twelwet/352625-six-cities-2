@@ -2,17 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import Offer from "../offer/offer.jsx";
 
-class Offers extends React.Component {
+class Offers extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {active: null};
-    this.offerLeaveHandler = this.offerLeaveHandler.bind(this);
-  }
-
-  offerLeaveHandler() {
-    this.setState({
-      active: null
-    });
   }
 
   render() {
@@ -23,7 +16,7 @@ class Offers extends React.Component {
             {...item}
             key={item.id}
             onOfferHover={() => this.setState({active: item.id})}
-            onOfferLeave={this.offerLeaveHandler}
+            onOfferLeave={() => this.setState({active: null})}
           />
         );
       })}
