@@ -16,13 +16,17 @@ const offer = {
 
 Enzyme.configure({adapter: new Adapter()});
 
-it(`First offer card description is clickable`, () => {
-  const mouseOverHandler = jest.fn();
-  const mouseLeaveHandler = jest.fn();
+it(`First offer card becomes active on hover`, () => {
+  const mouseOverHandler = jest.fn(() => {
+    return offer.id;
+  });
+
+  const mouseLeaveHandler = jest.fn(() => {
+    return null;
+  });
 
   const article = shallow(<Offer
     id={offer.id}
-    key={offer.id}
     description={offer.description}
     type={offer.type}
     price={offer.price}
@@ -39,6 +43,8 @@ it(`First offer card description is clickable`, () => {
   offerElement.simulate(`mouseover`);
   offerElement.simulate(`mouseleave`);
 
+  expect(mouseOverHandler.mock.results[0].value).toBe(1);
+  expect(mouseLeaveHandler.mock.results[0].value).toBe(null);
   expect(mouseOverHandler).toHaveBeenCalledTimes(1);
   expect(mouseLeaveHandler).toHaveBeenCalledTimes(1);
 });
