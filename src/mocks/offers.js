@@ -1,4 +1,4 @@
-const accommodations = [
+const offers = [
   {
     id: 1,
     description: `Beautiful & luxurious apartment at great location`,
@@ -51,9 +51,4 @@ const accommodations = [
   },
 ];
 
-const onDescriptionClick = (evt) => {
-  evt.preventDefault();
-  evt.currentTarget.style.color = `red`;
-};
-
-export {accommodations, onDescriptionClick};
+export {offers};

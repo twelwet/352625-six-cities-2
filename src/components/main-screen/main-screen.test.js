@@ -1,8 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Offers from "../offers/offers";
-import MainScreen from "../main-screen/main-screen";
-import App from "./app.jsx";
+import MainScreen from "./main-screen.jsx";
 
 const testOffers = [
   {
@@ -37,13 +36,11 @@ const testOffers = [
   },
 ];
 
-it(`App correctly renders after relaunch`, () => {
+it(`MainScreen correctly renders after relaunch`, () => {
   const tree = renderer
-    .create(<App>
-      <MainScreen>
-        <Offers offers={testOffers} />
-      </MainScreen>
-    </App>
+    .create(<MainScreen>
+      <Offers offers={testOffers} />
+    </MainScreen>
     )
     .toJSON();
 
