@@ -15,14 +15,8 @@ class Offers extends React.PureComponent {
           <Offer
             {...item}
             key={item.id}
-            onOfferHover={() => {
-              this.setState({active: item.id});
-              return item.id;
-            }}
-            onOfferLeave={() => {
-              this.setState({active: null});
-              return null;
-            }}
+            onOfferHover={() => this.setState({active: item.id})}
+            onOfferLeave={() => this.setState({active: null})}
           />
         );
       })}
