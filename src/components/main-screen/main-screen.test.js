@@ -1,45 +1,18 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Offers from "../offers/offers";
 import MainScreen from "./main-screen.jsx";
-
-const testOffers = [
-  {
-    id: 1,
-    description: `Beautiful & luxurious apartment at great location`,
-    type: `Apartment`,
-    price: 120,
-    image: `img/apartment-01.jpg`,
-    rating: 100,
-    isPremium: true,
-    isBookmark: false
-  },
-  {
-    id: 2,
-    description: `Wood and stone place`,
-    type: `Private room`,
-    price: 80,
-    image: `img/room.jpg`,
-    rating: 50,
-    isPremium: false,
-    isBookmark: true
-  },
-  {
-    id: 3,
-    description: `Canal View Prinsengracht`,
-    type: `Apartment`,
-    price: 132,
-    image: `img/apartment-02.jpg`,
-    rating: 80,
-    isPremium: false,
-    isBookmark: false
-  },
-];
+import {offers} from "../../mocks/offers.js";
+import Offers from "../offers/offers";
+import MapComponent from "../map/map.jsx";
+import {Map} from "react-leaflet";
 
 it(`MainScreen correctly renders after relaunch`, () => {
   const tree = renderer
     .create(<MainScreen>
-      <Offers offers={testOffers} />
+      <Offers props={offers}/>
+      <MapComponent props={offers}>
+        <Map props={offers}/>
+      </MapComponent>
     </MainScreen>
     )
     .toJSON();

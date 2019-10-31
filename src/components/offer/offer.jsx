@@ -44,6 +44,8 @@ const Offer = (props) => {
 
 Offer.propTypes = {
   id: PropTypes.number.isRequired,
+  city: PropTypes.object,
+  location: PropTypes.object,
   description: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,

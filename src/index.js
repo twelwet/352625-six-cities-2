@@ -1,19 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Offers from "./components/offers/offers.jsx";
 import MainScreen from "./components/main-screen/main-screen.jsx";
 import App from "./components/app/app.jsx";
 import {offers} from "./mocks/offers.js";
-import MapComponent from "./components/map/map.jsx";
 
 const init = () => {
   ReactDOM.render(<App>
-    <MainScreen>
-      <Offers offers={offers} />
-    </MainScreen>
+    <MainScreen offers={offers}/>
   </App>, document.querySelector(`#root`));
 };
 
 init();
-
-ReactDOM.render(<MapComponent/>, document.getElementById(`map`));

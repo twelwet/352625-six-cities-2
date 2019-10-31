@@ -1,5 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
+import Offers from "../offers/offers.jsx";
+import MapComponent from "../map/map.jsx";
 
 const MainScreen = (props) => {
   return <main className="page__main page__main--index">
@@ -61,21 +62,19 @@ const MainScreen = (props) => {
             </ul>
           </form>
           <div className="cities__places-list places__list tabs__content">
-            {props.children}
+            <Offers {...props}/>
           </div>
         </section>
         <div className="cities__right-section">
           <section className="cities__map map">
-            <div id="map"/>
+            <div id="map">
+              <MapComponent {...props}/>
+            </div>
           </section>
         </div>
       </div>
     </div>
   </main>;
-};
-
-MainScreen.propTypes = {
-  children: PropTypes.element
 };
 
 export default MainScreen;
