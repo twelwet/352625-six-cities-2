@@ -7,6 +7,19 @@ const onOfferLeave = () => {};
 
 const offer = {
   id: 1,
+  city: {
+    location: {
+      name: `Amsterdam`,
+      latitude: 52.38333,
+      longitude: 4.9,
+      zoom: 12
+    }
+  },
+  location: {
+    latitude: 52.3909553943508,
+    longitude: 4.85309666406198,
+    zoom: 12
+  },
   description: `Beautiful & luxurious apartment at great location`,
   type: `Apartment`,
   price: 120,

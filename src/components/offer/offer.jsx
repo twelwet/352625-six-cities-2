@@ -44,6 +44,19 @@ const Offer = (props) => {
 
 Offer.propTypes = {
   id: PropTypes.number.isRequired,
+  city: PropTypes.exact({
+    location: PropTypes.exact({
+      name: PropTypes.string.isRequired,
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+      zoom: PropTypes.number.isRequired
+    })
+  }),
+  location: PropTypes.exact({
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired,
+    zoom: PropTypes.number.isRequired
+  }),
   description: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,

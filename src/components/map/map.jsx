@@ -1,31 +1,33 @@
 import React from "react";
+import L from "leaflet";
+import {Map, Marker, TileLayer} from "react-leaflet";
 import PropTypes from "prop-types";
-import Offer from "../offer/offer.jsx";
 
-class Offers extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {active: null};
-  }
+const icon = L.icon({
+  iconUrl: `img/pin.svg`,
+  iconSize: [30, 30]
+});
 
-  render() {
-    return <div className="cities__places-list places__list tabs__content">
-      {this.props.offers.map((item) => {
-        return (
-          <Offer
-            {...item}
-            key={item.id}
-            onOfferHover={() => this.setState({active: item.id})}
-            onOfferLeave={() => this.setState({active: null})}
-          />
-        );
-      })}
-      <div>Active offer Id: {this.state.active}</div>
-    </div>;
-  }
-}
+const MapComponent = (props) => {
+  const {offers} = props;
 
-Offers.propTypes = {
+  return <Map style={{height: `1135px`}}
+    center={[offers[0].city.location.latitude, offers[0].city.location.longitude]}
+    zoom={offers[0].city.location.zoom}
+    zoomControl={false}
+    position={[offers[0].city.location.latitude, offers[0].city.location.longitude]}
+  >
+    <TileLayer
+      url={`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`}
+      attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`}
+    />
+    {offers.map((item) => {
+      return <Marker key={item.id} position={[item.location.latitude, item.location.longitude]} icon={icon}/>;
+    })}
+  </Map>;
+};
+
+MapComponent.propTypes = {
   offers: PropTypes
     .arrayOf(PropTypes
       .exact({
@@ -54,4 +56,4 @@ Offers.propTypes = {
     )
 };
 
-export default Offers;
+export default MapComponent;

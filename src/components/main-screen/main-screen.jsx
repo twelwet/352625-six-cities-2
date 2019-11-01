@@ -1,4 +1,6 @@
 import React from "react";
+import Offers from "../offers/offers.jsx";
+import MapComponent from "../map/map.jsx";
 import PropTypes from "prop-types";
 
 const MainScreen = (props) => {
@@ -61,11 +63,13 @@ const MainScreen = (props) => {
             </ul>
           </form>
           <div className="cities__places-list places__list tabs__content">
-            {props.children}
+            <Offers {...props}/>
           </div>
         </section>
         <div className="cities__right-section">
-          <section className="cities__map map"/>
+          <section className="cities__map map">
+            <MapComponent {...props}/>
+          </section>
         </div>
       </div>
     </div>
@@ -73,7 +77,32 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  children: PropTypes.element
+  offers: PropTypes
+    .arrayOf(PropTypes
+      .exact({
+        id: PropTypes.number.isRequired,
+        city: PropTypes.exact({
+          location: PropTypes.exact({
+            name: PropTypes.string.isRequired,
+            latitude: PropTypes.number.isRequired,
+            longitude: PropTypes.number.isRequired,
+            zoom: PropTypes.number.isRequired
+          })
+        }),
+        location: PropTypes.exact({
+          latitude: PropTypes.number.isRequired,
+          longitude: PropTypes.number.isRequired,
+          zoom: PropTypes.number.isRequired
+        }),
+        description: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        image: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        isPremium: PropTypes.bool.isRequired,
+        isBookmark: PropTypes.bool.isRequired,
+      })
+    )
 };
 
 export default MainScreen;
