@@ -2,29 +2,9 @@ import React from "react";
 import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Offers from "./offers.jsx";
+import {offers} from "../../mocks/offers.js";
 
-const mocks = [
-  {
-    id: 1,
-    description: `Beautiful & luxurious apartment at great location`,
-    type: `Apartment`,
-    price: 120,
-    image: `img/apartment-01.jpg`,
-    rating: 100,
-    isPremium: true,
-    isBookmark: false
-  },
-  {
-    id: 2,
-    description: `Beautiful & luxurious apartment at great location`,
-    type: `Apartment`,
-    price: 120,
-    image: `img/apartment-01.jpg`,
-    rating: 100,
-    isPremium: true,
-    isBookmark: false
-  }
-];
+const mocks = offers;
 
 Enzyme.configure({adapter: new Adapter()});
 

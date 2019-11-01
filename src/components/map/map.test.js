@@ -1,15 +1,14 @@
 import React from "react";
-import renderer from "react-test-renderer";
-// import {Map, Marker, TileLayer} from "react-leaflet";
-import MapComponent from "../map/map.jsx";
+import Enzyme, {mount} from "enzyme";
+import Adapter from "enzyme-adapter-react-16/build";
+import toJson from "enzyme-to-json";
+import MapComponent from "./map.jsx";
 import {offers} from "../../mocks/offers.js";
 
-it(`Map correctly renders after relaunch`, () => {
-  const tree = renderer
-    .create(<MapComponent offers={offers}>
-    </MapComponent>
-    )
-    .toJSON();
+Enzyme.configure({adapter: new Adapter()});
 
-  expect(tree).toMatchSnapshot();
+it(`MapComponent correctly renders after relaunch`, () => {
+  const tree = mount(<MapComponent offers={offers} />);
+
+  expect(toJson(tree)).toMatchSnapshot();
 });

@@ -1,21 +1,14 @@
 import React from "react";
-import renderer from "react-test-renderer";
+import Enzyme, {shallow} from "enzyme";
+import Adapter from "enzyme-adapter-react-16/build";
+import toJson from "enzyme-to-json";
 import MainScreen from "./main-screen.jsx";
 import {offers} from "../../mocks/offers.js";
-import Offers from "../offers/offers";
-import MapComponent from "../map/map.jsx";
-import {Map} from "react-leaflet";
+
+Enzyme.configure({adapter: new Adapter()});
 
 it(`MainScreen correctly renders after relaunch`, () => {
-  const tree = renderer
-    .create(<MainScreen>
-      <Offers props={offers}/>
-      <MapComponent props={offers}>
-        <Map props={offers}/>
-      </MapComponent>
-    </MainScreen>
-    )
-    .toJSON();
+  const tree = shallow(<MainScreen offers={offers} />);
 
-  expect(tree).toMatchSnapshot();
+  expect(toJson(tree)).toMatchSnapshot();
 });

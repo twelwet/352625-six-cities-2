@@ -32,16 +32,16 @@ Offers.propTypes = {
         id: PropTypes.number.isRequired,
         city: PropTypes.exact({
           location: PropTypes.exact({
-            name: PropTypes.string,
-            latitude: PropTypes.number,
-            longitude: PropTypes.number,
-            zoom: PropTypes.number
+            name: PropTypes.string.isRequired,
+            latitude: PropTypes.number.isRequired,
+            longitude: PropTypes.number.isRequired,
+            zoom: PropTypes.number.isRequired
           })
         }),
         location: PropTypes.exact({
-          latitude: PropTypes.number,
-          longitude: PropTypes.number,
-          zoom: PropTypes.number
+          latitude: PropTypes.number.isRequired,
+          longitude: PropTypes.number.isRequired,
+          zoom: PropTypes.number.isRequired
         }),
         description: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
