@@ -9,26 +9,26 @@ const icon = L.icon({
 });
 
 const MapComponent = (props) => {
-  const {offers} = props;
+  const {cityOffers} = props;
 
   return <Map style={{height: `1135px`}}
-    center={[offers[0].city.location.latitude, offers[0].city.location.longitude]}
-    zoom={offers[0].city.location.zoom}
+    center={[cityOffers[0].city.location.latitude, cityOffers[0].city.location.longitude]}
+    zoom={cityOffers[0].city.location.zoom}
     zoomControl={false}
-    position={[offers[0].city.location.latitude, offers[0].city.location.longitude]}
+    position={[cityOffers[0].city.location.latitude, cityOffers[0].city.location.longitude]}
   >
     <TileLayer
       url={`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`}
       attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`}
     />
-    {offers.map((item) => {
+    {cityOffers.map((item) => {
       return <Marker key={item.id} position={[item.location.latitude, item.location.longitude]} icon={icon}/>;
     })}
   </Map>;
 };
 
 MapComponent.propTypes = {
-  offers: PropTypes
+  cityOffers: PropTypes
     .arrayOf(PropTypes
       .exact({
         id: PropTypes.number.isRequired,

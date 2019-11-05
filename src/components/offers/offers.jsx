@@ -10,7 +10,7 @@ class Offers extends React.PureComponent {
 
   render() {
     return <div className="cities__places-list places__list tabs__content">
-      {this.props.offers.map((item) => {
+      {this.props.cityOffers.map((item) => {
         return (
           <Offer
             {...item}
@@ -26,7 +26,7 @@ class Offers extends React.PureComponent {
 }
 
 Offers.propTypes = {
-  offers: PropTypes
+  cityOffers: PropTypes
     .arrayOf(PropTypes
       .exact({
         id: PropTypes.number.isRequired,

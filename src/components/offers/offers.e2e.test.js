@@ -57,7 +57,7 @@ const mocks = offers;
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`Offers mount rendering`, () => {
-  const wrapper = mount(<Offers offers={mocks} />);
+  const wrapper = mount(<Offers cityOffers={mocks} />);
   const offerOne = wrapper.find(`.place-card`).first();
   const offerTwo = wrapper.find(`.place-card`).last();
 

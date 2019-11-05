@@ -1,46 +1,16 @@
 import React from "react";
+import Cities from "../cities/cities.jsx";
 import Offers from "../offers/offers.jsx";
 import MapComponent from "../map/map.jsx";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer.js";
 
 const MainScreen = (props) => {
   return <main className="page__main page__main--index">
     <h1 className="visually-hidden">Cities</h1>
     <div className="tabs">
-      <section className="locations container">
-        <ul className="locations__list tabs__list">
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="#">
-              <span>Paris</span>
-            </a>
-          </li>
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="#">
-              <span>Cologne</span>
-            </a>
-          </li>
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="#">
-              <span>Brussels</span>
-            </a>
-          </li>
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item tabs__item--active">
-              <span>Amsterdam</span>
-            </a>
-          </li>
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="#">
-              <span>Hamburg</span>
-            </a>
-          </li>
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="#">
-              <span>Dusseldorf</span>
-            </a>
-          </li>
-        </ul>
-      </section>
+      <Cities {...props}/>
     </div>
     <div className="cities">
       <div className="cities__places-container container">
@@ -77,7 +47,9 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  offers: PropTypes
+  citiesList: PropTypes.arrayOf(PropTypes.string),
+  city: PropTypes.string,
+  cityOffers: PropTypes
     .arrayOf(PropTypes
       .exact({
         id: PropTypes.number.isRequired,
@@ -102,7 +74,25 @@ MainScreen.propTypes = {
         isPremium: PropTypes.bool.isRequired,
         isBookmark: PropTypes.bool.isRequired,
       })
-    )
+    ),
+  onCityClick: PropTypes.func
 };
 
-export default MainScreen;
+const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+  citiesList: state.citiesList,
+  city: state.city,
+  cityOffers: state.cityOffers,
+  offers: state.offers
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onCityClick: (offers, city) => {
+    dispatch(ActionCreator.changeCity(city));
+    dispatch(ActionCreator.getOffers(offers, city));
+  }
+});
+
+export {MainScreen};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
+
