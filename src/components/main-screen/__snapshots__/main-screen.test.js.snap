@@ -12,85 +12,92 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
   <div
     className="tabs"
   >
-    <section
-      className="locations container"
-    >
-      <ul
-        className="locations__list tabs__list"
-      >
-        <li
-          className="locations__item"
-        >
-          <a
-            className="locations__item-link tabs__item"
-            href="#"
-          >
-            <span>
-              Paris
-            </span>
-          </a>
-        </li>
-        <li
-          className="locations__item"
-        >
-          <a
-            className="locations__item-link tabs__item"
-            href="#"
-          >
-            <span>
-              Cologne
-            </span>
-          </a>
-        </li>
-        <li
-          className="locations__item"
-        >
-          <a
-            className="locations__item-link tabs__item"
-            href="#"
-          >
-            <span>
-              Brussels
-            </span>
-          </a>
-        </li>
-        <li
-          className="locations__item"
-        >
-          <a
-            className="locations__item-link tabs__item tabs__item--active"
-          >
-            <span>
-              Amsterdam
-            </span>
-          </a>
-        </li>
-        <li
-          className="locations__item"
-        >
-          <a
-            className="locations__item-link tabs__item"
-            href="#"
-          >
-            <span>
-              Hamburg
-            </span>
-          </a>
-        </li>
-        <li
-          className="locations__item"
-        >
-          <a
-            className="locations__item-link tabs__item"
-            href="#"
-          >
-            <span>
-              Dusseldorf
-            </span>
-          </a>
-        </li>
-      </ul>
-    </section>
+    <Cities
+      citiesList={
+        Array [
+          "Amsterdam",
+          "Berlin",
+          "Helsinki",
+        ]
+      }
+      city="Amsterdam"
+      cityOffers={
+        Array [
+          Object {
+            "city": Object {
+              "location": Object {
+                "latitude": 60.192059,
+                "longitude": 24.945831,
+                "name": "Helsinki",
+                "zoom": 12,
+              },
+            },
+            "description": "Beautiful & luxurious apartment at great location",
+            "id": 1,
+            "image": "img/room.jpg",
+            "isBookmark": true,
+            "isPremium": false,
+            "price": 80,
+            "rating": 50,
+            "type": "Private room",
+          },
+          Object {
+            "city": Object {
+              "location": Object {
+                "latitude": 52.38333,
+                "longitude": 4.9,
+                "name": "Amsterdam",
+                "zoom": 12,
+              },
+            },
+            "description": "Wood and stone place",
+            "id": 2,
+            "image": "img/room.jpg",
+            "isBookmark": true,
+            "isPremium": false,
+            "price": 80,
+            "rating": 50,
+            "type": "Private room",
+          },
+          Object {
+            "city": Object {
+              "location": Object {
+                "latitude": 52.520008,
+                "longitude": 13.404954,
+                "name": "Berlin",
+                "zoom": 12,
+              },
+            },
+            "description": "Nice, cozy, warm big bed apartment",
+            "id": 3,
+            "image": "img/room.jpg",
+            "isBookmark": true,
+            "isPremium": false,
+            "price": 80,
+            "rating": 50,
+            "type": "Private room",
+          },
+          Object {
+            "city": Object {
+              "location": Object {
+                "latitude": 52.38333,
+                "longitude": 4.9,
+                "name": "Amsterdam",
+                "zoom": 12,
+              },
+            },
+            "description": "Canal View Prinsengracht",
+            "id": 4,
+            "image": "img/room.jpg",
+            "isBookmark": true,
+            "isPremium": false,
+            "price": 80,
+            "rating": 50,
+            "type": "Private room",
+          },
+        ]
+      }
+    />
   </div>
   <div
     className="cities"
@@ -109,7 +116,9 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
         <b
           className="places__found"
         >
-          312 places to stay in Amsterdam
+          4
+           places to stay in 
+          Amsterdam
         </b>
         <form
           action="#"
@@ -169,30 +178,33 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
           className="cities__places-list places__list tabs__content"
         >
           <Offers
-            offers={
+            citiesList={
+              Array [
+                "Amsterdam",
+                "Berlin",
+                "Helsinki",
+              ]
+            }
+            city="Amsterdam"
+            cityOffers={
               Array [
                 Object {
                   "city": Object {
                     "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "name": "Amsterdam",
+                      "latitude": 60.192059,
+                      "longitude": 24.945831,
+                      "name": "Helsinki",
                       "zoom": 12,
                     },
                   },
                   "description": "Beautiful & luxurious apartment at great location",
                   "id": 1,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": true,
-                  "location": Object {
-                    "latitude": 52.3909553943508,
-                    "longitude": 4.85309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 120,
-                  "rating": 100,
-                  "type": "Apartment",
+                  "image": "img/room.jpg",
+                  "isBookmark": true,
+                  "isPremium": false,
+                  "price": 80,
+                  "rating": 50,
+                  "type": "Private room",
                 },
                 Object {
                   "city": Object {
@@ -208,11 +220,24 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
                   "image": "img/room.jpg",
                   "isBookmark": true,
                   "isPremium": false,
-                  "location": Object {
-                    "latitude": 52.369553943508,
-                    "longitude": 4.85309666406198,
-                    "zoom": 12,
+                  "price": 80,
+                  "rating": 50,
+                  "type": "Private room",
+                },
+                Object {
+                  "city": Object {
+                    "location": Object {
+                      "latitude": 52.520008,
+                      "longitude": 13.404954,
+                      "name": "Berlin",
+                      "zoom": 12,
+                    },
                   },
+                  "description": "Nice, cozy, warm big bed apartment",
+                  "id": 3,
+                  "image": "img/room.jpg",
+                  "isBookmark": true,
+                  "isPremium": false,
                   "price": 80,
                   "rating": 50,
                   "type": "Private room",
@@ -227,63 +252,12 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
                     },
                   },
                   "description": "Canal View Prinsengracht",
-                  "id": 3,
-                  "image": "img/apartment-02.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 52.3909553943508,
-                    "longitude": 4.929309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 132,
-                  "rating": 80,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "name": "Amsterdam",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Nice, cozy, warm big bed apartment",
                   "id": 4,
-                  "image": "img/apartment-03.jpg",
-                  "isBookmark": false,
-                  "isPremium": true,
-                  "location": Object {
-                    "latitude": 52.3809553943508,
-                    "longitude": 4.939309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 180,
-                  "rating": 100,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "name": "Amsterdam",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Wood and stone place",
-                  "id": 5,
                   "image": "img/room.jpg",
-                  "isBookmark": false,
+                  "isBookmark": true,
                   "isPremium": false,
-                  "location": Object {
-                    "latitude": 52.369553943508,
-                    "longitude": 4.939309666406198,
-                    "zoom": 12,
-                  },
                   "price": 80,
-                  "rating": 80,
+                  "rating": 50,
                   "type": "Private room",
                 },
               ]
@@ -298,30 +272,33 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
           className="cities__map map"
         >
           <MapComponent
-            offers={
+            citiesList={
+              Array [
+                "Amsterdam",
+                "Berlin",
+                "Helsinki",
+              ]
+            }
+            city="Amsterdam"
+            cityOffers={
               Array [
                 Object {
                   "city": Object {
                     "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "name": "Amsterdam",
+                      "latitude": 60.192059,
+                      "longitude": 24.945831,
+                      "name": "Helsinki",
                       "zoom": 12,
                     },
                   },
                   "description": "Beautiful & luxurious apartment at great location",
                   "id": 1,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": true,
-                  "location": Object {
-                    "latitude": 52.3909553943508,
-                    "longitude": 4.85309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 120,
-                  "rating": 100,
-                  "type": "Apartment",
+                  "image": "img/room.jpg",
+                  "isBookmark": true,
+                  "isPremium": false,
+                  "price": 80,
+                  "rating": 50,
+                  "type": "Private room",
                 },
                 Object {
                   "city": Object {
@@ -337,11 +314,24 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
                   "image": "img/room.jpg",
                   "isBookmark": true,
                   "isPremium": false,
-                  "location": Object {
-                    "latitude": 52.369553943508,
-                    "longitude": 4.85309666406198,
-                    "zoom": 12,
+                  "price": 80,
+                  "rating": 50,
+                  "type": "Private room",
+                },
+                Object {
+                  "city": Object {
+                    "location": Object {
+                      "latitude": 52.520008,
+                      "longitude": 13.404954,
+                      "name": "Berlin",
+                      "zoom": 12,
+                    },
                   },
+                  "description": "Nice, cozy, warm big bed apartment",
+                  "id": 3,
+                  "image": "img/room.jpg",
+                  "isBookmark": true,
+                  "isPremium": false,
                   "price": 80,
                   "rating": 50,
                   "type": "Private room",
@@ -356,63 +346,12 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
                     },
                   },
                   "description": "Canal View Prinsengracht",
-                  "id": 3,
-                  "image": "img/apartment-02.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 52.3909553943508,
-                    "longitude": 4.929309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 132,
-                  "rating": 80,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "name": "Amsterdam",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Nice, cozy, warm big bed apartment",
                   "id": 4,
-                  "image": "img/apartment-03.jpg",
-                  "isBookmark": false,
-                  "isPremium": true,
-                  "location": Object {
-                    "latitude": 52.3809553943508,
-                    "longitude": 4.939309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 180,
-                  "rating": 100,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "name": "Amsterdam",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Wood and stone place",
-                  "id": 5,
                   "image": "img/room.jpg",
-                  "isBookmark": false,
+                  "isBookmark": true,
                   "isPremium": false,
-                  "location": Object {
-                    "latitude": 52.369553943508,
-                    "longitude": 4.939309666406198,
-                    "zoom": 12,
-                  },
                   "price": 80,
-                  "rating": 80,
+                  "rating": 50,
                   "type": "Private room",
                 },
               ]

@@ -8,7 +8,7 @@ import {offers} from "../../mocks/offers.js";
 Enzyme.configure({adapter: new Adapter()});
 
 it(`MapComponent correctly renders after relaunch`, () => {
-  const tree = mount(<MapComponent offers={offers} />);
+  const tree = mount(<MapComponent cityOffers={offers} />);
 
   expect(toJson(tree)).toMatchSnapshot();
 });

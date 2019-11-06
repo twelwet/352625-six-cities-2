@@ -5,7 +5,7 @@ import {offers} from "../../mocks/offers.js";
 
 it(`Offers correctly renders after relaunch`, () => {
   const tree = renderer
-    .create(<Offers offers={offers}/>
+    .create(<Offers cityOffers={offers}/>
     )
     .toJSON();
 
