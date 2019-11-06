@@ -10,32 +10,72 @@ const mockOffers = [
     city: {
       location: {
         name: `Helsinki`,
+        latitude: 60.192059,
+        longitude: 24.945831,
+        zoom: 12
       }
     },
+    description: `Beautiful & luxurious apartment at great location`,
+    type: `Private room`,
+    price: 80,
+    image: `img/room.jpg`,
+    rating: 50,
+    isPremium: false,
+    isBookmark: true,
   },
   {
     id: 2,
     city: {
       location: {
         name: `Amsterdam`,
+        latitude: 52.38333,
+        longitude: 4.9,
+        zoom: 12
       }
     },
+    description: `Wood and stone place`,
+    type: `Private room`,
+    price: 80,
+    image: `img/room.jpg`,
+    rating: 50,
+    isPremium: false,
+    isBookmark: true,
   },
   {
     id: 3,
     city: {
       location: {
         name: `Berlin`,
+        latitude: 52.520008,
+        longitude: 13.404954,
+        zoom: 12
       }
     },
+    description: `Nice, cozy, warm big bed apartment`,
+    type: `Private room`,
+    price: 80,
+    image: `img/room.jpg`,
+    rating: 50,
+    isPremium: false,
+    isBookmark: true,
   },
   {
     id: 4,
     city: {
       location: {
         name: `Amsterdam`,
+        latitude: 52.38333,
+        longitude: 4.9,
+        zoom: 12
       }
     },
+    description: `Canal View Prinsengracht`,
+    type: `Private room`,
+    price: 80,
+    image: `img/room.jpg`,
+    rating: 50,
+    isPremium: false,
+    isBookmark: true,
   },
 ];
 
@@ -45,7 +85,7 @@ it(`MainScreen correctly renders after relaunch`, () => {
   const tree = shallow(<MainScreen
     citiesList={[`Amsterdam`, `Berlin`, `Helsinki`]}
     city={`Amsterdam`}
-    offers={mockOffers}
+    cityOffers={mockOffers}
   />);
 
   expect(toJson(tree)).toMatchSnapshot();

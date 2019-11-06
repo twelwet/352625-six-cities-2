@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
 
 const MainScreen = (props) => {
+  const {city, cityOffers} = props;
   return <main className="page__main page__main--index">
     <h1 className="visually-hidden">Cities</h1>
     <div className="tabs">
@@ -16,7 +17,7 @@ const MainScreen = (props) => {
       <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">312 places to stay in Amsterdam</b>
+          <b className="places__found">{cityOffers.length} places to stay in {city}</b>
           <form className="places__sorting" action="#" method="get">
             <span className="places__sorting-caption">Sort by</span>
             <span className="places__sorting-type" tabIndex="0">
