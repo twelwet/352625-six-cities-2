@@ -25,8 +25,8 @@ const Cities = (props) => {
 };
 
 Cities.propTypes = {
-  citiesList: PropTypes.arrayOf(PropTypes.string),
-  city: PropTypes.string,
+  citiesList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  city: PropTypes.string.isRequired,
   onCityClick: PropTypes.func
 };
 

@@ -13,283 +13,47 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
     className="tabs"
   >
     <Cities
+      citiesList={
+        Array [
+          "Amsterdam",
+          "Berlin",
+          "Helsinki",
+        ]
+      }
+      city="Amsterdam"
       offers={
         Array [
           Object {
             "city": Object {
               "location": Object {
-                "latitude": 52.38333,
-                "longitude": 4.9,
-                "name": "Amsterdam",
-                "zoom": 12,
+                "name": "Helsinki",
               },
             },
-            "description": "Beautiful & luxurious apartment at great location",
             "id": 1,
-            "image": "img/apartment-01.jpg",
-            "isBookmark": false,
-            "isPremium": true,
-            "location": Object {
-              "latitude": 52.3909553943508,
-              "longitude": 4.85309666406198,
-              "zoom": 12,
-            },
-            "price": 120,
-            "rating": 100,
-            "type": "Apartment",
           },
           Object {
             "city": Object {
               "location": Object {
-                "latitude": 52.38333,
-                "longitude": 4.9,
                 "name": "Amsterdam",
-                "zoom": 12,
               },
             },
-            "description": "Wood and stone place",
             "id": 2,
-            "image": "img/room.jpg",
-            "isBookmark": true,
-            "isPremium": false,
-            "location": Object {
-              "latitude": 52.369553943508,
-              "longitude": 4.85309666406198,
-              "zoom": 12,
-            },
-            "price": 80,
-            "rating": 50,
-            "type": "Private room",
           },
           Object {
             "city": Object {
               "location": Object {
-                "latitude": 52.38333,
-                "longitude": 4.9,
-                "name": "Amsterdam",
-                "zoom": 12,
+                "name": "Berlin",
               },
             },
-            "description": "Canal View Prinsengracht",
             "id": 3,
-            "image": "img/apartment-02.jpg",
-            "isBookmark": false,
-            "isPremium": false,
-            "location": Object {
-              "latitude": 52.3909553943508,
-              "longitude": 4.929309666406198,
-              "zoom": 12,
-            },
-            "price": 132,
-            "rating": 80,
-            "type": "Apartment",
           },
           Object {
             "city": Object {
               "location": Object {
-                "latitude": 52.38333,
-                "longitude": 4.9,
                 "name": "Amsterdam",
-                "zoom": 12,
               },
             },
-            "description": "Nice, cozy, warm big bed apartment",
             "id": 4,
-            "image": "img/apartment-03.jpg",
-            "isBookmark": false,
-            "isPremium": true,
-            "location": Object {
-              "latitude": 52.3809553943508,
-              "longitude": 4.939309666406198,
-              "zoom": 12,
-            },
-            "price": 180,
-            "rating": 100,
-            "type": "Apartment",
-          },
-          Object {
-            "city": Object {
-              "location": Object {
-                "latitude": 52.38333,
-                "longitude": 4.9,
-                "name": "Amsterdam",
-                "zoom": 12,
-              },
-            },
-            "description": "Wood and stone place",
-            "id": 5,
-            "image": "img/room.jpg",
-            "isBookmark": false,
-            "isPremium": false,
-            "location": Object {
-              "latitude": 52.369553943508,
-              "longitude": 4.939309666406198,
-              "zoom": 12,
-            },
-            "price": 80,
-            "rating": 80,
-            "type": "Private room",
-          },
-          Object {
-            "city": Object {
-              "location": Object {
-                "latitude": 48.864716,
-                "longitude": 2.349014,
-                "name": "Paris",
-                "zoom": 12,
-              },
-            },
-            "description": "Wood and stone place",
-            "id": 6,
-            "image": "img/apartment-01.jpg",
-            "isBookmark": false,
-            "isPremium": false,
-            "location": Object {
-              "latitude": 48.86555432,
-              "longitude": 2.34856278,
-              "zoom": 12,
-            },
-            "price": 80,
-            "rating": 80,
-            "type": "Private room",
-          },
-          Object {
-            "city": Object {
-              "location": Object {
-                "latitude": 48.864716,
-                "longitude": 2.349014,
-                "name": "Paris",
-                "zoom": 12,
-              },
-            },
-            "description": "Nice, cozy, warm big bed apartment",
-            "id": 7,
-            "image": "img/apartment-01.jpg",
-            "isBookmark": false,
-            "isPremium": false,
-            "location": Object {
-              "latitude": 48.860955394,
-              "longitude": 2.348687458,
-              "zoom": 12,
-            },
-            "price": 80,
-            "rating": 80,
-            "type": "Apartment",
-          },
-          Object {
-            "city": Object {
-              "location": Object {
-                "latitude": 50.941357,
-                "longitude": 6.958307,
-                "name": "Cologne",
-                "zoom": 12,
-              },
-            },
-            "description": "Nice, cozy, warm big bed apartment",
-            "id": 8,
-            "image": "img/apartment-01.jpg",
-            "isBookmark": false,
-            "isPremium": false,
-            "location": Object {
-              "latitude": 50.9427634598,
-              "longitude": 6.9683475654,
-              "zoom": 12,
-            },
-            "price": 80,
-            "rating": 80,
-            "type": "Apartment",
-          },
-          Object {
-            "city": Object {
-              "location": Object {
-                "latitude": 50.85045,
-                "longitude": 4.34878,
-                "name": "Brussels",
-                "zoom": 12,
-              },
-            },
-            "description": "Nice, cozy, warm big bed apartment",
-            "id": 9,
-            "image": "img/apartment-01.jpg",
-            "isBookmark": false,
-            "isPremium": false,
-            "location": Object {
-              "latitude": 50.8517845976,
-              "longitude": 4.3463294857,
-              "zoom": 12,
-            },
-            "price": 80,
-            "rating": 80,
-            "type": "Apartment",
-          },
-          Object {
-            "city": Object {
-              "location": Object {
-                "latitude": 50.85045,
-                "longitude": 4.34878,
-                "name": "Brussels",
-                "zoom": 12,
-              },
-            },
-            "description": "Nice, cozy, warm big bed apartment",
-            "id": 10,
-            "image": "img/apartment-01.jpg",
-            "isBookmark": false,
-            "isPremium": false,
-            "location": Object {
-              "latitude": 50.85254739,
-              "longitude": 4.34375675,
-              "zoom": 12,
-            },
-            "price": 80,
-            "rating": 80,
-            "type": "Apartment",
-          },
-          Object {
-            "city": Object {
-              "location": Object {
-                "latitude": 53.551086,
-                "longitude": 9.993682,
-                "name": "Hamburg",
-                "zoom": 12,
-              },
-            },
-            "description": "Nice, cozy, warm big bed apartment",
-            "id": 11,
-            "image": "img/apartment-01.jpg",
-            "isBookmark": false,
-            "isPremium": false,
-            "location": Object {
-              "latitude": 53.5537409586,
-              "longitude": 9.9992837456,
-              "zoom": 12,
-            },
-            "price": 80,
-            "rating": 80,
-            "type": "Apartment",
-          },
-          Object {
-            "city": Object {
-              "location": Object {
-                "latitude": 51.233334,
-                "longitude": 6.783333,
-                "name": "Dusseldorf",
-                "zoom": 12,
-              },
-            },
-            "description": "Nice, cozy, warm big bed apartment",
-            "id": 12,
-            "image": "img/apartment-01.jpg",
-            "isBookmark": false,
-            "isPremium": false,
-            "location": Object {
-              "latitude": 51.2329387456,
-              "longitude": 6.7830495867,
-              "zoom": 12,
-            },
-            "price": 80,
-            "rating": 80,
-            "type": "Apartment",
           },
         ]
       }
@@ -372,283 +136,47 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
           className="cities__places-list places__list tabs__content"
         >
           <Offers
+            citiesList={
+              Array [
+                "Amsterdam",
+                "Berlin",
+                "Helsinki",
+              ]
+            }
+            city="Amsterdam"
             offers={
               Array [
                 Object {
                   "city": Object {
                     "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "name": "Amsterdam",
-                      "zoom": 12,
+                      "name": "Helsinki",
                     },
                   },
-                  "description": "Beautiful & luxurious apartment at great location",
                   "id": 1,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": true,
-                  "location": Object {
-                    "latitude": 52.3909553943508,
-                    "longitude": 4.85309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 120,
-                  "rating": 100,
-                  "type": "Apartment",
                 },
                 Object {
                   "city": Object {
                     "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
                       "name": "Amsterdam",
-                      "zoom": 12,
                     },
                   },
-                  "description": "Wood and stone place",
                   "id": 2,
-                  "image": "img/room.jpg",
-                  "isBookmark": true,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 52.369553943508,
-                    "longitude": 4.85309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 50,
-                  "type": "Private room",
                 },
                 Object {
                   "city": Object {
                     "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "name": "Amsterdam",
-                      "zoom": 12,
+                      "name": "Berlin",
                     },
                   },
-                  "description": "Canal View Prinsengracht",
                   "id": 3,
-                  "image": "img/apartment-02.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 52.3909553943508,
-                    "longitude": 4.929309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 132,
-                  "rating": 80,
-                  "type": "Apartment",
                 },
                 Object {
                   "city": Object {
                     "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
                       "name": "Amsterdam",
-                      "zoom": 12,
                     },
                   },
-                  "description": "Nice, cozy, warm big bed apartment",
                   "id": 4,
-                  "image": "img/apartment-03.jpg",
-                  "isBookmark": false,
-                  "isPremium": true,
-                  "location": Object {
-                    "latitude": 52.3809553943508,
-                    "longitude": 4.939309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 180,
-                  "rating": 100,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "name": "Amsterdam",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Wood and stone place",
-                  "id": 5,
-                  "image": "img/room.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 52.369553943508,
-                    "longitude": 4.939309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Private room",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 48.864716,
-                      "longitude": 2.349014,
-                      "name": "Paris",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Wood and stone place",
-                  "id": 6,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 48.86555432,
-                    "longitude": 2.34856278,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Private room",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 48.864716,
-                      "longitude": 2.349014,
-                      "name": "Paris",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Nice, cozy, warm big bed apartment",
-                  "id": 7,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 48.860955394,
-                    "longitude": 2.348687458,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 50.941357,
-                      "longitude": 6.958307,
-                      "name": "Cologne",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Nice, cozy, warm big bed apartment",
-                  "id": 8,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 50.9427634598,
-                    "longitude": 6.9683475654,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 50.85045,
-                      "longitude": 4.34878,
-                      "name": "Brussels",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Nice, cozy, warm big bed apartment",
-                  "id": 9,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 50.8517845976,
-                    "longitude": 4.3463294857,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 50.85045,
-                      "longitude": 4.34878,
-                      "name": "Brussels",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Nice, cozy, warm big bed apartment",
-                  "id": 10,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 50.85254739,
-                    "longitude": 4.34375675,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 53.551086,
-                      "longitude": 9.993682,
-                      "name": "Hamburg",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Nice, cozy, warm big bed apartment",
-                  "id": 11,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 53.5537409586,
-                    "longitude": 9.9992837456,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 51.233334,
-                      "longitude": 6.783333,
-                      "name": "Dusseldorf",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Nice, cozy, warm big bed apartment",
-                  "id": 12,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 51.2329387456,
-                    "longitude": 6.7830495867,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Apartment",
                 },
               ]
             }
@@ -662,283 +190,47 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
           className="cities__map map"
         >
           <MapComponent
+            citiesList={
+              Array [
+                "Amsterdam",
+                "Berlin",
+                "Helsinki",
+              ]
+            }
+            city="Amsterdam"
             offers={
               Array [
                 Object {
                   "city": Object {
                     "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "name": "Amsterdam",
-                      "zoom": 12,
+                      "name": "Helsinki",
                     },
                   },
-                  "description": "Beautiful & luxurious apartment at great location",
                   "id": 1,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": true,
-                  "location": Object {
-                    "latitude": 52.3909553943508,
-                    "longitude": 4.85309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 120,
-                  "rating": 100,
-                  "type": "Apartment",
                 },
                 Object {
                   "city": Object {
                     "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
                       "name": "Amsterdam",
-                      "zoom": 12,
                     },
                   },
-                  "description": "Wood and stone place",
                   "id": 2,
-                  "image": "img/room.jpg",
-                  "isBookmark": true,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 52.369553943508,
-                    "longitude": 4.85309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 50,
-                  "type": "Private room",
                 },
                 Object {
                   "city": Object {
                     "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "name": "Amsterdam",
-                      "zoom": 12,
+                      "name": "Berlin",
                     },
                   },
-                  "description": "Canal View Prinsengracht",
                   "id": 3,
-                  "image": "img/apartment-02.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 52.3909553943508,
-                    "longitude": 4.929309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 132,
-                  "rating": 80,
-                  "type": "Apartment",
                 },
                 Object {
                   "city": Object {
                     "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
                       "name": "Amsterdam",
-                      "zoom": 12,
                     },
                   },
-                  "description": "Nice, cozy, warm big bed apartment",
                   "id": 4,
-                  "image": "img/apartment-03.jpg",
-                  "isBookmark": false,
-                  "isPremium": true,
-                  "location": Object {
-                    "latitude": 52.3809553943508,
-                    "longitude": 4.939309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 180,
-                  "rating": 100,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "name": "Amsterdam",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Wood and stone place",
-                  "id": 5,
-                  "image": "img/room.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 52.369553943508,
-                    "longitude": 4.939309666406198,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Private room",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 48.864716,
-                      "longitude": 2.349014,
-                      "name": "Paris",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Wood and stone place",
-                  "id": 6,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 48.86555432,
-                    "longitude": 2.34856278,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Private room",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 48.864716,
-                      "longitude": 2.349014,
-                      "name": "Paris",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Nice, cozy, warm big bed apartment",
-                  "id": 7,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 48.860955394,
-                    "longitude": 2.348687458,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 50.941357,
-                      "longitude": 6.958307,
-                      "name": "Cologne",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Nice, cozy, warm big bed apartment",
-                  "id": 8,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 50.9427634598,
-                    "longitude": 6.9683475654,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 50.85045,
-                      "longitude": 4.34878,
-                      "name": "Brussels",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Nice, cozy, warm big bed apartment",
-                  "id": 9,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 50.8517845976,
-                    "longitude": 4.3463294857,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 50.85045,
-                      "longitude": 4.34878,
-                      "name": "Brussels",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Nice, cozy, warm big bed apartment",
-                  "id": 10,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 50.85254739,
-                    "longitude": 4.34375675,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 53.551086,
-                      "longitude": 9.993682,
-                      "name": "Hamburg",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Nice, cozy, warm big bed apartment",
-                  "id": 11,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 53.5537409586,
-                    "longitude": 9.9992837456,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Apartment",
-                },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 51.233334,
-                      "longitude": 6.783333,
-                      "name": "Dusseldorf",
-                      "zoom": 12,
-                    },
-                  },
-                  "description": "Nice, cozy, warm big bed apartment",
-                  "id": 12,
-                  "image": "img/apartment-01.jpg",
-                  "isBookmark": false,
-                  "isPremium": false,
-                  "location": Object {
-                    "latitude": 51.2329387456,
-                    "longitude": 6.7830495867,
-                    "zoom": 12,
-                  },
-                  "price": 80,
-                  "rating": 80,
-                  "type": "Apartment",
                 },
               ]
             }

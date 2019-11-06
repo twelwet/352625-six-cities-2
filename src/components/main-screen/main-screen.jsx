@@ -47,8 +47,8 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  citiesList: PropTypes.arrayOf(PropTypes.string),
-  city: PropTypes.string,
+  citiesList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  city: PropTypes.string.isRequired,
   cityOffers: PropTypes
     .arrayOf(PropTypes
       .exact({
