@@ -122,26 +122,9 @@ describe(`Reducer's utility functions works correctly`, () => {
   });
 
   it(`ActionCreator.getOffers works correctly`, () => {
-    expect(ActionCreator.getOffers(mockOffers, `Amsterdam`)).toEqual({
+    expect(ActionCreator.getOffers(`Amsterdam`)).toEqual({
       type: `GET_OFFERS`,
-      payload: [
-        {
-          id: 2,
-          city: {
-            location: {
-              name: `Amsterdam`,
-            }
-          },
-        },
-        {
-          id: 4,
-          city: {
-            location: {
-              name: `Amsterdam`,
-            }
-          },
-        },
-      ]
+      payload: `Amsterdam`
     });
   });
 });
@@ -187,7 +170,7 @@ describe(`Reducer works correctly`, () => {
           },
         },
       ],
-      offers: mockOffers}, ActionCreator.getOffers(mockOffers, `Amsterdam`))).toEqual({
+      offers: mockOffers}, ActionCreator.getOffers(`Amsterdam`))).toEqual({
       citiesList: [],
       city: `Not Tested`,
       cityOffers: [

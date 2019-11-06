@@ -30,10 +30,10 @@ const ActionCreator = {
       payload: cityName
     };
   },
-  getOffers: (allOffersList, cityName) => {
+  getOffers: (cityName) => {
     return {
       type: ActionType.GET_OFFERS,
-      payload: getOffersByCity(allOffersList, cityName)
+      payload: cityName
     };
   }
 };
@@ -46,7 +46,7 @@ const reducer = (state = getInitialState(offers), action) => {
       });
     case ActionType.GET_OFFERS:
       return Object.assign({}, state, {
-        cityOffers: action.payload
+        cityOffers: getOffersByCity(state.offers, action.payload)
       });
   }
 
