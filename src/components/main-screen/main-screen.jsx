@@ -78,7 +78,7 @@ MainScreen.propTypes = {
   onCityClick: PropTypes.func
 };
 
-const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+const mapStateToProps = (state) => ({
   citiesList: state.citiesList,
   city: state.city,
   cityOffers: state.cityOffers,
