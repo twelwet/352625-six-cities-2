@@ -2,9 +2,12 @@ import React from "react";
 import Cities from "../cities/cities.jsx";
 import Offers from "../offers/offers.jsx";
 import MapComponent from "../map/map.jsx";
+import withActiveOffer from "../../hocs/with-active-offer.js";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
+
+const OffersWrapped = withActiveOffer(Offers);
 
 const MainScreen = (props) => {
   const {city, cityOffers} = props;
@@ -34,7 +37,7 @@ const MainScreen = (props) => {
             </ul>
           </form>
           <div className="cities__places-list places__list tabs__content">
-            <Offers {...props}/>
+            <OffersWrapped {...props}/>
           </div>
         </section>
         <div className="cities__right-section">
@@ -76,7 +79,7 @@ MainScreen.propTypes = {
         isBookmark: PropTypes.bool.isRequired,
       })
     ),
-  onCityClick: PropTypes.func
+  onCityClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

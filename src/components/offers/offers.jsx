@@ -1,26 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Offer from "../offer/offer.jsx";
 
 class Offers extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {active: null};
   }
 
   render() {
     return <div className="cities__places-list places__list tabs__content">
       {this.props.cityOffers.map((item) => {
-        return (
-          <Offer
-            {...item}
-            key={item.id}
-            onOfferHover={() => this.setState({active: item.id})}
-            onOfferLeave={() => this.setState({active: null})}
-          />
-        );
+        this.props.renderActiveOffer(item);
       })}
-      <div>Active offer Id: {this.state.active}</div>
     </div>;
   }
 }
@@ -51,7 +41,8 @@ Offers.propTypes = {
         isPremium: PropTypes.bool.isRequired,
         isBookmark: PropTypes.bool.isRequired,
       })
-    )
+    ),
+  renderActiveOffer: PropTypes.func
 };
 
 export default Offers;
