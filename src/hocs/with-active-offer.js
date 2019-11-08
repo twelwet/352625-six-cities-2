@@ -10,7 +10,7 @@ const withActiveOffer = (Component) => {
 
     render() {
       return (
-        <Component {...this.props}>
+        <Component {...this.props}
           renderActiveOffer={((item) => {
             return (
               <Offer
@@ -21,8 +21,10 @@ const withActiveOffer = (Component) => {
               />
             );
           })}
-          <div>Active offer Id: {this.state.active}</div>
-        </Component>
+          showActiveId={() => {
+            return <div>Active offer Id: {this.state.active}</div>;
+          }}
+        />
       );
     }
   }

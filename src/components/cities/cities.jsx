@@ -9,7 +9,7 @@ const Cities = (props) => {
         return (
           <li key={i} className="locations__item">
             {city === item
-              ? <a className="locations__item-link tabs__item--active" href="#">
+              ? <a className="locations__item-link tabs__item tabs__item--active" href="#">
                 <span>{item}</span></a>
               : <a onClick={(evt) => {
                 evt.preventDefault();

@@ -4,13 +4,15 @@ import PropTypes from "prop-types";
 class Offers extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.state = {active: null};
   }
 
   render() {
     return <div className="cities__places-list places__list tabs__content">
       {this.props.cityOffers.map((item) => {
-        this.props.renderActiveOffer(item);
+        return this.props.renderActiveOffer(item);
       })}
+      {this.props.showActiveId()}
     </div>;
   }
 }
@@ -42,7 +44,8 @@ Offers.propTypes = {
         isBookmark: PropTypes.bool.isRequired,
       })
     ),
-  renderActiveOffer: PropTypes.func
+  renderActiveOffer: PropTypes.func.isRequired,
+  showActiveId: PropTypes.func.isRequired
 };
 
 export default Offers;

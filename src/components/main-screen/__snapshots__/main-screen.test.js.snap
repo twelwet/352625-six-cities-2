@@ -97,6 +97,7 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
           },
         ]
       }
+      onCityClick={[MockFunction]}
     />
   </div>
   <div
@@ -177,7 +178,7 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
         <div
           className="cities__places-list places__list tabs__content"
         >
-          <Offers
+          <WithActiveOffer
             citiesList={
               Array [
                 "Amsterdam",
@@ -262,6 +263,7 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
                 },
               ]
             }
+            onCityClick={[MockFunction]}
           />
         </div>
       </section>
@@ -356,6 +358,7 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
                 },
               ]
             }
+            onCityClick={[MockFunction]}
           />
         </section>
       </div>
