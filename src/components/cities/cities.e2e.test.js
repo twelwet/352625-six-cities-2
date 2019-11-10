@@ -9,11 +9,13 @@ const citiesList = [`Moscow`, `Saint Petersburg`, `Helsinki`];
 
 describe(`Cities component works correctly`, () => {
   const onCityClick = jest.fn(() => {});
+  const onSelect = jest.fn(() => {});
 
   const citiesComponent = mount(<Cities
     citiesList={citiesList}
-    city={`Moscow`}
     onCityClick={onCityClick}
+    active={null}
+    onSelect={onSelect}
   />);
 
   it(`All of three cities are rendered`, () => {

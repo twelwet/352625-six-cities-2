@@ -2,19 +2,20 @@ import React from "react";
 import Cities from "../cities/cities.jsx";
 import Offers from "../offers/offers.jsx";
 import MapComponent from "../map/map.jsx";
-import withActiveOffer from "../../hocs/with-active-offer.js";
+import withActiveElement from "../../hocs/with-active-element.js";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
 
-const OffersWrapped = withActiveOffer(Offers);
+const OffersWrapped = withActiveElement(Offers);
+const CitiesWrapped = withActiveElement(Cities);
 
 const MainScreen = (props) => {
   const {city, cityOffers} = props;
   return <main className="page__main page__main--index">
     <h1 className="visually-hidden">Cities</h1>
     <div className="tabs">
-      <Cities {...props}/>
+      <CitiesWrapped {...props}/>
     </div>
     <div className="cities">
       <div className="cities__places-container container">
@@ -91,7 +92,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onCityClick: (city) => {
-    dispatch(ActionCreator.changeCity(city));
+    // dispatch(ActionCreator.changeCity(city));
     dispatch(ActionCreator.getOffers(city));
   }
 });

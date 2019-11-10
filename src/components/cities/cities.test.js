@@ -6,12 +6,14 @@ const citiesList = [`Moscow`, `Saint Petersburg`, `Helsinki`];
 
 it(`Cities correctly renders after relaunch`, () => {
   const onCityClick = jest.fn();
+  const onSelect = jest.fn();
 
   const tree = renderer
     .create(<Cities
       citiesList={citiesList}
-      city={`Dublin`}
       onCityClick={onCityClick}
+      active={null}
+      onSelect={onSelect}
     />
     )
     .toJSON();

@@ -2,9 +2,9 @@ import React from "react";
 import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Offers from "../components/offers/offers.jsx";
-import withActiveOffer from "./with-active-offer.js";
+import withActiveElement from "./with-active-element.js";
 
-const OffersWrapped = withActiveOffer(Offers);
+const OffersWrapped = withActiveElement(Offers);
 
 const offers = [
   {
@@ -60,13 +60,14 @@ const mocks = offers;
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`OffersWrapped mount rendering`, () => {
-  const renderActiveOffer = jest.fn();
-  const showActiveId = jest.fn();
+  const onSelect = jest.fn();
+  const onUnselect = jest.fn();
 
   const wrapper = mount(<OffersWrapped
     cityOffers={mocks}
-    renderActiveOffer={renderActiveOffer}
-    showActiveId={showActiveId}
+    active={null}
+    onSelect={onSelect}
+    onUnselect={onUnselect}
   />);
 
   const offerOne = wrapper.find(`.place-card`).first();
@@ -78,7 +79,7 @@ describe(`OffersWrapped mount rendering`, () => {
 
   it(`OffersWrapped change state on mouse hover first offer`, () => {
     offerOne.simulate(`mouseover`);
-    expect(wrapper.state().active).toEqual(111);
+    expect(wrapper.state().active).toEqual(0);
   });
 
   it(`OffersWrapped change state to initial on mouse leave first offer`, () => {
@@ -88,6 +89,6 @@ describe(`OffersWrapped mount rendering`, () => {
 
   it(`OffersWrapped change state on mouse hover second offer`, () => {
     offerTwo.simulate(`mouseover`);
-    expect(wrapper.state().active).toEqual(222);
+    expect(wrapper.state().active).toEqual(1);
   });
 });

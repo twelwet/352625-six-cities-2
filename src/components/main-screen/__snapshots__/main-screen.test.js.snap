@@ -12,7 +12,7 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
   <div
     className="tabs"
   >
-    <Cities
+    <WithActiveElement
       citiesList={
         Array [
           "Amsterdam",
@@ -178,7 +178,7 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
         <div
           className="cities__places-list places__list tabs__content"
         >
-          <WithActiveOffer
+          <WithActiveElement
             citiesList={
               Array [
                 "Amsterdam",
