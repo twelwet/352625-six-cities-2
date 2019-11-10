@@ -82,10 +82,12 @@ const mockOffers = [
 Enzyme.configure({adapter: new Adapter()});
 
 it(`MainScreen correctly renders after relaunch`, () => {
+  const onCityClick = jest.fn();
   const tree = shallow(<MainScreen
     citiesList={[`Amsterdam`, `Berlin`, `Helsinki`]}
     city={`Amsterdam`}
     cityOffers={mockOffers}
+    onCityClick={onCityClick}
   />);
 
   expect(toJson(tree)).toMatchSnapshot();

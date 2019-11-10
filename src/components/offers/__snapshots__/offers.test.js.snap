@@ -1192,8 +1192,5 @@ exports[`Offers correctly renders after relaunch 1`] = `
       </p>
     </div>
   </article>
-  <div>
-    Active offer Id: 
-  </div>
 </div>
 `;
