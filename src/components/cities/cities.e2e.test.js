@@ -36,5 +36,6 @@ describe(`Cities component works correctly`, () => {
 
     helsinkiCity.simulate(`click`);
     expect(onCityClick).toHaveBeenCalledTimes(1);
+    expect(onCityClick).toHaveBeenCalledWith(`Helsinki`);
   });
 });

@@ -10,8 +10,8 @@ it(`Offers correctly renders after relaunch`, () => {
   const tree = renderer
     .create(<Offers
       cityOffers={offers}
-      renderActiveOffer={renderActiveOffer}
-      showActiveId={showActiveId}
+      onSelect={renderActiveOffer}
+      onUnselect={showActiveId}
     />
     )
     .toJSON();
