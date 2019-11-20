@@ -5,7 +5,7 @@ import MapComponent from "../map/map.jsx";
 import withActiveElement from "../../hocs/with-active-element.js";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
+import {getCitiesList, getOffersByCity, ActionCreator} from "../../reducer.js";
 
 const OffersWrapped = withActiveElement(Offers);
 const CitiesWrapped = withActiveElement(Cities);
@@ -43,7 +43,7 @@ const MainScreen = (props) => {
         </section>
         <div className="cities__right-section">
           <section className="cities__map map">
-            <MapComponent {...props}/>
+            {/*<MapComponent {...props}/>*/}
           </section>
         </div>
       </div>
@@ -84,10 +84,11 @@ MainScreen.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  citiesList: state.citiesList,
-  city: state.city,
-  cityOffers: state.cityOffers,
-  offers: state.offers
+  citiesList: getCitiesList(state.offers),
+  city: getCitiesList(state.offers)[0],
+  cityOffers: getOffersByCity(state.offers, state.city),
+  offers: state.offers,
+  isAuthRequired: state.isAuthRequired
 });
 
 const mapDispatchToProps = (dispatch) => ({
