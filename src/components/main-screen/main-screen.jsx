@@ -11,7 +11,6 @@ const OffersWrapped = withActiveElement(Offers);
 const CitiesWrapped = withActiveElement(Cities);
 
 const MainScreen = (props) => {
-  const {city, cityOffers} = props;
   return <main className="page__main page__main--index">
     <h1 className="visually-hidden">Cities</h1>
     <div className="tabs">
@@ -21,7 +20,7 @@ const MainScreen = (props) => {
       <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">{cityOffers.length} places to stay in {city}</b>
+          <b className="places__found">{props.cityOffers.length} places to stay in {props.city}</b>
           <form className="places__sorting" action="#" method="get">
             <span className="places__sorting-caption">Sort by</span>
             <span className="places__sorting-type" tabIndex="0">
@@ -56,28 +55,28 @@ MainScreen.propTypes = {
   city: PropTypes.string.isRequired,
   cityOffers: PropTypes
     .arrayOf(PropTypes
-      .exact({
-        id: PropTypes.number.isRequired,
-        city: PropTypes.exact({
-          location: PropTypes.exact({
-            name: PropTypes.string.isRequired,
-            latitude: PropTypes.number.isRequired,
-            longitude: PropTypes.number.isRequired,
-            zoom: PropTypes.number.isRequired
+      .shape({
+        [`id`]: PropTypes.number.isRequired,
+        [`city`]: PropTypes.exact({
+          [`name`]: PropTypes.string.isRequired,
+          [`location`]: PropTypes.exact({
+            [`latitude`]: PropTypes.number.isRequired,
+            [`longitude`]: PropTypes.number.isRequired,
+            [`zoom`]: PropTypes.number.isRequired
           })
         }),
-        location: PropTypes.exact({
-          latitude: PropTypes.number.isRequired,
-          longitude: PropTypes.number.isRequired,
-          zoom: PropTypes.number.isRequired
+        [`location`]: PropTypes.exact({
+          [`latitude`]: PropTypes.number.isRequired,
+          [`longitude`]: PropTypes.number.isRequired,
+          [`zoom`]: PropTypes.number.isRequired
         }),
-        description: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        image: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-        isBookmark: PropTypes.bool.isRequired,
+        [`title`]: PropTypes.string.isRequired,
+        [`type`]: PropTypes.string.isRequired,
+        [`price`]: PropTypes.number.isRequired,
+        [`preview_image`]: PropTypes.string.isRequired,
+        [`rating`]: PropTypes.number.isRequired,
+        [`is_premium`]: PropTypes.bool.isRequired,
+        [`is_favorite`]: PropTypes.bool.isRequired,
       })
     ),
   onCityClick: PropTypes.func.isRequired

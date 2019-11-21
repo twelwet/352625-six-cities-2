@@ -9,7 +9,7 @@ const Offers = (props) => {
       return (
         <Offer
           {...item}
-          key={item.id}
+          key={item[`id`]}
           onOfferHover={() => onSelect(index)}
           onOfferLeave={() => onUnselect()}
         />
@@ -22,28 +22,28 @@ const Offers = (props) => {
 Offers.propTypes = {
   cityOffers: PropTypes
     .arrayOf(PropTypes
-      .exact({
-        id: PropTypes.number.isRequired,
-        city: PropTypes.exact({
-          location: PropTypes.exact({
-            name: PropTypes.string.isRequired,
-            latitude: PropTypes.number.isRequired,
-            longitude: PropTypes.number.isRequired,
-            zoom: PropTypes.number.isRequired
+      .shape({
+        [`id`]: PropTypes.number.isRequired,
+        [`city`]: PropTypes.exact({
+          [`name`]: PropTypes.string.isRequired,
+          [`location`]: PropTypes.exact({
+            [`latitude`]: PropTypes.number.isRequired,
+            [`longitude`]: PropTypes.number.isRequired,
+            [`zoom`]: PropTypes.number.isRequired
           })
         }),
-        location: PropTypes.exact({
-          latitude: PropTypes.number.isRequired,
-          longitude: PropTypes.number.isRequired,
-          zoom: PropTypes.number.isRequired
+        [`location`]: PropTypes.exact({
+          [`latitude`]: PropTypes.number.isRequired,
+          [`longitude`]: PropTypes.number.isRequired,
+          [`zoom`]: PropTypes.number.isRequired
         }),
-        description: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        image: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-        isBookmark: PropTypes.bool.isRequired,
+        [`title`]: PropTypes.string.isRequired,
+        [`type`]: PropTypes.string.isRequired,
+        [`price`]: PropTypes.number.isRequired,
+        [`preview_image`]: PropTypes.string.isRequired,
+        [`rating`]: PropTypes.number.isRequired,
+        [`is_premium`]: PropTypes.bool.isRequired,
+        [`is_favorite`]: PropTypes.bool.isRequired,
       })
     ),
   onSelect: PropTypes.func.isRequired,
