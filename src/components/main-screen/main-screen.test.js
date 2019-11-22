@@ -6,77 +6,51 @@ import {MainScreen} from "./main-screen.jsx";
 
 const mockOffers = [
   {
-    id: 1,
-    city: {
-      location: {
-        name: `Helsinki`,
-        latitude: 60.192059,
-        longitude: 24.945831,
-        zoom: 12
+    [`id`]: 111,
+    [`city`]: {
+      [`name`]: `City Name`,
+      [`location`]: {
+        [`latitude`]: 52.38333,
+        [`longitude`]: 4.9,
+        [`zoom`]: 12
       }
     },
-    description: `Beautiful & luxurious apartment at great location`,
-    type: `Private room`,
-    price: 80,
-    image: `img/room.jpg`,
-    rating: 50,
-    isPremium: false,
-    isBookmark: true,
+    [`location`]: {
+      [`latitude`]: 52.3909553943508,
+      [`longitude`]: 4.85309666406198,
+      [`zoom`]: 12
+    },
+    [`title`]: `Some text`,
+    [`type`]: `Apartment`,
+    [`price`]: 120,
+    [`preview_image`]: `img/img-1.jpg`,
+    [`rating`]: 100,
+    [`is_premium`]: true,
+    [`is_favorite`]: false
   },
   {
-    id: 2,
-    city: {
-      location: {
-        name: `Amsterdam`,
-        latitude: 52.38333,
-        longitude: 4.9,
-        zoom: 12
+    [`id`]: 222,
+    [`city`]: {
+      [`name`]: `City Name 2`,
+      [`location`]: {
+        [`latitude`]: 52.38333,
+        [`longitude`]: 4.9,
+        [`zoom`]: 12
       }
     },
-    description: `Wood and stone place`,
-    type: `Private room`,
-    price: 80,
-    image: `img/room.jpg`,
-    rating: 50,
-    isPremium: false,
-    isBookmark: true,
-  },
-  {
-    id: 3,
-    city: {
-      location: {
-        name: `Berlin`,
-        latitude: 52.520008,
-        longitude: 13.404954,
-        zoom: 12
-      }
+    [`location`]: {
+      [`latitude`]: 52.3909553943508,
+      [`longitude`]: 4.85309666406198,
+      [`zoom`]: 12
     },
-    description: `Nice, cozy, warm big bed apartment`,
-    type: `Private room`,
-    price: 80,
-    image: `img/room.jpg`,
-    rating: 50,
-    isPremium: false,
-    isBookmark: true,
-  },
-  {
-    id: 4,
-    city: {
-      location: {
-        name: `Amsterdam`,
-        latitude: 52.38333,
-        longitude: 4.9,
-        zoom: 12
-      }
-    },
-    description: `Canal View Prinsengracht`,
-    type: `Private room`,
-    price: 80,
-    image: `img/room.jpg`,
-    rating: 50,
-    isPremium: false,
-    isBookmark: true,
-  },
+    [`title`]: `Some text`,
+    [`type`]: `House`,
+    [`price`]: 120,
+    [`preview_image`]: `img/img-2.jpg`,
+    [`rating`]: 100,
+    [`is_premium`]: false,
+    [`is_favorite`]: true
+  }
 ];
 
 Enzyme.configure({adapter: new Adapter()});

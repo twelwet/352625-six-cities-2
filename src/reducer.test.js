@@ -4,76 +4,62 @@ const mockOffers = [
   {
     id: 1,
     city: {
-      location: {
-        name: `Dusseldorf`,
-      }
+      name: `Dusseldorf`,
+      location: {}
     },
   },
   {
     id: 2,
     city: {
-      location: {
-        name: `Amsterdam`,
-      }
+      name: `Amsterdam`,
+      location: {}
     },
   },
   {
     id: 3,
     city: {
-      location: {
-        name: `Budapest`,
-      }
+      name: `Budapest`,
+      location: {}
     },
   },
   {
     id: 4,
     city: {
-      location: {
-        name: `Amsterdam`,
-      }
+      name: `Amsterdam`,
+      location: {}
     },
   },
   {
     id: 5,
     city: {
-      location: {
-        name: `Saint Petersburg`,
-      }
+      name: `Saint Petersburg`,
+      location: {}
     },
   },
   {
     id: 6,
     city: {
-      location: {
-        name: `Dusseldorf`,
-      }
+      name: `Dusseldorf`,
+      location: {}
     },
   },
 
 ];
 const citiesList = getCitiesList(mockOffers);
 const mockInitialState = {
+  citiesList: [],
+  city: null,
+  cityOffers: [],
+  offers: [],
+  isAuthRequired: false
+};
+
+const downloadedState = {
   citiesList,
-  city: `Dusseldorf`,
-  cityOffers: [
-    {
-      id: 1,
-      city: {
-        location: {
-          name: `Dusseldorf`,
-        }
-      },
-    },
-    {
-      id: 6,
-      city: {
-        location: {
-          name: `Dusseldorf`,
-        }
-      },
-    },
-  ],
-  offers: mockOffers
+  city: citiesList[0],
+  cityOffers: getOffersByCity(mockOffers, citiesList[0]),
+  offers: mockOffers,
+  isAuthRequired: false
 };
 
 describe(`Reducer's utility functions works correctly`, () => {
@@ -88,29 +74,28 @@ describe(`Reducer's utility functions works correctly`, () => {
         {
           id: 2,
           city: {
-            location: {
-              name: `Amsterdam`,
-            }
+            name: `Amsterdam`,
+            location: {}
           },
         },
         {
           id: 4,
           city: {
-            location: {
-              name: `Amsterdam`,
-            }
+            name: `Amsterdam`,
+            location: {}
           },
         },
       ]);
   });
 
   it(`Function getInitialState works correctly`, () => {
-    expect(getInitialState(mockOffers))
+    expect(getInitialState([]))
       .toEqual({
-        citiesList,
-        city: `Amsterdam`,
-        cityOffers: getOffersByCity(mockOffers, `Amsterdam`),
-        offers: mockOffers
+        citiesList: [],
+        city: null,
+        cityOffers: getOffersByCity([], null),
+        offers: [],
+        isAuthRequired: false
       });
   });
 
@@ -127,6 +112,20 @@ describe(`Reducer's utility functions works correctly`, () => {
       payload: `Amsterdam`
     });
   });
+
+  it(`ActionCreator.loadOffers works correctly`, () => {
+    expect(ActionCreator.loadOffers(mockOffers)).toEqual({
+      type: `LOAD_OFFERS`,
+      payload: mockOffers
+    });
+  });
+
+  it(`ActionCreator.requireAuthorization works correctly`, () => {
+    expect(ActionCreator.requireAuthorization(true)).toEqual({
+      type: `REQUIRE_AUTHORIZATION`,
+      payload: true
+    });
+  });
 });
 
 describe(`Reducer works correctly`, () => {
@@ -134,17 +133,23 @@ describe(`Reducer works correctly`, () => {
     expect(reducer(mockInitialState, {})).toEqual(mockInitialState);
   });
 
+  it(`Reducer should return downloaded state`, () => {
+    expect(reducer(downloadedState, {})).toEqual(downloadedState);
+  });
+
   it(`Reducer changes cityName in the state with action type "CHANGE_CITY"`, () => {
     expect(reducer({
       citiesList: [],
       city: `Dusseldorf`,
       cityOffers: [],
-      offers: []
+      offers: [],
+      isAuthRequired: false
     }, ActionCreator.changeCity(`Saint Petersburg`))).toEqual({
       citiesList: [],
       city: `Saint Petersburg`,
       cityOffers: [],
-      offers: []
+      offers: [],
+      isAuthRequired: false
     });
   });
 
@@ -156,42 +161,81 @@ describe(`Reducer works correctly`, () => {
         {
           id: 1,
           city: {
-            location: {
-              name: `Dusseldorf`,
-            }
+            name: `Dusseldorf`,
+            location: {}
           },
         },
         {
           id: 6,
           city: {
-            location: {
-              name: `Dusseldorf`,
-            }
+            name: `Dusseldorf`,
+            location: {}
           },
         },
       ],
-      offers: mockOffers}, ActionCreator.getOffers(`Amsterdam`))).toEqual({
+      offers: mockOffers,
+      isAuthRequired: false
+    }, ActionCreator.getOffers(`Amsterdam`))).toEqual({
       citiesList: [],
       city: `Not Tested`,
       cityOffers: [
         {
           id: 2,
           city: {
-            location: {
-              name: `Amsterdam`,
-            }
+            name: `Amsterdam`,
+            location: {}
           },
         },
         {
           id: 4,
           city: {
-            location: {
-              name: `Amsterdam`,
-            }
+            name: `Amsterdam`,
+            location: {}
           },
         },
       ],
-      offers: mockOffers
+      offers: mockOffers,
+      isAuthRequired: false
     });
+  });
+
+  it(`Reducer changes offers in the state with action type "LOAD_OFFERS"`, () => {
+    expect(reducer({
+      citiesList: [`Not`, `Tested`],
+      city: `Not Tested`,
+      cityOffers: [`Not`, `Tested`],
+      offers: [],
+      isAuthRequired: false
+    }, ActionCreator.loadOffers(
+        mockOffers
+    )))
+      .toEqual({
+        citiesList: [`Not`, `Tested`],
+        city: `Not Tested`,
+        cityOffers: [`Not`, `Tested`],
+        offers: mockOffers,
+        isAuthRequired: false
+      });
+
+  });
+
+  it(`Reducer changes isAuthRequired in the state with action type "REQUIRE_AUTHORIZATION"`, () => {
+    expect(reducer({
+      citiesList: [`Not`, `Tested`],
+      city: `Not Tested`,
+      cityOffers: [`Not`, `Tested`],
+      offers: [`Not`, `Tested`],
+      isAuthRequired: false
+    }, ActionCreator.requireAuthorization(
+        true
+    )))
+      .toEqual({
+        citiesList: [`Not`, `Tested`],
+        city: `Not Tested`,
+        cityOffers: [`Not`, `Tested`],
+        offers: [`Not`, `Tested`],
+        isAuthRequired: true
+      });
+
   });
 });

@@ -13,6 +13,7 @@ describe(`Cities component works correctly`, () => {
 
   const citiesComponent = mount(<Cities
     citiesList={citiesList}
+    city={`Moscow`}
     onCityClick={onCityClick}
     active={null}
     onSelect={onSelect}

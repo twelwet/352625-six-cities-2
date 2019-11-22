@@ -6,42 +6,42 @@ const onOfferHover = () => {};
 const onOfferLeave = () => {};
 
 const offer = {
-  id: 1,
-  city: {
-    location: {
-      name: `Amsterdam`,
-      latitude: 52.38333,
-      longitude: 4.9,
-      zoom: 12
+  [`id`]: 111,
+  [`city`]: {
+    [`name`]: `City Name`,
+    [`location`]: {
+      [`latitude`]: 52.38333,
+      [`longitude`]: 4.9,
+      [`zoom`]: 12
     }
   },
-  location: {
-    latitude: 52.3909553943508,
-    longitude: 4.85309666406198,
-    zoom: 12
+  [`location`]: {
+    [`latitude`]: 52.3909553943508,
+    [`longitude`]: 4.85309666406198,
+    [`zoom`]: 12
   },
-  description: `Beautiful & luxurious apartment at great location`,
-  type: `Apartment`,
-  price: 120,
-  image: `img/apartment-01.jpg`,
-  rating: 100,
-  isPremium: true,
-  isBookmark: false
+  [`title`]: `Some text`,
+  [`type`]: `Apartment`,
+  [`price`]: 120,
+  [`preview_image`]: `img/apartment-01.jpg`,
+  [`rating`]: 100,
+  [`is_premium`]: true,
+  [`is_favorite`]: false
 };
 
 it(`Offer correctly renders after relaunch`, () => {
   const tree = renderer
     .create(
         <Offer
-          id={offer.id}
-          key={offer.id}
-          description={offer.description}
-          type={offer.type}
-          price={offer.price}
-          image={offer.image}
-          rating={offer.rating}
-          isPremium={offer.isPremium}
-          isBookmark={offer.isBookmark}
+          id={offer[`id`]}
+          key={offer[`id`]}
+          title={offer[`title`]}
+          type={offer[`type`]}
+          price={offer[`price`]}
+          preview_image={offer[`preview_image`]}
+          rating={offer[`rating`]}
+          is_premium={offer[`is_premium`]}
+          is_favorite={offer[`is_favorite`]}
           onOfferHover={onOfferHover}
           onOfferLeave={onOfferLeave}
         />

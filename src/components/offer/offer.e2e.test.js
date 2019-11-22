@@ -6,27 +6,27 @@ import Offer from "./offer.jsx";
 Enzyme.configure({adapter: new Adapter()});
 
 const offer = {
-  id: 111,
-  city: {
-    location: {
-      name: `City Name`,
-      latitude: 52.38333,
-      longitude: 4.9,
-      zoom: 12
+  [`id`]: 111,
+  [`city`]: {
+    [`name`]: `City Name`,
+    [`location`]: {
+      [`latitude`]: 52.38333,
+      [`longitude`]: 4.9,
+      [`zoom`]: 12
     }
   },
-  location: {
-    latitude: 52.3909553943508,
-    longitude: 4.85309666406198,
-    zoom: 12
+  [`location`]: {
+    [`latitude`]: 52.3909553943508,
+    [`longitude`]: 4.85309666406198,
+    [`zoom`]: 12
   },
-  description: `Some text`,
-  type: `Apartment`,
-  price: 120,
-  image: `img/apartment-01.jpg`,
-  rating: 100,
-  isPremium: true,
-  isBookmark: false
+  [`title`]: `Some text`,
+  [`type`]: `Apartment`,
+  [`price`]: 120,
+  [`preview_image`]: `img/apartment-01.jpg`,
+  [`rating`]: 100,
+  [`is_premium`]: true,
+  [`is_favorite`]: false
 };
 
 describe(`Offer's callbacks are called by mouse events`, () => {
