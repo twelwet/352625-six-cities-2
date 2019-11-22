@@ -42,7 +42,7 @@ const MainScreen = (props) => {
         </section>
         <div className="cities__right-section">
           <section className="cities__map map">
-            {/*<MapComponent {...props}/>*/}
+            {props.cityOffers.length ? <MapComponent {...props}/> : null}
           </section>
         </div>
       </div>
@@ -52,7 +52,7 @@ const MainScreen = (props) => {
 
 MainScreen.propTypes = {
   citiesList: PropTypes.arrayOf(PropTypes.string).isRequired,
-  city: PropTypes.string.isRequired,
+  city: PropTypes.string,
   cityOffers: PropTypes
     .arrayOf(PropTypes
       .shape({
@@ -84,7 +84,7 @@ MainScreen.propTypes = {
 
 const mapStateToProps = (state) => ({
   citiesList: getCitiesList(state.offers),
-  city: getCitiesList(state.offers)[0],
+  city: state.city,
   cityOffers: getOffersByCity(state.offers, state.city),
   offers: state.offers,
   isAuthRequired: state.isAuthRequired

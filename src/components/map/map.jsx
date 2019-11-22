@@ -10,12 +10,13 @@ const icon = L.icon({
 
 const MapComponent = (props) => {
   const {cityOffers} = props;
+  const cityLocation = cityOffers[0][`city`][`location`];
 
-  return <Map style={{height: `1135px`}}
-    center={[cityOffers[0].city.location.latitude, cityOffers[0].city.location.longitude]}
-    zoom={cityOffers[0].city.location.zoom}
+  return <Map style={{height: `3150px`}}
+    center={[cityLocation.latitude, cityLocation.longitude]}
+    zoom={cityLocation.zoom}
     zoomControl={false}
-    position={[cityOffers[0].city.location.latitude, cityOffers[0].city.location.longitude]}
+    position={[cityLocation.latitude, cityLocation.longitude]}
   >
     <TileLayer
       url={`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`}
@@ -30,28 +31,28 @@ const MapComponent = (props) => {
 MapComponent.propTypes = {
   cityOffers: PropTypes
     .arrayOf(PropTypes
-      .exact({
-        id: PropTypes.number.isRequired,
-        city: PropTypes.exact({
-          location: PropTypes.exact({
-            name: PropTypes.string.isRequired,
-            latitude: PropTypes.number.isRequired,
-            longitude: PropTypes.number.isRequired,
-            zoom: PropTypes.number.isRequired
+      .shape({
+        [`id`]: PropTypes.number.isRequired,
+        [`city`]: PropTypes.exact({
+          [`name`]: PropTypes.string.isRequired,
+          [`location`]: PropTypes.exact({
+            [`latitude`]: PropTypes.number.isRequired,
+            [`longitude`]: PropTypes.number.isRequired,
+            [`zoom`]: PropTypes.number.isRequired
           })
         }),
-        location: PropTypes.exact({
-          latitude: PropTypes.number.isRequired,
-          longitude: PropTypes.number.isRequired,
-          zoom: PropTypes.number.isRequired
+        [`location`]: PropTypes.exact({
+          [`latitude`]: PropTypes.number.isRequired,
+          [`longitude`]: PropTypes.number.isRequired,
+          [`zoom`]: PropTypes.number.isRequired
         }),
-        description: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        image: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-        isBookmark: PropTypes.bool.isRequired,
+        [`title`]: PropTypes.string.isRequired,
+        [`type`]: PropTypes.string.isRequired,
+        [`price`]: PropTypes.number.isRequired,
+        [`preview_image`]: PropTypes.string.isRequired,
+        [`rating`]: PropTypes.number.isRequired,
+        [`is_premium`]: PropTypes.bool.isRequired,
+        [`is_favorite`]: PropTypes.bool.isRequired,
       })
     )
 };

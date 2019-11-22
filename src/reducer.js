@@ -10,7 +10,7 @@ const getInitialState = (allOffersList = []) => {
   const citiesList = getCitiesList(allOffersList);
   return {
     citiesList,
-    city: `Amsterdam`,
+    city: null,
     cityOffers: getOffersByCity(allOffersList, citiesList[0]),
     offers: allOffersList,
     isAuthRequired: false
@@ -54,7 +54,14 @@ const ActionCreator = {
 const Operation = {
   loadOffers: () => (dispatch, _, api) => {
     return api.get(`/hotels`)
-      .then((response) => dispatch(ActionCreator.loadOffers(response.data)));
+      .then((response) => {
+        dispatch(ActionCreator.loadOffers(response.data));
+
+        const city = getCitiesList(response.data)[0];
+
+        dispatch(ActionCreator.changeCity(city));
+        dispatch(ActionCreator.getOffers(city));
+      });
   },
 };
 
