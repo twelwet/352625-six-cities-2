@@ -1,4 +1,6 @@
-import {getCitiesList, getInitialState, getOffersByCity, ActionCreator, reducer} from "./reducer.js";
+import {getCitiesList, getInitialState, getOffersByCity, ActionCreator, Operation, reducer} from "./reducer.js";
+import configureAPI from "./api.js";
+import MockAdapter from "axios-mock-adapter";
 
 const mockOffers = [
   {
@@ -238,4 +240,25 @@ describe(`Reducer works correctly`, () => {
       });
 
   });
+
+  it(`Should make a correct API call to /hotels`, () => {
+    const dispatch = jest.fn();
+    const api = configureAPI(dispatch);
+    const apiMock = new MockAdapter(api);
+    const offersLoader = Operation.loadOffers();
+
+    apiMock
+      .onGet(`/hotels`)
+      .reply(200, mockOffers);
+
+    return offersLoader(dispatch, null, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(3);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: `LOAD_OFFERS`,
+          payload: mockOffers
+        });
+      });
+  });
 });
+
