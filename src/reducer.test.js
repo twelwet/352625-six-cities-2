@@ -1,4 +1,4 @@
-import {getCitiesList, getInitialState, getOffersByCity, ActionCreator, Operation, reducer} from "./reducer.js";
+import {getCitiesList, getInitialState, getOffersByCity, ActionType, ActionCreator, Operation, reducer} from "./reducer.js";
 import configureAPI from "./api.js";
 import MockAdapter from "axios-mock-adapter";
 
@@ -103,28 +103,28 @@ describe(`Reducer's utility functions works correctly`, () => {
 
   it(`ActionCreator.changeCity works correctly`, () => {
     expect(ActionCreator.changeCity(`Murmansk`)).toEqual({
-      type: `CHANGE_CITY`,
+      type: ActionType.CHANGE_CITY,
       payload: `Murmansk`
     });
   });
 
   it(`ActionCreator.getOffers works correctly`, () => {
     expect(ActionCreator.getOffers(`Amsterdam`)).toEqual({
-      type: `GET_OFFERS`,
+      type: ActionType.GET_OFFERS,
       payload: `Amsterdam`
     });
   });
 
   it(`ActionCreator.loadOffers works correctly`, () => {
     expect(ActionCreator.loadOffers(mockOffers)).toEqual({
-      type: `LOAD_OFFERS`,
+      type: ActionType.LOAD_OFFERS,
       payload: mockOffers
     });
   });
 
   it(`ActionCreator.requireAuthorization works correctly`, () => {
     expect(ActionCreator.requireAuthorization(true)).toEqual({
-      type: `REQUIRE_AUTHORIZATION`,
+      type: ActionType.REQUIRE_AUTHORIZATION,
       payload: true
     });
   });
@@ -133,10 +133,6 @@ describe(`Reducer's utility functions works correctly`, () => {
 describe(`Reducer works correctly`, () => {
   it(`Reducer without any action should return initial state`, () => {
     expect(reducer(mockInitialState, {})).toEqual(mockInitialState);
-  });
-
-  it(`Reducer should return downloaded state`, () => {
-    expect(reducer(downloadedState, {})).toEqual(downloadedState);
   });
 
   it(`Reducer changes cityName in the state with action type "CHANGE_CITY"`, () => {

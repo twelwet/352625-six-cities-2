@@ -1,19 +1,22 @@
 const getCitiesList = (allOffersList) => {
-  return [...new Set(allOffersList.map((item) => item.city.name))].sort();
+  // return [...new Set(allOffersList.map((item) => item.city.name))].sort();
+  return [];
 };
 
 const getOffersByCity = (allOffersList, cityName) => {
-  return allOffersList.filter((item) => item.city.name === cityName);
+  // return allOffersList.filter((item) => item.city.name === cityName);
+  return [];
 };
 
-const getInitialState = (allOffersList = []) => {
-  const citiesList = getCitiesList(allOffersList);
+const getInitialState = () => {
   return {
-    citiesList,
+    citiesList: [],
     city: null,
-    cityOffers: getOffersByCity(allOffersList, citiesList[0]),
-    offers: allOffersList,
-    isAuthRequired: false
+    cityOffers: [],
+    offers: [],
+    isAuthRequired: false,
+    isError: false,
+    errorType: null,
   };
 };
 
@@ -21,7 +24,8 @@ const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
   GET_OFFERS: `GET_OFFERS`,
   LOAD_OFFERS: `LOAD_OFFERS`,
-  REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
+  LOAD_OFFERS_FAIL: `LOAD_OFFERS_FAIL`,
+  REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`
 };
 
 const ActionCreator = {
@@ -40,7 +44,15 @@ const ActionCreator = {
   loadOffers: (offers) => {
     return {
       type: ActionType.LOAD_OFFERS,
+      error: false,
       payload: offers
+    };
+  },
+  loadOffersFail: (error) => {
+    return {
+      type: ActionType.LOAD_OFFERS_FAIL,
+      error: true,
+      payload: error
     };
   },
   requireAuthorization: (status = false) => {
@@ -53,7 +65,7 @@ const ActionCreator = {
 
 const Operation = {
   loadOffers: () => (dispatch, _, api) => {
-    return api.get(`/hotels`)
+    return api.get(`/hotelsss`)
       .then((response) => {
         dispatch(ActionCreator.loadOffers(response.data));
 
@@ -61,6 +73,9 @@ const Operation = {
 
         dispatch(ActionCreator.changeCity(city));
         dispatch(ActionCreator.getOffers(city));
+      })
+      .catch((error) => {
+        dispatch(ActionCreator.loadOffersFail(error));
       });
   },
 };
@@ -77,7 +92,14 @@ const reducer = (state = getInitialState(), action) => {
       });
     case ActionType.LOAD_OFFERS:
       return Object.assign({}, state, {
-        offers: action.payload
+        offers: action.payload,
+        isError: action.error,
+        errorType: null
+      });
+    case ActionType.LOAD_OFFERS_FAIL:
+      return Object.assign({}, state, {
+        isError: action.error,
+        errorType: action.payload.message
       });
     case ActionType.REQUIRE_AUTHORIZATION:
       return Object.assign({}, state, {
@@ -88,4 +110,4 @@ const reducer = (state = getInitialState(), action) => {
   return Object.assign({}, state);
 };
 
-export {getCitiesList, getInitialState, getOffersByCity, ActionCreator, Operation, reducer};
+export {getCitiesList, getInitialState, getOffersByCity, ActionType, ActionCreator, Operation, reducer};
