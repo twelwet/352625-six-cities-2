@@ -47,21 +47,15 @@ const mockOffers = [
   },
 
 ];
-const citiesList = getCitiesList(mockOffers);
+
 const mockInitialState = {
   citiesList: [],
   city: null,
   cityOffers: [],
   offers: [],
-  isAuthRequired: false
-};
-
-const downloadedState = {
-  citiesList,
-  city: citiesList[0],
-  cityOffers: getOffersByCity(mockOffers, citiesList[0]),
-  offers: mockOffers,
-  isAuthRequired: false
+  isAuthRequired: false,
+  isError: false,
+  errorType: null
 };
 
 describe(`Reducer's utility functions works correctly`, () => {
@@ -91,13 +85,15 @@ describe(`Reducer's utility functions works correctly`, () => {
   });
 
   it(`Function getInitialState works correctly`, () => {
-    expect(getInitialState([]))
+    expect(getInitialState())
       .toEqual({
         citiesList: [],
         city: null,
         cityOffers: getOffersByCity([], null),
         offers: [],
-        isAuthRequired: false
+        isAuthRequired: false,
+        isError: false,
+        errorType: null
       });
   });
 
@@ -118,7 +114,18 @@ describe(`Reducer's utility functions works correctly`, () => {
   it(`ActionCreator.loadOffers works correctly`, () => {
     expect(ActionCreator.loadOffers(mockOffers)).toEqual({
       type: ActionType.LOAD_OFFERS,
-      payload: mockOffers
+      payload: mockOffers,
+      error: false
+    });
+  });
+
+  it(`ActionCreator.loadOffersFail works correctly`, () => {
+    const mockError404 = new Error(`Request failed with status code 404`);
+
+    expect(ActionCreator.loadOffersFail(mockError404)).toEqual({
+      type: ActionType.LOAD_OFFERS_FAIL,
+      payload: mockError404,
+      error: true
     });
   });
 
@@ -141,13 +148,17 @@ describe(`Reducer works correctly`, () => {
       city: `Dusseldorf`,
       cityOffers: [],
       offers: [],
-      isAuthRequired: false
+      isAuthRequired: false,
+      isError: `Not Tested`,
+      errorType: `Not Tested`,
     }, ActionCreator.changeCity(`Saint Petersburg`))).toEqual({
       citiesList: [],
       city: `Saint Petersburg`,
       cityOffers: [],
       offers: [],
-      isAuthRequired: false
+      isAuthRequired: false,
+      isError: `Not Tested`,
+      errorType: `Not Tested`,
     });
   });
 
@@ -172,7 +183,9 @@ describe(`Reducer works correctly`, () => {
         },
       ],
       offers: mockOffers,
-      isAuthRequired: false
+      isAuthRequired: `Not Tested`,
+      isError: `Not Tested`,
+      errorType: `Not Tested`,
     }, ActionCreator.getOffers(`Amsterdam`))).toEqual({
       citiesList: [],
       city: `Not Tested`,
@@ -193,7 +206,9 @@ describe(`Reducer works correctly`, () => {
         },
       ],
       offers: mockOffers,
-      isAuthRequired: false
+      isAuthRequired: `Not Tested`,
+      isError: `Not Tested`,
+      errorType: `Not Tested`,
     });
   });
 
@@ -203,7 +218,9 @@ describe(`Reducer works correctly`, () => {
       city: `Not Tested`,
       cityOffers: [`Not`, `Tested`],
       offers: [],
-      isAuthRequired: false
+      isAuthRequired: `Not Tested`,
+      isError: false,
+      errorType: null
     }, ActionCreator.loadOffers(
         mockOffers
     )))
@@ -212,7 +229,35 @@ describe(`Reducer works correctly`, () => {
         city: `Not Tested`,
         cityOffers: [`Not`, `Tested`],
         offers: mockOffers,
-        isAuthRequired: false
+        isAuthRequired: `Not Tested`,
+        isError: false,
+        errorType: null
+      });
+
+  });
+
+  it(`Reducer changes "isError" and "errorType" with action type "LOAD_OFFERS_FAIL"`, () => {
+    const mockError404 = new Error(`Request failed with status code 404`);
+
+    expect(reducer({
+      citiesList: [`Not`, `Tested`],
+      city: `Not Tested`,
+      cityOffers: [`Not`, `Tested`],
+      offers: [`Not`, `Tested`],
+      isAuthRequired: `Not Tested`,
+      isError: false,
+      errorType: null
+    }, ActionCreator.loadOffersFail(
+        mockError404
+    )))
+      .toEqual({
+        citiesList: [`Not`, `Tested`],
+        city: `Not Tested`,
+        cityOffers: [`Not`, `Tested`],
+        offers: [`Not`, `Tested`],
+        isAuthRequired: `Not Tested`,
+        isError: true,
+        errorType: mockError404.message
       });
 
   });
@@ -223,7 +268,9 @@ describe(`Reducer works correctly`, () => {
       city: `Not Tested`,
       cityOffers: [`Not`, `Tested`],
       offers: [`Not`, `Tested`],
-      isAuthRequired: false
+      isAuthRequired: false,
+      isError: `Not Tested`,
+      errorType: `Not Tested`,
     }, ActionCreator.requireAuthorization(
         true
     )))
@@ -232,12 +279,14 @@ describe(`Reducer works correctly`, () => {
         city: `Not Tested`,
         cityOffers: [`Not`, `Tested`],
         offers: [`Not`, `Tested`],
-        isAuthRequired: true
+        isAuthRequired: true,
+        isError: `Not Tested`,
+        errorType: `Not Tested`,
       });
 
   });
 
-  it(`Should make a correct API call to /hotels`, () => {
+  it(`Should make a correct API call to "/hotels"`, () => {
     const dispatch = jest.fn();
     const api = configureAPI(dispatch);
     const apiMock = new MockAdapter(api);
@@ -251,10 +300,34 @@ describe(`Reducer works correctly`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(3);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: `LOAD_OFFERS`,
-          payload: mockOffers
+          type: ActionType.LOAD_OFFERS,
+          payload: mockOffers,
+          error: false
         });
       });
   });
+
+  it(`Should make an incorrect API call to "/hotelssss"`, () => {
+    const dispatch = jest.fn();
+    const api = configureAPI(dispatch);
+    const apiMock = new MockAdapter(api);
+    const offersLoader = Operation.loadOffers();
+    const mockError404 = new Error(`Request failed with status code 404`);
+
+    apiMock
+      .onGet(`/hotelssss`)
+      .reply(404, mockError404);
+
+    return offersLoader(dispatch, null, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_OFFERS_FAIL,
+          payload: mockError404,
+          error: true
+        });
+      });
+  });
+
 });
 

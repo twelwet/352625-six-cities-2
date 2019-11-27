@@ -1,11 +1,9 @@
 const getCitiesList = (allOffersList) => {
-  // return [...new Set(allOffersList.map((item) => item.city.name))].sort();
-  return [];
+  return [...new Set(allOffersList.map((item) => item.city.name))].sort();
 };
 
 const getOffersByCity = (allOffersList, cityName) => {
-  // return allOffersList.filter((item) => item.city.name === cityName);
-  return [];
+  return allOffersList.filter((item) => item.city.name === cityName);
 };
 
 const getInitialState = () => {
@@ -65,7 +63,7 @@ const ActionCreator = {
 
 const Operation = {
   loadOffers: () => (dispatch, _, api) => {
-    return api.get(`/hotelsss`)
+    return api.get(`/hotels`)
       .then((response) => {
         dispatch(ActionCreator.loadOffers(response.data));
 
@@ -74,9 +72,7 @@ const Operation = {
         dispatch(ActionCreator.changeCity(city));
         dispatch(ActionCreator.getOffers(city));
       })
-      .catch((error) => {
-        dispatch(ActionCreator.loadOffersFail(error));
-      });
+      .catch((error) => dispatch(ActionCreator.loadOffersFail(error)));
   },
 };
 

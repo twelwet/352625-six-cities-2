@@ -87,7 +87,9 @@ const mapStateToProps = (state) => ({
   city: state.city,
   cityOffers: getOffersByCity(state.offers, state.city),
   offers: state.offers,
-  isAuthRequired: state.isAuthRequired
+  isAuthRequired: state.isAuthRequired,
+  isError: state.isError,
+  errorType: state.errorType
 });
 
 const mapDispatchToProps = (dispatch) => ({
