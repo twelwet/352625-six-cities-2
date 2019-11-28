@@ -23,15 +23,12 @@ const withActiveElement = (Component) => {
 
     render() {
       return (
-        <div>
-          <Component
-            {...this.props}
-            active={this.state.active}
-            onSelect={this.elementSelectHandler}
-            onUnselect={this.elementUnselectHandler}
-          />
-          <div>Active element: {this.state.active}</div>
-        </div>
+        <Component
+          {...this.props}
+          active={this.state.active}
+          onSelect={this.elementSelectHandler}
+          onUnselect={this.elementUnselectHandler}
+        />
       );
     }
   }

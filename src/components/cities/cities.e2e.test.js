@@ -13,6 +13,7 @@ describe(`Cities component works correctly`, () => {
 
   const citiesComponent = mount(<Cities
     citiesList={citiesList}
+    city={`Moscow`}
     onCityClick={onCityClick}
     active={null}
     onSelect={onSelect}
@@ -36,5 +37,6 @@ describe(`Cities component works correctly`, () => {
 
     helsinkiCity.simulate(`click`);
     expect(onCityClick).toHaveBeenCalledTimes(1);
+    expect(onCityClick).toHaveBeenCalledWith(`Helsinki`);
   });
 });
