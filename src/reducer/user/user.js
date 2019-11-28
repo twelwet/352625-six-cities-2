@@ -1,7 +1,5 @@
-const getInitialState = () => {
-  return {
-    isAuthRequired: false
-  };
+const initialState = {
+  isAuthRequired: false
 };
 
 const ActionType = {
@@ -17,7 +15,7 @@ const ActionCreator = {
   }
 };
 
-const reducer = (state = getInitialState(), action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.REQUIRE_AUTHORIZATION:
       return Object.assign({}, state, {

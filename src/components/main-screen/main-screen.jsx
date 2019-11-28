@@ -5,7 +5,8 @@ import MapComponent from "../map/map.jsx";
 import withActiveElement from "../../hocs/with-active-element.js";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {getCitiesList, getOffersByCity, ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/data/data.js";
+import {getAllOffers, getCity, getCitiesList, getOffersByCity} from "../../reducer/data/selectors.js";
 
 const OffersWrapped = withActiveElement(Offers);
 const CitiesWrapped = withActiveElement(Cities);
@@ -83,10 +84,10 @@ MainScreen.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  citiesList: getCitiesList(state.offers),
-  city: state.city,
-  cityOffers: getOffersByCity(state.offers, state.city),
-  offers: state.offers,
+  citiesList: getCitiesList(state),
+  city: getCity(state),
+  cityOffers: getOffersByCity(state),
+  offers: getAllOffers(state),
   isAuthRequired: state.isAuthRequired,
   isError: state.isError,
   errorType: state.errorType
@@ -95,7 +96,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onCityClick: (city) => {
     dispatch(ActionCreator.changeCity(city));
-    dispatch(ActionCreator.getOffers(city));
   }
 });
 

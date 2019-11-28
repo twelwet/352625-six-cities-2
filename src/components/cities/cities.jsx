@@ -8,7 +8,7 @@ const Cities = (props) => {
       {citiesList.map((item, index) => {
         return (
           <li key={index} className="locations__item">
-            {index === (active) || item === city // active === null by default so case `item === city` is used only on initial start
+            {index === (active) || item === city // case `item === city` is used only one time after data downloaded
               ? <a className="locations__item-link tabs__item tabs__item--active" href="#">
                 <span>{item}</span></a>
               : <a onClick={(evt) => {

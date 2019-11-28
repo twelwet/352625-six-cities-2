@@ -1,25 +1,12 @@
-const getCitiesList = (allOffersList) => {
-  return [...new Set(allOffersList.map((item) => item.city.name))].sort();
-};
-
-const getOffersByCity = (allOffersList, cityName) => {
-  return allOffersList.filter((item) => item.city.name === cityName);
-};
-
-const getInitialState = () => {
-  return {
-    citiesList: [],
-    city: null,
-    cityOffers: [],
-    offers: [],
-    isError: false,
-    errorType: null,
-  };
+const initialState = {
+  city: null,
+  offers: [],
+  isError: false,
+  errorType: null
 };
 
 const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
-  GET_OFFERS: `GET_OFFERS`,
   LOAD_OFFERS: `LOAD_OFFERS`,
   LOAD_OFFERS_FAIL: `LOAD_OFFERS_FAIL`
 };
@@ -28,12 +15,6 @@ const ActionCreator = {
   changeCity: (cityName) => {
     return {
       type: ActionType.CHANGE_CITY,
-      payload: cityName
-    };
-  },
-  getOffers: (cityName) => {
-    return {
-      type: ActionType.GET_OFFERS,
       payload: cityName
     };
   },
@@ -59,24 +40,21 @@ const Operation = {
       .then((response) => {
         dispatch(ActionCreator.loadOffers(response.data));
 
-        const city = getCitiesList(response.data)[0];
+        const city = (response.data)[0].city.name;
 
         dispatch(ActionCreator.changeCity(city));
-        dispatch(ActionCreator.getOffers(city));
       })
-      .catch((error) => dispatch(ActionCreator.loadOffersFail(error)));
+      .catch((error) => {
+        dispatch(ActionCreator.loadOffersFail(error));
+      });
   },
 };
 
-const reducer = (state = getInitialState(), action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_CITY:
       return Object.assign({}, state, {
         city: action.payload
-      });
-    case ActionType.GET_OFFERS:
-      return Object.assign({}, state, {
-        cityOffers: getOffersByCity(state.offers, action.payload)
       });
     case ActionType.LOAD_OFFERS:
       return Object.assign({}, state, {
