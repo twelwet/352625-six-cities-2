@@ -5,7 +5,7 @@ import MapComponent from "../map/map.jsx";
 import withActiveElement from "../../hocs/with-active-element.js";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/data/data.js";
+import {ActionCreator} from "../../reducer/data/data";
 import {getAllOffers, getCity, getCitiesList, getOffersByCity} from "../../reducer/data/selectors.js";
 
 const OffersWrapped = withActiveElement(Offers);
