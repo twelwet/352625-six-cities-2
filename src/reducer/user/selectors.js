@@ -6,5 +6,9 @@ const getAuthFlag = (state) => {
   return state[NAME_SPACE].isAuthRequired;
 };
 
-export {getAuthFlag};
+const getEmail = (state) => {
+  return state[NAME_SPACE].email;
+};
+
+export {getAuthFlag, getEmail};
 
