@@ -6,7 +6,8 @@ import withActiveElement from "../../hocs/with-active-element.js";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/data/data";
-import {getAllOffers, getCity, getCitiesList, getOffersByCity} from "../../reducer/data/selectors.js";
+import {getCity, getCitiesList, getOffersByCity} from "../../reducer/data/selectors.js";
+import {getAuthFlag} from "../../reducer/user/selectors.js";
 
 const OffersWrapped = withActiveElement(Offers);
 const CitiesWrapped = withActiveElement(Cities);
@@ -87,8 +88,7 @@ const mapStateToProps = (state) => ({
   citiesList: getCitiesList(state),
   city: getCity(state),
   cityOffers: getOffersByCity(state),
-  offers: getAllOffers(state),
-  isAuthRequired: state.isAuthRequired,
+  isAuthRequired: getAuthFlag(state),
   isError: state.isError,
   errorType: state.errorType
 });

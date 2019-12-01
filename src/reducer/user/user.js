@@ -75,7 +75,7 @@ const reducer = (state = initialState, action) => {
       });
   }
 
-  return Object.assign({}, state);
+  return state;
 };
 
 export {ActionType, ActionCreator, Operation, reducer};
