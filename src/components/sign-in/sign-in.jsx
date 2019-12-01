@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const SignIn = () => {
+const SignIn = (props) => {
   return (
     <div>
       <div style={{display: `none`}}>
@@ -33,7 +34,18 @@ const SignIn = () => {
           <div className="page__login-container container">
             <section className="login">
               <h1 className="login__title">Sign in</h1>
-              <form className="login__form form" action="https://htmlacademy-react-2.appspot.com/six-cities/login" method="post">
+              <form
+                className="login__form form"
+                action="#"
+                method="post"
+                onSubmit={(evt) => {
+                  evt.preventDefault();
+                  const formData = new FormData(evt.target);
+                  props.onFormSubmit({
+                    email: formData.get(`email`),
+                    password: formData.get(`password`)
+                  });
+                }}>
                 <div className="login__input-wrapper form__input-wrapper">
                   <label className="visually-hidden">E-mail</label>
                   <input className="login__input form__input" type="email" name="email" placeholder="Email" required=""/>
@@ -57,6 +69,10 @@ const SignIn = () => {
       </div>
     </div>
   );
+};
+
+SignIn.propTypes = {
+  onFormSubmit: PropTypes.func.isRequired
 };
 
 export default SignIn;

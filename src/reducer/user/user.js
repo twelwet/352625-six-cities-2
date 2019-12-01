@@ -39,11 +39,8 @@ const ActionCreator = {
 };
 
 const Operation = {
-  signIn: () => (dispatch, _, api) => {
-    return api.post(`/login`, {
-      email: `user@gmail.com`,
-      password: `password`
-    })
+  signIn: (userData) => (dispatch, _, api) => {
+    return api.post(`/login`, userData)
       .then((response) => {
         dispatch(ActionCreator.signIn(response.data));
         dispatch(ActionCreator.requireAuthorization(false));
@@ -81,4 +78,4 @@ const reducer = (state = initialState, action) => {
   return Object.assign({}, state);
 };
 
-export {ActionType, ActionCreator, reducer};
+export {ActionType, ActionCreator, Operation, reducer};
