@@ -12,7 +12,7 @@ const MapComponent = (props) => {
   const {cityOffers} = props;
   const cityLocation = cityOffers[0][`city`][`location`];
 
-  return <Map style={{height: `3150px`}}
+  return <Map style={{height: `850px`}}
     center={[cityLocation.latitude, cityLocation.longitude]}
     zoom={cityLocation.zoom}
     zoomControl={false}

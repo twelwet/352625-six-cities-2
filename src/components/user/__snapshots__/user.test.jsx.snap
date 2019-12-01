@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User correctly renders after relaunch 1`] = `
+<li
+  className="header__nav-item user"
+>
+  <a
+    className="header__nav-link header__nav-link--profile"
+    href="#"
+  >
+    <div
+      className="header__avatar-wrapper user__avatar-wrapper"
+    />
+    <span
+      className="header__user-name user__name"
+    >
+      Sign In
+    </span>
+  </a>
+</li>
+`;

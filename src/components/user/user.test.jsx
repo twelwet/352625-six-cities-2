@@ -2,17 +2,20 @@ import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16/build";
 import toJson from "enzyme-to-json";
-import {App} from "./app.jsx";
 
-const props = {
-  isAuthRequired: true,
-  onFormSubmit: jest.fn,
-};
+import {User} from "../user/user.jsx";
 
 Enzyme.configure({adapter: new Adapter()});
 
-it(`App correctly renders after relaunch`, () => {
-  const tree = shallow(<App {...props} />);
+it(`User correctly renders after relaunch`, () => {
+  const props = {
+    isAuthRequired: true,
+    email: `user@gmail.com`
+  };
+
+  const tree = shallow(
+      <User {...props}/>
+  );
 
   expect(toJson(tree)).toMatchSnapshot();
 });

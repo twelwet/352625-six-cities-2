@@ -1,6 +1,6 @@
 import MockAdapter from "axios-mock-adapter";
 import configureAPI from "../../api.js";
-import {ActionType, Operation, ActionCreator, reducer} from "./data.js";
+import {ActionType, Operation, ActionCreator, reducer} from "./data";
 
 const mockOffers = [
   {
@@ -76,15 +76,6 @@ describe(`ActionCreator works correctly`, () => {
 });
 
 describe(`Reducer works correctly`, () => {
-  it(`Reducer without any action should return initial state`, () => {
-    const initialState = {
-      city: null,
-      offers: mockOffers
-    };
-
-    expect(reducer(initialState, {})).toEqual(initialState);
-  });
-
   it(`Reducer changes cityName in the state with action type "CHANGE_CITY"`, () => {
     const initialState = {
       city: null,
