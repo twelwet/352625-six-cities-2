@@ -2,7 +2,7 @@ import React from "react";
 import Cities from "../cities/cities.jsx";
 import Offers from "../offers/offers.jsx";
 import MapComponent from "../map/map.jsx";
-import withActiveElement from "../../hocs/with-active-element.js";
+import withActiveElement from "../../hocs/with-active-element/with-active-element.js";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/data/data";
@@ -39,7 +39,10 @@ const MainScreen = (props) => {
             </ul>
           </form>
           <div className="cities__places-list places__list tabs__content">
-            <OffersWrapped {...props}/>
+            <OffersWrapped
+              {...props}
+              getId={props.onFavoriteClick}
+            />
           </div>
         </section>
         <div className="cities__right-section">
@@ -81,7 +84,8 @@ MainScreen.propTypes = {
         [`is_favorite`]: PropTypes.bool.isRequired,
       })
     ),
-  onCityClick: PropTypes.func.isRequired
+  onCityClick: PropTypes.func.isRequired,
+  onBookmarkClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -96,6 +100,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onCityClick: (city) => {
     dispatch(ActionCreator.changeCity(city));
+  },
+  onBookmarkClick: ({offerId, favoriteStatus}) => {
+    dispatch(ActionCreator.toggleFavorite({offerId, favoriteStatus}));
   }
 });
 

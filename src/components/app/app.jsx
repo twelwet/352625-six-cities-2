@@ -2,27 +2,61 @@ import React from "react";
 import MainScreen from "../main-screen/main-screen.jsx";
 import SignIn from "../sign-in/sign-in.jsx";
 import Header from "../header/header.jsx";
+import Footer from "../footer/footer.jsx";
+import Favorites from "../favorites/favorites.jsx";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {Operation} from "../../reducer/user/user.js";
 import {getAuthFlag} from "../../reducer/user/selectors.js";
+import {Route, Switch, Redirect} from "react-router-dom";
 
 const App = (props) => {
-  if (props.isAuthRequired) {
-    return (
-      <div className="page page--gray page--login">
-        <Header />
-        <SignIn {...props} />
-      </div>
-    );
-  } else {
-    return (
-      <div className="page page--gray page--main">
-        <Header />
-        <MainScreen />
-      </div>
-    );
-  }
+  return (
+    <Switch>
+      <Route
+        exact
+        path="/"
+        render={() => (
+          <div className="page page--gray page--main">
+            <Header />
+            <MainScreen {...props} />
+          </div>
+        )}
+      />
+
+      <Route
+        exact
+        path="/login"
+        render={() => {
+          return props.isAuthRequired
+            ? (
+              <div className="page page--gray page--login">
+                <Header />
+                <SignIn {...props} />
+              </div>
+            ) : (
+              <Redirect to="/" />
+            );
+        }}
+      />
+
+      <Route
+        exact
+        path="/favorites"
+        render={() => {
+          return props.isAuthRequired
+            ? (
+              <Redirect to="/" />
+            ) : (
+              <div className="page">
+                <Header />
+                <Favorites {...props} />
+                <Footer />
+              </div>
+            );
+        }}
+      />
+    </Switch>);
 };
 
 const mapStateToProps = (state) => ({

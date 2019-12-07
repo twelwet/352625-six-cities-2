@@ -23,4 +23,6 @@ const getOffersByCity = createSelector(
       .filter((item) => item.city.name === cityName)
 );
 
-export {getAllOffers, getCity, getCitiesList, getOffersByCity};
+const getOfferById = (state, offerId) => getAllOffers(state).find((it) => it.id === offerId);
+
+export {getAllOffers, getCity, getCitiesList, getOffersByCity, getOfferById};

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
 import configureAPI from "./api.js";
-
+import {BrowserRouter} from "react-router-dom";
 import reducer from "./reducer/reducer.js";
 import {Operation} from "./reducer/data/data";
 import {Provider} from "react-redux";
@@ -25,7 +25,9 @@ const init = () => {
 
   ReactDOM.render((
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>), document.querySelector(`#root`));
 };
 

@@ -19,9 +19,14 @@ const Offer = (props) => {
           <b className="place-card__price-value">&euro;{props[`price`]}</b>
           <span className="place-card__price-text">&#47;&nbsp;night</span>
         </div>
-        <button className={props[`is_favorite`]
-          ? `place-card__bookmark-button place-card__bookmark-button--active button`
-          : `place-card__bookmark-button button`} type="button">
+        <button
+          onClick={(evt) => {
+            evt.preventDefault();
+            props.onBookmarkClick({offerId: props[`id`], favoriteStatus: props[`is_favorite`]});
+          }}
+          className={props[`is_favorite`]
+            ? `place-card__bookmark-button place-card__bookmark-button--active button`
+            : `place-card__bookmark-button button`} type="button">
           <svg className="place-card__bookmark-icon" width="18" height="19">
             <use xlinkHref="#icon-bookmark"/>
           </svg>
@@ -65,7 +70,8 @@ Offer.propTypes = {
   [`is_premium`]: PropTypes.bool.isRequired,
   [`is_favorite`]: PropTypes.bool.isRequired,
   onOfferHover: PropTypes.func.isRequired,
-  onOfferLeave: PropTypes.func.isRequired
+  onOfferLeave: PropTypes.func.isRequired,
+  onBookmarkClick: PropTypes.func.isRequired
 };
 
 export default Offer;

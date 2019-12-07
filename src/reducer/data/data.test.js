@@ -9,6 +9,7 @@ const mockOffers = [
       name: `Dusseldorf`,
       location: {}
     },
+    [`is_favorite`]: false
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const mockOffers = [
       name: `Amsterdam`,
       location: {}
     },
+    [`is_favorite`]: false
   },
   {
     id: 3,
@@ -23,6 +25,7 @@ const mockOffers = [
       name: `Budapest`,
       location: {}
     },
+    [`is_favorite`]: false
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ const mockOffers = [
       name: `Amsterdam`,
       location: {}
     },
+    [`is_favorite`]: false
   },
   {
     id: 5,
@@ -37,6 +41,7 @@ const mockOffers = [
       name: `Saint Petersburg`,
       location: {}
     },
+    [`is_favorite`]: false
   },
   {
     id: 6,
@@ -44,6 +49,7 @@ const mockOffers = [
       name: `Dusseldorf`,
       location: {}
     },
+    [`is_favorite`]: false
   },
 
 ];
@@ -71,6 +77,14 @@ describe(`ActionCreator works correctly`, () => {
       type: ActionType.LOAD_OFFERS_FAIL,
       payload: mockError404,
       error: true
+    });
+  });
+
+  it(`ActionCreator.toggleFavorite works correctly`, () => {
+
+    expect(ActionCreator.toggleFavorite({offerId: 4, favoriteStatus: true})).toEqual({
+      type: ActionType.TOGGLE_FAVORITE,
+      payload: {offerId: 4, favoriteStatus: true}
     });
   });
 });
@@ -126,6 +140,58 @@ describe(`Reducer works correctly`, () => {
         isError: true,
         errorType: mockError404.message
       });
+  });
+
+  it(`Reducer changes "is_favorite" field on offer by id with action "TOGGLE_FAVORITE"`, () => {
+    const dataPiece = {offerId: 1, favoriteStatus: true};
+    const mockState = {
+      city: `Not Tested`,
+      offers: [
+        {
+          id: 1,
+          [`is_favorite`]: true
+        },
+        {
+          id: 2,
+          [`is_favorite`]: false
+        },
+        {
+          id: 3,
+          [`is_favorite`]: false
+        },
+        {
+          id: 4,
+          [`is_favorite`]: false
+        },
+      ],
+      isError: false,
+      errorType: null
+    };
+    const finalState = {
+      city: `Not Tested`,
+      offers: [
+        {
+          id: 1,
+          [`is_favorite`]: false
+        },
+        {
+          id: 2,
+          [`is_favorite`]: false
+        },
+        {
+          id: 3,
+          [`is_favorite`]: false
+        },
+        {
+          id: 4,
+          [`is_favorite`]: false
+        },
+      ],
+      isError: false,
+      errorType: null
+    };
+
+    expect(reducer(mockState, ActionCreator.toggleFavorite(dataPiece))).toEqual(finalState);
   });
 });
 
