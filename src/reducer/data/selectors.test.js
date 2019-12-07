@@ -1,4 +1,4 @@
-import {getCitiesList, getOffersByCity} from "./selectors.js";
+import {getCitiesList, getOffersByCity, getOfferById} from "./selectors.js";
 import NameSpace from "../name-spaces.js";
 
 const NAME_SPACE = NameSpace.DATA;
@@ -49,15 +49,15 @@ const mockOffers = [
 
 ];
 
-const mockState = {
-  [NAME_SPACE]: {
-    city: null,
-    offers: mockOffers
-  }
-};
-
 describe(`Selectors works correctly`, () => {
   it(`Function getCitiesList works correctly`, () => {
+    const mockState = {
+      [NAME_SPACE]: {
+        city: null,
+        offers: mockOffers
+      }
+    };
+
     expect(getCitiesList(mockState))
       .toEqual([`Amsterdam`, `Budapest`, `Dusseldorf`, `Saint Petersburg`]);
   });
@@ -87,5 +87,26 @@ describe(`Selectors works correctly`, () => {
           },
         },
       ]);
+  });
+
+  it(`Function getOfferById works correctly`, () => {
+    const mockState = {
+      [NAME_SPACE]: {
+        city: null,
+        offers: mockOffers
+      }
+    };
+
+    const mockId = 4;
+
+    expect(getOfferById(mockState, mockId)).toEqual(
+        {
+          id: 4,
+          city: {
+            name: `Amsterdam`,
+            location: {}
+          },
+        }
+    );
   });
 });

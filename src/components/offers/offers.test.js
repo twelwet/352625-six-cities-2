@@ -55,12 +55,14 @@ const offers = [
 it(`Offers correctly renders after relaunch`, () => {
   const renderActiveOffer = jest.fn();
   const showActiveId = jest.fn();
+  const onBookmarkClick = jest.fn();
 
   const tree = renderer
     .create(<Offers
       cityOffers={offers}
       onSelect={renderActiveOffer}
       onUnselect={showActiveId}
+      onBookmarkClick={onBookmarkClick}
     />
     )
     .toJSON();

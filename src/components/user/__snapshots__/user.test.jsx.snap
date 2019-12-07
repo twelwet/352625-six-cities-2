@@ -4,9 +4,9 @@ exports[`User correctly renders after relaunch 1`] = `
 <li
   className="header__nav-item user"
 >
-  <a
+  <Link
     className="header__nav-link header__nav-link--profile"
-    href="#"
+    to="/login"
   >
     <div
       className="header__avatar-wrapper user__avatar-wrapper"
@@ -16,6 +16,6 @@ exports[`User correctly renders after relaunch 1`] = `
     >
       Sign In
     </span>
-  </a>
+  </Link>
 </li>
 `;

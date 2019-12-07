@@ -71,6 +71,7 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
           },
         ]
       }
+      onBookmarkClick={[MockFunction]}
       onCityClick={[MockFunction]}
     />
   </div>
@@ -211,6 +212,7 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
                 },
               ]
             }
+            onBookmarkClick={[MockFunction]}
             onCityClick={[MockFunction]}
           />
         </div>
@@ -280,6 +282,7 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
                 },
               ]
             }
+            onBookmarkClick={[MockFunction]}
             onCityClick={[MockFunction]}
           />
         </section>

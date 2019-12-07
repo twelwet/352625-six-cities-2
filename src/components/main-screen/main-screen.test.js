@@ -57,11 +57,14 @@ Enzyme.configure({adapter: new Adapter()});
 
 it(`MainScreen correctly renders after relaunch`, () => {
   const onCityClick = jest.fn();
+  const onBookmarkClick = jest.fn();
+
   const tree = shallow(<MainScreen
     citiesList={[`Amsterdam`, `Berlin`, `Helsinki`]}
     city={`Amsterdam`}
     cityOffers={mockOffers}
     onCityClick={onCityClick}
+    onBookmarkClick={onBookmarkClick}
   />);
 
   expect(toJson(tree)).toMatchSnapshot();

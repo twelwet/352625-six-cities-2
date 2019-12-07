@@ -8,7 +8,8 @@ const initialState = {
 const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
   LOAD_OFFERS: `LOAD_OFFERS`,
-  LOAD_OFFERS_FAIL: `LOAD_OFFERS_FAIL`
+  LOAD_OFFERS_FAIL: `LOAD_OFFERS_FAIL`,
+  TOGGLE_FAVORITE: `TOGGLE_FAVORITE`
 };
 
 const ActionCreator = {
@@ -30,6 +31,12 @@ const ActionCreator = {
       type: ActionType.LOAD_OFFERS_FAIL,
       error: true,
       payload: error
+    };
+  },
+  toggleFavorite: ({offerId, favoriteStatus}) => {
+    return {
+      type: ActionType.TOGGLE_FAVORITE,
+      payload: {offerId, favoriteStatus}
     };
   }
 };
@@ -67,6 +74,15 @@ const reducer = (state = initialState, action) => {
         isError: action.error,
         errorType: action.payload.message
       });
+    case ActionType.TOGGLE_FAVORITE:
+      const targetOffer = state.offers.find((it) => it.id === action.payload.offerId);
+
+      if (targetOffer) {
+        const copyState = Object.assign({}, state);
+        const copyTargetOffer = copyState.offers.find((it) => it.id === action.payload.offerId);
+        copyTargetOffer[`is_favorite`] = !action.payload.favoriteStatus;
+        return copyState;
+      }
   }
 
   return state;

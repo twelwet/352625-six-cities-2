@@ -11,8 +11,8 @@ const configureAPI = (dispatch) => {
   const onSuccess = (response) => response;
 
   const onFail = (err) => {
-    if (err.response.status === 403) {
-      dispatch(ActionCreator.requireAuthorization(false));
+    if (err.response.status === 403 || err.response.status === 401) {
+      dispatch(ActionCreator.requireAuthorization(true));
     }
 
     return Promise.reject(err);

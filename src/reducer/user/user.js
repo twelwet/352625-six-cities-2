@@ -43,11 +43,9 @@ const Operation = {
     return api.post(`/login`, userData)
       .then((response) => {
         dispatch(ActionCreator.signIn(response.data));
-        dispatch(ActionCreator.requireAuthorization(false));
       })
       .catch((err) => {
         dispatch(ActionCreator.signInFail(err));
-        dispatch(ActionCreator.requireAuthorization(true));
       });
   },
 };
@@ -60,6 +58,7 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.SIGN_IN:
       return Object.assign({}, state, {
+        isAuthRequired: false,
         id: action.payload.id,
         email: action.payload.email,
         name: action.payload.name,
