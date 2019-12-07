@@ -55,7 +55,7 @@ describe(`Reducer works correctly`, () => {
     };
 
     const mockInitialState = {
-      isAuthRequired: `NOT TESTED`,
+      isAuthRequired: false,
       id: null,
       email: null,
       name: null,
@@ -66,7 +66,7 @@ describe(`Reducer works correctly`, () => {
     };
 
     expect(reducer(mockInitialState, ActionCreator.signIn(mockServerData))).toEqual({
-      isAuthRequired: `NOT TESTED`,
+      isAuthRequired: false,
       id: mockServerData.id,
       email: mockServerData.email,
       name: mockServerData.name,
@@ -125,20 +125,16 @@ describe(`API calls work as declared`, () => {
 
     return signInOperation(dispatch, null, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.SIGN_IN,
           error: false,
           payload: mockServerData
         });
-        expect(dispatch).toHaveBeenNthCalledWith(2, {
-          type: ActionType.REQUIRE_AUTHORIZATION,
-          payload: false
-        });
       });
   });
 
-  it(`Should work correctly when server reply "Error status code 400"`, () => {
+  it(`Should work as declared with server reply "Error status code 400"`, () => {
     const dispatch = jest.fn();
     const api = configureAPI(dispatch);
     const apiMock = new MockAdapter(api);
@@ -151,16 +147,66 @@ describe(`API calls work as declared`, () => {
 
     return signInOperation(dispatch, null, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.SIGN_IN_FAIL,
           error: true,
           payload: mockError
         });
-        expect(dispatch).toHaveBeenNthCalledWith(2, {
+      });
+  });
+
+  it(`Should work as declared with server reply "Error status code 401 Unauthorized"`, () => {
+    const dispatch = jest.fn();
+    const api = configureAPI(dispatch);
+    const apiMock = new MockAdapter(api);
+    const signInOperation = Operation.signIn();
+    const mockError = new Error(`Request failed with status code 401`);
+
+    apiMock
+      .onPost(`/login`)
+      .reply(401, mockError);
+
+    return signInOperation(dispatch, null, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.REQUIRE_AUTHORIZATION,
           payload: true
         });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.SIGN_IN_FAIL,
+          error: true,
+          payload: mockError
+        });
+
+      });
+  });
+
+  it(`Should work as declared with server reply "Error status code 403"`, () => {
+    const dispatch = jest.fn();
+    const api = configureAPI(dispatch);
+    const apiMock = new MockAdapter(api);
+    const signInOperation = Operation.signIn();
+    const mockError = new Error(`Request failed with status code 403`);
+
+    apiMock
+      .onPost(`/login`)
+      .reply(403, mockError);
+
+    return signInOperation(dispatch, null, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.REQUIRE_AUTHORIZATION,
+          payload: true
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.SIGN_IN_FAIL,
+          error: true,
+          payload: mockError
+        });
+
       });
   });
 });

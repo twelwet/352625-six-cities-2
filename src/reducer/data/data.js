@@ -1,5 +1,3 @@
-import {getOfferById} from "./selectors.js";
-
 const initialState = {
   city: null,
   offers: [],

@@ -41,7 +41,6 @@ const MainScreen = (props) => {
           <div className="cities__places-list places__list tabs__content">
             <OffersWrapped
               {...props}
-              getId={props.onFavoriteClick}
             />
           </div>
         </section>

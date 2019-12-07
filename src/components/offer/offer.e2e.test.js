@@ -32,11 +32,13 @@ const offer = {
 describe(`Offer's callbacks are called by mouse events`, () => {
   const onOfferHover = jest.fn(() => {});
   const onOfferLeave = jest.fn(() => {});
+  const onBookmarkClick = jest.fn(() => {});
 
   const offerComponent = shallow(<Offer
     {...offer}
     onOfferHover={onOfferHover}
     onOfferLeave={onOfferLeave}
+    onBookmarkClick={onBookmarkClick}
   />);
 
   const offerElement = offerComponent.find(`.place-card`);
@@ -44,9 +46,10 @@ describe(`Offer's callbacks are called by mouse events`, () => {
   it(`Callbacks are called 0 times without mouse events`, () => {
     expect(onOfferHover).toHaveBeenCalledTimes(0);
     expect(onOfferLeave).toHaveBeenCalledTimes(0);
+    expect(onBookmarkClick).toHaveBeenCalledTimes(0);
   });
 
-  it(`Callbacks are called 5 times with 5 mouse events`, () => {
+  it(`MouseOver / MouseLeave callbacks are called 5 times with 5 mouse events`, () => {
     offerElement.simulate(`mouseover`);
     offerElement.simulate(`mouseleave`);
     offerElement.simulate(`mouseover`);
@@ -55,5 +58,14 @@ describe(`Offer's callbacks are called by mouse events`, () => {
 
     expect(onOfferHover).toHaveBeenCalledTimes(3);
     expect(onOfferLeave).toHaveBeenCalledTimes(2);
+  });
+
+  it(`onBookmarkClick callback is called 1 time with 1 click event`, () => {
+    const btn = offerElement.find(`.place-card__bookmark-button`);
+    btn.simulate(`click`, {
+      preventDefault: () => {}
+    });
+
+    expect(onBookmarkClick).toHaveBeenCalledTimes(1);
   });
 });

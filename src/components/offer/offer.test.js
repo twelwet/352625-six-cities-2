@@ -4,6 +4,7 @@ import Offer from "../offer/offer";
 
 const onOfferHover = () => {};
 const onOfferLeave = () => {};
+const onBookmarkClick = () => {};
 
 const offer = {
   [`id`]: 111,
@@ -44,6 +45,7 @@ it(`Offer correctly renders after relaunch`, () => {
           is_favorite={offer[`is_favorite`]}
           onOfferHover={onOfferHover}
           onOfferLeave={onOfferLeave}
+          onBookmarkClick={onBookmarkClick}
         />
     )
     .toJSON();

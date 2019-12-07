@@ -11,7 +11,7 @@ const configureAPI = (dispatch) => {
   const onSuccess = (response) => response;
 
   const onFail = (err) => {
-    if (err.response.status === 403 || err.response.status === 401 || err.response.status === 400) {
+    if (err.response.status === 403 || err.response.status === 401) {
       dispatch(ActionCreator.requireAuthorization(true));
     }
 
