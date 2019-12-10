@@ -20,10 +20,7 @@ const Offer = (props) => {
           <span className="place-card__price-text">&#47;&nbsp;night</span>
         </div>
         <button
-          onClick={(evt) => {
-            evt.preventDefault();
-            props.onBookmarkClick({offerId: props[`id`], favoriteStatus: props[`is_favorite`]});
-          }}
+          onClick={() => props.onBookmarkClick({offerId: props[`id`], favoriteStatus: props[`is_favorite`]})}
           className={props[`is_favorite`]
             ? `place-card__bookmark-button place-card__bookmark-button--active button`
             : `place-card__bookmark-button button`} type="button">

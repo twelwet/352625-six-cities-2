@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header correctly renders after relaunch 1`] = `
+exports[`Favorites correctly renders after relaunch 1`] = `
 <main
   className="page__main page__main--favorites"
 >

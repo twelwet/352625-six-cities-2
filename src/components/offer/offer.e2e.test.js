@@ -26,13 +26,13 @@ const offer = {
   [`preview_image`]: `img/apartment-01.jpg`,
   [`rating`]: 100,
   [`is_premium`]: true,
-  [`is_favorite`]: false
+  [`is_favorite`]: true
 };
 
 describe(`Offer's callbacks are called by mouse events`, () => {
   const onOfferHover = jest.fn(() => {});
   const onOfferLeave = jest.fn(() => {});
-  const onBookmarkClick = jest.fn(() => {});
+  const onBookmarkClick = jest.fn(({offerId, favoriteStatus}) => ({offerId, favoriteStatus}));
 
   const offerComponent = shallow(<Offer
     {...offer}
@@ -43,7 +43,7 @@ describe(`Offer's callbacks are called by mouse events`, () => {
 
   const offerElement = offerComponent.find(`.place-card`);
 
-  it(`Callbacks are called 0 times without mouse events`, () => {
+  it(`Callbacks are called 0 times without mouse/click events`, () => {
     expect(onOfferHover).toHaveBeenCalledTimes(0);
     expect(onOfferLeave).toHaveBeenCalledTimes(0);
     expect(onBookmarkClick).toHaveBeenCalledTimes(0);
@@ -62,10 +62,9 @@ describe(`Offer's callbacks are called by mouse events`, () => {
 
   it(`onBookmarkClick callback is called 1 time with 1 click event`, () => {
     const btn = offerElement.find(`.place-card__bookmark-button`);
-    btn.simulate(`click`, {
-      preventDefault: () => {}
-    });
+    btn.simulate(`click`);
 
     expect(onBookmarkClick).toHaveBeenCalledTimes(1);
+    expect(onBookmarkClick).toHaveBeenCalledWith({offerId: 111, favoriteStatus: true});
   });
 });

@@ -1,21 +1,18 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
-import Adapter from "enzyme-adapter-react-16/build";
-import toJson from "enzyme-to-json";
+import renderer from "react-test-renderer";
+import {User} from "./user.jsx";
+import {BrowserRouter} from "react-router-dom";
 
-import {User} from "../user/user.jsx";
-
-Enzyme.configure({adapter: new Adapter()});
+const props = {
+  isAuthRequired: true,
+  email: `user@gmail.com`
+};
 
 it(`User correctly renders after relaunch`, () => {
-  const props = {
-    isAuthRequired: true,
-    email: `user@gmail.com`
-  };
+  const tree = renderer
+    .create(<BrowserRouter>
+      <User {...props} />
+    </BrowserRouter>);
 
-  const tree = shallow(
-      <User {...props}/>
-  );
-
-  expect(toJson(tree)).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });

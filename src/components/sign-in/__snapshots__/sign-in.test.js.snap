@@ -31,6 +31,7 @@ exports[`SignIn correctly renders after relaunch 1`] = `
           </label>
           <input
             className="login__input form__input"
+            defaultValue=""
             name="email"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\\\.[a-z]{2,4}$"
             placeholder="Email"
@@ -49,6 +50,7 @@ exports[`SignIn correctly renders after relaunch 1`] = `
           </label>
           <input
             className="login__input form__input"
+            defaultValue=""
             name="password"
             placeholder="Password"
             required={true}

@@ -4,9 +4,10 @@ exports[`User correctly renders after relaunch 1`] = `
 <li
   className="header__nav-item user"
 >
-  <Link
+  <a
     className="header__nav-link header__nav-link--profile"
-    to="/login"
+    href="/login"
+    onClick={[Function]}
   >
     <div
       className="header__avatar-wrapper user__avatar-wrapper"
@@ -16,6 +17,6 @@ exports[`User correctly renders after relaunch 1`] = `
     >
       Sign In
     </span>
-  </Link>
+  </a>
 </li>
 `;

@@ -12,7 +12,7 @@ const SignIn = (props) => {
             action="#"
             method="post"
             onSubmit={(evt) => {
-              evt.preventDefault();
+              // evt.preventDefault();
               const formData = new FormData(evt.target);
               props.onFormSubmit({
                 email: formData.get(`email`),
@@ -21,11 +21,11 @@ const SignIn = (props) => {
             }}>
             <div className="login__input-wrapper form__input-wrapper">
               <label className="visually-hidden">E-mail</label>
-              <input className="login__input form__input" type="email" name="email" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Incorrect email format"/>
+              <input className="login__input form__input" defaultValue="" type="email" name="email" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Incorrect email format"/>
             </div>
             <div className="login__input-wrapper form__input-wrapper">
               <label className="visually-hidden">Password</label>
-              <input className="login__input form__input" type="password" name="password" placeholder="Password" required/>
+              <input className="login__input form__input" defaultValue="" type="password" name="password" placeholder="Password" required/>
             </div>
             <button className="login__submit form__submit button" type="submit">Sign in</button>
           </form>
