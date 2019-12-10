@@ -94,7 +94,8 @@ exports[`Offer correctly renders after relaunch 1`] = `
       className="place-card__name"
     >
       <a
-        href="#"
+        href="/offer/111"
+        onClick={[Function]}
       >
         Some text
       </a>

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 const Offer = (props) => {
   return <article
@@ -37,7 +38,7 @@ const Offer = (props) => {
         </div>
       </div>
       <h2 className="place-card__name">
-        <a href="#">{props[`title`]}</a>
+        <Link to={`/offer/${props[`id`]}`}>{props[`title`]}</Link>
       </h2>
       <p className="place-card__type">{props[`type`]}</p>
     </div>

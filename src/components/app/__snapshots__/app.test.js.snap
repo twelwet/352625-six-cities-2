@@ -17,5 +17,10 @@ exports[`App correctly renders after relaunch 1`] = `
     path="/favorites"
     render={[Function]}
   />
+  <Route
+    exact={true}
+    path="/offer/:id"
+    render={[Function]}
+  />
 </Switch>
 `;

@@ -4,11 +4,13 @@ import SignIn from "../sign-in/sign-in.jsx";
 import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
 import Favorites from "../favorites/favorites.jsx";
+import OfferDetails from "../offer-details/offer-details.jsx";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {Operation} from "../../reducer/user/user.js";
 import {getAuthFlag} from "../../reducer/user/selectors.js";
 import {Route, Switch, Redirect} from "react-router-dom";
+import {getOfferById} from "../../reducer/data/selectors";
 
 const App = (props) => {
   return (
@@ -56,11 +58,26 @@ const App = (props) => {
             );
         }}
       />
+
+      <Route
+        exact
+        path="/offer/:id"
+        render={({match}) => {
+          const currentOffer = getOfferById(props.state, Number(match.params.id));
+          return (
+            <div className="page">
+              <Header />
+              <OfferDetails {...currentOffer} />
+            </div>
+          );
+        }}
+      />
     </Switch>);
 };
 
 const mapStateToProps = (state) => ({
-  isAuthRequired: getAuthFlag(state)
+  isAuthRequired: getAuthFlag(state),
+  state
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -71,7 +88,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 App.propTypes = {
   isAuthRequired: PropTypes.bool.isRequired,
-  onFormSubmit: PropTypes.func.isRequired
+  onFormSubmit: PropTypes.func.isRequired,
+  state: PropTypes.object
 };
 
 export {App};

@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Offer from "../offer/offer";
+import {BrowserRouter} from "react-router-dom";
 
 const onOfferHover = () => {};
 const onOfferLeave = () => {};
@@ -33,20 +34,22 @@ const offer = {
 it(`Offer correctly renders after relaunch`, () => {
   const tree = renderer
     .create(
-        <Offer
-          id={offer[`id`]}
-          key={offer[`id`]}
-          title={offer[`title`]}
-          type={offer[`type`]}
-          price={offer[`price`]}
-          preview_image={offer[`preview_image`]}
-          rating={offer[`rating`]}
-          is_premium={offer[`is_premium`]}
-          is_favorite={offer[`is_favorite`]}
-          onOfferHover={onOfferHover}
-          onOfferLeave={onOfferLeave}
-          onBookmarkClick={onBookmarkClick}
-        />
+        <BrowserRouter>
+          <Offer
+            id={offer[`id`]}
+            key={offer[`id`]}
+            title={offer[`title`]}
+            type={offer[`type`]}
+            price={offer[`price`]}
+            preview_image={offer[`preview_image`]}
+            rating={offer[`rating`]}
+            is_premium={offer[`is_premium`]}
+            is_favorite={offer[`is_favorite`]}
+            onOfferHover={onOfferHover}
+            onOfferLeave={onOfferLeave}
+            onBookmarkClick={onBookmarkClick}
+          />
+        </BrowserRouter>
     )
     .toJSON();
 

@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Offers from "../offers/offers.jsx";
+import {BrowserRouter} from "react-router-dom";
 
 const offers = [
   {
@@ -58,12 +59,15 @@ it(`Offers correctly renders after relaunch`, () => {
   const onBookmarkClick = jest.fn();
 
   const tree = renderer
-    .create(<Offers
-      cityOffers={offers}
-      onSelect={renderActiveOffer}
-      onUnselect={showActiveId}
-      onBookmarkClick={onBookmarkClick}
-    />
+    .create(
+        <BrowserRouter>
+          <Offers
+            cityOffers={offers}
+            onSelect={renderActiveOffer}
+            onUnselect={showActiveId}
+            onBookmarkClick={onBookmarkClick}
+          />
+        </BrowserRouter>
     )
     .toJSON();
 
