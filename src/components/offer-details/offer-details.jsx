@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {getOfferById} from "../../reducer/data/selectors";
+import {ActionCreator} from "../../reducer/data/data";
 
 const Image = {
   MAX_COUNT: 6
@@ -9,7 +10,6 @@ const Image = {
 
 const OfferDetails = (props) => {
   const {images, title, rating, bedrooms, type, price, goods, host, description} = props.offer;
-  console.log(props.offer);
   return (
     <main className="page__main page__main--property">
       <section className="property">
@@ -31,7 +31,14 @@ const OfferDetails = (props) => {
               <h1 className="property__name">
                 {title}
               </h1>
-              <button className="property__bookmark-button button" type="button">
+              <button
+                onClick={() => {
+                  props.onBookmarkClick({
+                    offerId: props.id,
+                    favoriteStatus: props.offer[`is_favorite`]
+                  });
+                }}
+                className="property__bookmark-button button" type="button">
                 <svg className="property__bookmark-icon" width="31" height="33">
                   <use xlinkHref="#icon-bookmark"/>
                 </svg>
@@ -274,6 +281,12 @@ const mapStateToProps = (state, props) => ({
   offer: getOfferById(state, props.id)
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  onBookmarkClick: ({offerId, favoriteStatus}) => {
+    dispatch(ActionCreator.toggleFavorite({offerId, favoriteStatus}));
+  }
+});
+
 OfferDetails.propTypes = {
   id: PropTypes.number.isRequired,
   offer: PropTypes
@@ -294,11 +307,12 @@ OfferDetails.propTypes = {
         name: PropTypes.string.isRequired
       }),
       description: PropTypes.string.isRequired
-    })
+    }),
+  onBookmarkClick: PropTypes.func.isRequired
 };
 
 export {OfferDetails};
 
-export default connect(mapStateToProps)(OfferDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(OfferDetails);
 
 
