@@ -1,14 +1,16 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
-import Adapter from "enzyme-adapter-react-16/build";
-import toJson from "enzyme-to-json";
-
+import renderer from "react-test-renderer";
 import Header from "./header.jsx";
 
-Enzyme.configure({adapter: new Adapter()});
+jest.mock(`react-router-dom`, () => ({
+  Link: () => null
+}));
 
-it(`Header correctly renders after relaunch`, () => {
-  const tree = shallow(<Header />);
+jest.mock(`../../components/user/user.jsx`, () => `User`);
 
-  expect(toJson(tree)).toMatchSnapshot();
+it(`Footer correctly renders after relaunch`, () => {
+  const tree = renderer
+    .create(<Header />);
+
+  expect(tree).toMatchSnapshot();
 });

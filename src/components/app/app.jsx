@@ -1,16 +1,25 @@
 import React from "react";
-import MainScreen from "../main-screen/main-screen.jsx";
-import SignIn from "../sign-in/sign-in.jsx";
-import Header from "../header/header.jsx";
-import Footer from "../footer/footer.jsx";
-import Favorites from "../favorites/favorites.jsx";
-import OfferDetails from "../offer-details/offer-details.jsx";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import {Route, Switch, Redirect} from "react-router-dom";
+
+import MainScreen from "../main-screen/main-screen.jsx";
+import SignIn from "../sign-in/sign-in.jsx";
+import Favorites from "../favorites/favorites.jsx";
+import OfferDetails from "../offer-details/offer-details.jsx";
+
 import {Operation} from "../../reducer/user/user.js";
 import {getAuthFlag} from "../../reducer/user/selectors.js";
-import {Route, Switch, Redirect} from "react-router-dom";
-import {getOfferById} from "../../reducer/data/selectors";
+
+import withWrapperPage from "../../hocs/with-wrapper-page/with-wrapper-page.js";
+import withWrapperPageMain from "../../hocs/with-wrapper-page-main/with-wrapper-page-main.js";
+import withWrapperPageLogin from "../../hocs/with-wrapper-page-login/with-wrapper-page-login.js";
+
+
+const MainScreenWrapped = withWrapperPageMain(MainScreen);
+const SignInWrapped = withWrapperPageLogin(SignIn);
+const FavoritesWrapped = withWrapperPage(Favorites);
+const OfferDetailsWrapped = withWrapperPage(OfferDetails);
 
 const App = (props) => {
   return (
@@ -18,60 +27,37 @@ const App = (props) => {
       <Route
         exact
         path="/"
-        render={() => {
-          return (
-            <div className="page page--gray page--main">
-              <Header />
-              <MainScreen {...props} />
-            </div>
-          );
-        }}
+        render={() => (
+          <MainScreenWrapped {...props} />
+        )}
       />
 
       <Route
         exact
         path="/login"
-        render={() => {
-          return props.isAuthRequired
-            ? (
-              <div className="page page--gray page--login">
-                <Header />
-                <SignIn {...props} />
-              </div>
-            ) : (
-              <Redirect to="/" />
-            );
-        }}
+        render={() => props.isAuthRequired ? (
+          <SignInWrapped {...props} />
+        ) : (
+          <Redirect to="/" />
+        )}
       />
 
       <Route
         exact
         path="/favorites"
-        render={() => {
-          return props.isAuthRequired
-            ? (
-              <Redirect to="/" />
-            ) : (
-              <div className="page">
-                <Header />
-                <Favorites {...props} />
-                <Footer />
-              </div>
-            );
-        }}
+        render={() => props.isAuthRequired ? (
+          <Redirect to="/" />
+        ) : (
+          <FavoritesWrapped {...props} />
+        )}
       />
 
       <Route
         exact
         path="/offer/:id"
-        render={({match}) => {
-          return (
-            <div className="page">
-              <Header />
-              <OfferDetails id={Number(match.params.id)} />
-            </div>
-          );
-        }}
+        render={({match}) => (
+          <OfferDetailsWrapped id={Number(match.params.id)} />
+        )}
       />
     </Switch>);
 };

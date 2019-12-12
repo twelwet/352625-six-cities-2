@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Offers correctly renders after relaunch 1`] = `
+exports[`OfferDetails correctly renders after relaunch 1`] = `
 <main
   className="page__main page__main--property"
 >
@@ -59,6 +59,7 @@ exports[`Offers correctly renders after relaunch 1`] = `
           </h1>
           <button
             className="property__bookmark-button button"
+            onClick={[Function]}
             type="button"
           >
             <svg
@@ -185,20 +186,16 @@ exports[`Offers correctly renders after relaunch 1`] = `
                 alt="Host avatar"
                 className="property__avatar user__avatar"
                 height="74"
-                src="img/avatar-angelina.jpg"
+                src="/path to file"
                 width="74"
               />
             </div>
             <span
               className="property__user-name"
             >
-              Angelina
+              Name
             </span>
-            <span
-              className="property__user-status"
-            >
-              Pro
-            </span>
+            
           </div>
           <div
             className="property__description"

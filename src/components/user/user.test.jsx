@@ -1,7 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {User} from "./user.jsx";
-import {BrowserRouter} from "react-router-dom";
+
+jest.mock(`react-router-dom`, () => ({
+  Link: () => null
+}));
 
 const props = {
   isAuthRequired: true,
@@ -10,9 +13,7 @@ const props = {
 
 it(`User correctly renders after relaunch`, () => {
   const tree = renderer
-    .create(<BrowserRouter>
-      <User {...props} />
-    </BrowserRouter>);
+    .create(<User {...props} />);
 
   expect(tree).toMatchSnapshot();
 });

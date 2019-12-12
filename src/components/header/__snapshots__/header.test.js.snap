@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header correctly renders after relaunch 1`] = `
+exports[`Footer correctly renders after relaunch 1`] = `
 <header
   className="header"
 >
@@ -12,27 +12,14 @@ exports[`Header correctly renders after relaunch 1`] = `
     >
       <div
         className="header__left"
-      >
-        <Link
-          className="header__logo-link header__logo-link--active"
-          to="/"
-        >
-          <img
-            alt="6 cities logo"
-            className="header__logo"
-            height="41"
-            src="img/logo.svg"
-            width="81"
-          />
-        </Link>
-      </div>
+      />
       <nav
         className="header__nav"
       >
         <ul
           className="header__nav-list"
         >
-          <Connect(User) />
+          <User />
         </ul>
       </nav>
     </div>
