@@ -18,22 +18,16 @@ describe(`Sign-in component works correctly`, () => {
     expect(onFormSubmit).toHaveBeenCalledTimes(0);
   });
 
-  it(`Callback is called 1 times on submit event`, () => {
-    const emailField = form.find(`.login__input`).first();
-    const passwordField = form.find(`.login__input`).last();
-
-    emailField.simulate(`change`, {target: {value: `user@domain.org`}});
-    passwordField.simulate(`keydown`, {target: `password123`});
-
+  it(`Callback is called 1 time onSubmit with correct FormData keys`, () => {
     form.simulate(`submit`, {
       preventDefault: () => {}
     });
 
     expect(onFormSubmit).toHaveBeenCalledTimes(1);
-    // expect(onFormSubmit).toHaveBeenCalledWith({
-    //   email: `user@domain.org`,
-    //   password: `password123`
-    // });
+    expect(onFormSubmit).toHaveBeenCalledWith({
+      email: ``,
+      password: ``
+    });
   });
 
 });

@@ -12,7 +12,7 @@ const SignIn = (props) => {
             action="#"
             method="post"
             onSubmit={(evt) => {
-              // evt.preventDefault();
+              evt.preventDefault();
               const formData = new FormData(evt.target);
               props.onFormSubmit({
                 email: formData.get(`email`),

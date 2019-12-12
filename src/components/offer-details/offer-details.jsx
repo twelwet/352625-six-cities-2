@@ -1,14 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {getOfferById} from "../../reducer/data/selectors";
+
+const Image = {
+  MAX_COUNT: 6
+};
 
 const OfferDetails = (props) => {
-  const {images, title, rating, bedrooms, type, price, goods, description} = props;
+  const {images, title, rating, bedrooms, type, price, goods, description} = props.offer;
   return (
     <main className="page__main page__main--property">
       <section className="property">
         <div className="property__gallery-container container">
           <div className="property__gallery">
-            {images.slice(0, 6).map((item, index) => {
+            {images.slice(0, Image.MAX_COUNT).map((item, index) => {
               return (
                 <div key={index} className="property__image-wrapper">
                   <img className="property__image" src={item} alt="Photo studio"/>
@@ -19,7 +25,7 @@ const OfferDetails = (props) => {
         </div>
         <div className="property__container container">
           <div className="property__wrapper">
-            {props[`is_premium`] ? <div className="property__mark"><span>Premium</span></div> : ``}
+            {props.offer[`is_premium`] ? <div className="property__mark"><span>Premium</span></div> : ``}
             <div className="property__name-wrapper">
               <h1 className="property__name">
                 {title}
@@ -46,7 +52,7 @@ const OfferDetails = (props) => {
                 {bedrooms} bedrooms
               </li>
               <li className="property__feature property__feature--adults">
-                Max {props[`max_adults`]} adults
+                Max {props.offer[`max_adults`]} adults
               </li>
             </ul>
             <div className="property__price">
@@ -265,17 +271,29 @@ const OfferDetails = (props) => {
   );
 };
 
+const mapStateToProps = (state, props) => ({
+  offer: getOfferById(state, props.id)
+});
+
 OfferDetails.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string,
-  rating: PropTypes.number,
-  [`is_favorite`]: PropTypes.bool,
-  bedrooms: PropTypes.number,
-  [`max_adults`]: PropTypes.number,
-  type: PropTypes.string,
-  price: PropTypes.number,
-  goods: PropTypes.arrayOf(PropTypes.string),
-  description: PropTypes.string
+  id: PropTypes.number,
+  offer: PropTypes
+    .shape({
+      images: PropTypes.arrayOf(PropTypes.string),
+      title: PropTypes.string,
+      rating: PropTypes.number,
+      [`is_favorite`]: PropTypes.bool,
+      bedrooms: PropTypes.number,
+      [`max_adults`]: PropTypes.number,
+      type: PropTypes.string,
+      price: PropTypes.number,
+      goods: PropTypes.arrayOf(PropTypes.string),
+      description: PropTypes.string
+    })
 };
 
-export default OfferDetails;
+export {OfferDetails};
+
+export default connect(mapStateToProps)(OfferDetails);
+
+

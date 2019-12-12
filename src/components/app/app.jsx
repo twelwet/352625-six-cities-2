@@ -18,12 +18,14 @@ const App = (props) => {
       <Route
         exact
         path="/"
-        render={() => (
-          <div className="page page--gray page--main">
-            <Header />
-            <MainScreen {...props} />
-          </div>
-        )}
+        render={() => {
+          return (
+            <div className="page page--gray page--main">
+              <Header />
+              <MainScreen {...props} />
+            </div>
+          );
+        }}
       />
 
       <Route
@@ -63,11 +65,10 @@ const App = (props) => {
         exact
         path="/offer/:id"
         render={({match}) => {
-          const currentOffer = getOfferById(props.state, Number(match.params.id));
           return (
             <div className="page">
               <Header />
-              <OfferDetails {...currentOffer} />
+              <OfferDetails id={Number(match.params.id)} />
             </div>
           );
         }}
@@ -76,8 +77,7 @@ const App = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  isAuthRequired: getAuthFlag(state),
-  state
+  isAuthRequired: getAuthFlag(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -88,8 +88,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 App.propTypes = {
   isAuthRequired: PropTypes.bool.isRequired,
-  onFormSubmit: PropTypes.func.isRequired,
-  state: PropTypes.object
+  onFormSubmit: PropTypes.func.isRequired
 };
 
 export {App};
