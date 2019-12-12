@@ -8,7 +8,8 @@ const Image = {
 };
 
 const OfferDetails = (props) => {
-  const {images, title, rating, bedrooms, type, price, goods, description} = props.offer;
+  const {images, title, rating, bedrooms, type, price, goods, host, description} = props.offer;
+  console.log(props.offer);
   return (
     <main className="page__main page__main--property">
       <section className="property">
@@ -75,14 +76,12 @@ const OfferDetails = (props) => {
               <h2 className="property__host-title">Meet the host</h2>
               <div className="property__host-user user">
                 <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                  <img className="property__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar"/>
+                  <img className="property__avatar user__avatar" src={`/${host[`avatar_url`]}`} width="74" height="74" alt="Host avatar"/>
                 </div>
                 <span className="property__user-name">
-                  Angelina
+                  {host.name}
                 </span>
-                <span className="property__user-status">
-                  Pro
-                </span>
+                {host[`is_pro`] ? <span className="property__user-status">Pro</span> : ``}
               </div>
               <div className="property__description">
                 {description.split(`.`).map((item, index) => {
@@ -276,19 +275,25 @@ const mapStateToProps = (state, props) => ({
 });
 
 OfferDetails.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.number.isRequired,
   offer: PropTypes
     .shape({
-      images: PropTypes.arrayOf(PropTypes.string),
-      title: PropTypes.string,
-      rating: PropTypes.number,
-      [`is_favorite`]: PropTypes.bool,
-      bedrooms: PropTypes.number,
-      [`max_adults`]: PropTypes.number,
-      type: PropTypes.string,
-      price: PropTypes.number,
-      goods: PropTypes.arrayOf(PropTypes.string),
-      description: PropTypes.string
+      images: PropTypes.arrayOf(PropTypes.string.isRequired),
+      title: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+      [`is_favorite`]: PropTypes.bool.isRequired,
+      bedrooms: PropTypes.number.isRequired,
+      [`max_adults`]: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      goods: PropTypes.arrayOf(PropTypes.string).isRequired,
+      host: PropTypes.shape({
+        [`avatar_url`]: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        [`is_pro`]: PropTypes.bool.isRequired,
+        name: PropTypes.string.isRequired
+      }),
+      description: PropTypes.string.isRequired
     })
 };
 
