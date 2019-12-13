@@ -28,4 +28,21 @@ const getOfferById = createSelector(
     (state, offerId) => state
       .find((it) => it.id === offerId));
 
-export {getAllOffers, getCity, getCitiesList, getOffersByCity, getOfferById};
+const getDistance = (current, target) => {
+  const x = Math.abs(current.location.latitude - target.location.latitude);
+  const y = Math.abs(current.location.longitude - target.location.longitude);
+  return Math.pow(x, 2) + Math.pow(y, 2);
+};
+
+const getNearestOffers = (state, targetId, quantity = 3) => {
+  const targetOffer = getOfferById(state, targetId);
+  const cityOffers = getOffersByCity(state);
+
+  const nearestOffers = cityOffers.sort((a, b) => {
+    return getDistance(a, targetOffer) - getDistance(b, targetOffer);
+  });
+
+  return nearestOffers.slice(1, quantity + 1);
+};
+
+export {getAllOffers, getCity, getCitiesList, getOffersByCity, getOfferById, getNearestOffers};
