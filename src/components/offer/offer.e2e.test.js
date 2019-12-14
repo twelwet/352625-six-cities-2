@@ -5,7 +5,7 @@ import Offer from "./offer.jsx";
 
 Enzyme.configure({adapter: new Adapter()});
 
-const offer = {
+const props = {
   [`id`]: 111,
   [`city`]: {
     [`name`]: `City Name`,
@@ -26,45 +26,21 @@ const offer = {
   [`preview_image`]: `img/apartment-01.jpg`,
   [`rating`]: 100,
   [`is_premium`]: true,
-  [`is_favorite`]: true
+  [`is_favorite`]: true,
+  onBookmarkClick: jest.fn(({offerId, favoriteStatus}) => ({offerId, favoriteStatus}))
 };
 
-describe(`Offer's callbacks are called by mouse events`, () => {
-  const onOfferHover = jest.fn(() => {});
-  const onOfferLeave = jest.fn(() => {});
-  const onBookmarkClick = jest.fn(({offerId, favoriteStatus}) => ({offerId, favoriteStatus}));
-
-  const offerComponent = shallow(<Offer
-    {...offer}
-    onOfferHover={onOfferHover}
-    onOfferLeave={onOfferLeave}
-    onBookmarkClick={onBookmarkClick}
+it(`onBookmarkClick callback is called 1 time with 1 click event`, () => {
+  const OfferComponent = shallow(<Offer
+    {...props}
   />);
 
-  const offerElement = offerComponent.find(`.place-card`);
+  const offerElement = OfferComponent.find(`.place-card__info`);
 
-  it(`Callbacks are called 0 times without mouse/click events`, () => {
-    expect(onOfferHover).toHaveBeenCalledTimes(0);
-    expect(onOfferLeave).toHaveBeenCalledTimes(0);
-    expect(onBookmarkClick).toHaveBeenCalledTimes(0);
-  });
+  const btn = offerElement.find(`.place-card__bookmark-button`);
+  btn.simulate(`click`);
 
-  it(`MouseOver / MouseLeave callbacks are called 5 times with 5 mouse events`, () => {
-    offerElement.simulate(`mouseover`);
-    offerElement.simulate(`mouseleave`);
-    offerElement.simulate(`mouseover`);
-    offerElement.simulate(`mouseleave`);
-    offerElement.simulate(`mouseover`);
-
-    expect(onOfferHover).toHaveBeenCalledTimes(3);
-    expect(onOfferLeave).toHaveBeenCalledTimes(2);
-  });
-
-  it(`onBookmarkClick callback is called 1 time with 1 click event`, () => {
-    const btn = offerElement.find(`.place-card__bookmark-button`);
-    btn.simulate(`click`);
-
-    expect(onBookmarkClick).toHaveBeenCalledTimes(1);
-    expect(onBookmarkClick).toHaveBeenCalledWith({offerId: 111, favoriteStatus: true});
-  });
+  expect(props.onBookmarkClick).toHaveBeenCalledTimes(1);
+  expect(props.onBookmarkClick).toHaveBeenCalledWith({offerId: 111, favoriteStatus: true});
 });
+

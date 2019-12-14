@@ -45,8 +45,6 @@ it(`Offer correctly renders after relaunch`, () => {
             rating={offer[`rating`]}
             is_premium={offer[`is_premium`]}
             is_favorite={offer[`is_favorite`]}
-            onOfferHover={onOfferHover}
-            onOfferLeave={onOfferLeave}
             onBookmarkClick={onBookmarkClick}
           />
         </BrowserRouter>
