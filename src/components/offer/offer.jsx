@@ -3,7 +3,17 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 const Offer = (props) => {
-  return (
+  return <article
+    onMouseOver={props.onOfferHover}
+    onMouseLeave={props.onOfferLeave}
+    className="cities__place-card place-card"
+  >
+    {props[`is_premium`] ? <div className="place-card__mark"><span>Premium</span></div> : ``}
+    <div className="cities__image-wrapper place-card__image-wrapper">
+      <a href="#">
+        <img className="place-card__image" src={props[`preview_image`]} width="260" height="200" alt="Place image"/>
+      </a>
+    </div>
     <div className="place-card__info">
       <div className="place-card__price-wrapper">
         <div className="place-card__price">
@@ -32,7 +42,7 @@ const Offer = (props) => {
       </h2>
       <p className="place-card__type">{props[`type`]}</p>
     </div>
-  );
+  </article>;
 };
 
 Offer.propTypes = {
@@ -57,6 +67,8 @@ Offer.propTypes = {
   [`rating`]: PropTypes.number.isRequired,
   [`is_premium`]: PropTypes.bool.isRequired,
   [`is_favorite`]: PropTypes.bool.isRequired,
+  onOfferHover: PropTypes.func.isRequired,
+  onOfferLeave: PropTypes.func.isRequired,
   onBookmarkClick: PropTypes.func.isRequired
 };
 
