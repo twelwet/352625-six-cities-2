@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`withWrappedPage correctly wrap MockComponent 1`] = `
+exports[`withWrapped correctly wrap MockComponent 1`] = `
 <div
-  className="page"
+  className="class"
 >
   <header
     className="header"

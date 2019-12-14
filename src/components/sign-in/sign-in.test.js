@@ -7,6 +7,7 @@ it(`SignIn correctly renders after relaunch`, () => {
 
   const tree = renderer.create(
       <SignIn
+        wrapperClass={`page`}
         onFormSubmit={onFormSubmit}
       />
   )

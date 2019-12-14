@@ -43,6 +43,7 @@ const SignIn = (props) => {
 };
 
 SignIn.propTypes = {
+  wrapperClass: PropTypes.string.isRequired,
   onFormSubmit: PropTypes.func.isRequired
 };
 

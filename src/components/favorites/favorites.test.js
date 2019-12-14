@@ -8,7 +8,7 @@ jest.mock(`react-router-dom`, () => ({
 
 it(`Favorites correctly renders after relaunch`, () => {
   const tree = renderer
-    .create(<Favorites />);
+    .create(<Favorites wrapperClass={`page`} />);
 
   expect(tree).toMatchSnapshot();
 });

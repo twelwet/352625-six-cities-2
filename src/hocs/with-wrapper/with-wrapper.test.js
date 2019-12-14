@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import withWrapperPageLogin from "./with-wrapper-page-login.js";
+import withWrapper from "./with-wrapper.js";
 
 jest.mock(`react-router-dom`, () => ({
   Link: () => null
@@ -8,16 +8,20 @@ jest.mock(`react-router-dom`, () => ({
 
 jest.mock(`../../components/user/user.jsx`, () => `User`);
 
+const props = {
+  wrapperClass: `class`
+}
+
 const MockComponent = () => {
   return <div>Mock</div>;
 };
 
-const MockComponentWrapped = withWrapperPageLogin(MockComponent);
+const MockComponentWrapped = withWrapper(MockComponent);
 
-it(`withWrappedPageLogin correctly wrap MockComponent`, () => {
+it(`withWrapped correctly wrap MockComponent`, () => {
 
   const tree = renderer
-    .create(<MockComponentWrapped />
+    .create(<MockComponentWrapped {...props} />
     )
     .toJSON();
 

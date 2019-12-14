@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import {OfferDetails} from "./offer-details.jsx";
 
 const props = {
+  wrapperClass: `something`,
   id: 1,
   offer: {
     images: [`img-1.jpg`, `img-2.jpg`, `img-3.jpg`],

@@ -288,6 +288,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 OfferDetails.propTypes = {
+  wrapperClass: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   offer: PropTypes
     .shape({

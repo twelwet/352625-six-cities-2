@@ -55,6 +55,7 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
+  wrapperClass: PropTypes.string.isRequired,
   citiesList: PropTypes.arrayOf(PropTypes.string).isRequired,
   city: PropTypes.string,
   cityOffers: PropTypes

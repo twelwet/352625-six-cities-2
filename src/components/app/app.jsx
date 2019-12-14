@@ -11,15 +11,13 @@ import OfferDetails from "../offer-details/offer-details.jsx";
 import {Operation} from "../../reducer/user/user.js";
 import {getAuthFlag} from "../../reducer/user/selectors.js";
 
-import withWrapperPage from "../../hocs/with-wrapper-page/with-wrapper-page.js";
-import withWrapperPageMain from "../../hocs/with-wrapper-page-main/with-wrapper-page-main.js";
-import withWrapperPageLogin from "../../hocs/with-wrapper-page-login/with-wrapper-page-login.js";
+import withWrapper from "../../hocs/with-wrapper/with-wrapper.js";
 
 
-const MainScreenWrapped = withWrapperPageMain(MainScreen);
-const SignInWrapped = withWrapperPageLogin(SignIn);
-const FavoritesWrapped = withWrapperPage(Favorites);
-const OfferDetailsWrapped = withWrapperPage(OfferDetails);
+const MainScreenWrapped = withWrapper(MainScreen);
+const SignInWrapped = withWrapper(SignIn);
+const FavoritesWrapped = withWrapper(Favorites);
+const OfferDetailsWrapped = withWrapper(OfferDetails);
 
 const App = (props) => {
   return (
@@ -28,7 +26,10 @@ const App = (props) => {
         exact
         path="/"
         render={() => (
-          <MainScreenWrapped {...props} />
+          <MainScreenWrapped
+            wrapperClass="page page--gray page--main"
+            {...props}
+          />
         )}
       />
 
@@ -36,7 +37,9 @@ const App = (props) => {
         exact
         path="/login"
         render={() => props.isAuthRequired ? (
-          <SignInWrapped {...props} />
+          <SignInWrapped
+            wrapperClass="page page--gray page--login"
+            {...props} />
         ) : (
           <Redirect to="/" />
         )}
@@ -48,7 +51,9 @@ const App = (props) => {
         render={() => props.isAuthRequired ? (
           <Redirect to="/" />
         ) : (
-          <FavoritesWrapped {...props} />
+          <FavoritesWrapped
+            wrapperClass="page"
+          />
         )}
       />
 
@@ -56,7 +61,9 @@ const App = (props) => {
         exact
         path="/offer/:id"
         render={({match}) => (
-          <OfferDetailsWrapped id={Number(match.params.id)} />
+          <OfferDetailsWrapped
+            wrapperClass="page"
+            id={Number(match.params.id)} />
         )}
       />
     </Switch>);

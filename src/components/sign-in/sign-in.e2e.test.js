@@ -9,6 +9,7 @@ describe(`Sign-in component works correctly`, () => {
   const onFormSubmit = jest.fn();
 
   const signInComponent = mount(<SignIn
+    wrapperClass={`page`}
     onFormSubmit={onFormSubmit}
   />);
 
