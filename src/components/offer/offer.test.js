@@ -36,6 +36,8 @@ it(`Offer correctly renders after relaunch`, () => {
     .create(
         <BrowserRouter>
           <Offer
+            offerArticleClass={`offer-article-class`}
+            offerDivClass={`offer-div-class`}
             id={offer[`id`]}
             key={offer[`id`]}
             title={offer[`title`]}

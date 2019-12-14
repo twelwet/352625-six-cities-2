@@ -2,10 +2,10 @@
 
 exports[`Offers correctly renders after relaunch 1`] = `
 <div
-  className="cities__places-list places__list tabs__content"
+  className="offers-class"
 >
   <article
-    className="cities__place-card place-card"
+    className="offer-article-class"
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -17,7 +17,7 @@ exports[`Offers correctly renders after relaunch 1`] = `
       </span>
     </div>
     <div
-      className="cities__image-wrapper place-card__image-wrapper"
+      className="offer-div-class"
     >
       <a
         href="#"
@@ -111,13 +111,13 @@ exports[`Offers correctly renders after relaunch 1`] = `
     </div>
   </article>
   <article
-    className="cities__place-card place-card"
+    className="offer-article-class"
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
     
     <div
-      className="cities__image-wrapper place-card__image-wrapper"
+      className="offer-div-class"
     >
       <a
         href="#"

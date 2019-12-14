@@ -2,7 +2,7 @@
 
 exports[`Offer correctly renders after relaunch 1`] = `
 <article
-  className="cities__place-card place-card"
+  className="offer-article-class"
   onMouseLeave={[Function]}
   onMouseOver={[Function]}
 >
@@ -14,7 +14,7 @@ exports[`Offer correctly renders after relaunch 1`] = `
     </span>
   </div>
   <div
-    className="cities__image-wrapper place-card__image-wrapper"
+    className="offer-div-class"
   >
     <a
       href="#"

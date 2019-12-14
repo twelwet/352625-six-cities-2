@@ -62,10 +62,13 @@ it(`Offers correctly renders after relaunch`, () => {
     .create(
         <BrowserRouter>
           <Offers
-            cityOffers={offers}
+            offersList={offers}
             onSelect={renderActiveOffer}
             onUnselect={showActiveId}
             onBookmarkClick={onBookmarkClick}
+            offersClass={`offers-class`}
+            offerArticleClass={`offer-article-class`}
+            offerDivClass={`offer-div-class`}
           />
         </BrowserRouter>
     )

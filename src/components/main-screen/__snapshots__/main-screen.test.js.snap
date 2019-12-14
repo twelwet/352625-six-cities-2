@@ -71,8 +71,12 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
           },
         ]
       }
+      offerArticleClass="offer-article"
+      offerDivClass="offer-div"
+      offersClass="offers-class"
       onBookmarkClick={[MockFunction]}
       onCityClick={[MockFunction]}
+      wrapperClass="wrapper-class"
     />
   </div>
   <div
@@ -150,142 +154,244 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
             </li>
           </ul>
         </form>
-        <div
-          className="cities__places-list places__list tabs__content"
-        >
-          <WithActiveElement
-            citiesList={
-              Array [
-                "Amsterdam",
-                "Berlin",
-                "Helsinki",
-              ]
-            }
-            city="Amsterdam"
-            cityOffers={
-              Array [
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "zoom": 12,
-                    },
-                    "name": "City Name",
-                  },
-                  "id": 111,
-                  "is_favorite": false,
-                  "is_premium": true,
+        <WithActiveElement
+          citiesList={
+            Array [
+              "Amsterdam",
+              "Berlin",
+              "Helsinki",
+            ]
+          }
+          city="Amsterdam"
+          cityOffers={
+            Array [
+              Object {
+                "city": Object {
                   "location": Object {
-                    "latitude": 52.3909553943508,
-                    "longitude": 4.85309666406198,
+                    "latitude": 52.38333,
+                    "longitude": 4.9,
                     "zoom": 12,
                   },
-                  "preview_image": "img/img-1.jpg",
-                  "price": 120,
-                  "rating": 100,
-                  "title": "Some text",
-                  "type": "Apartment",
+                  "name": "City Name",
                 },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "zoom": 12,
-                    },
-                    "name": "City Name 2",
-                  },
-                  "id": 222,
-                  "is_favorite": true,
-                  "is_premium": false,
+                "id": 111,
+                "is_favorite": false,
+                "is_premium": true,
+                "location": Object {
+                  "latitude": 52.3909553943508,
+                  "longitude": 4.85309666406198,
+                  "zoom": 12,
+                },
+                "preview_image": "img/img-1.jpg",
+                "price": 120,
+                "rating": 100,
+                "title": "Some text",
+                "type": "Apartment",
+              },
+              Object {
+                "city": Object {
                   "location": Object {
-                    "latitude": 52.3909553943508,
-                    "longitude": 4.85309666406198,
+                    "latitude": 52.38333,
+                    "longitude": 4.9,
                     "zoom": 12,
                   },
-                  "preview_image": "img/img-2.jpg",
-                  "price": 120,
-                  "rating": 100,
-                  "title": "Some text",
-                  "type": "House",
+                  "name": "City Name 2",
                 },
-              ]
-            }
-            onBookmarkClick={[MockFunction]}
-            onCityClick={[MockFunction]}
-          />
-        </div>
+                "id": 222,
+                "is_favorite": true,
+                "is_premium": false,
+                "location": Object {
+                  "latitude": 52.3909553943508,
+                  "longitude": 4.85309666406198,
+                  "zoom": 12,
+                },
+                "preview_image": "img/img-2.jpg",
+                "price": 120,
+                "rating": 100,
+                "title": "Some text",
+                "type": "House",
+              },
+            ]
+          }
+          offerArticleClass="offer-article"
+          offerDivClass="offer-div"
+          offersClass="offers-class"
+          offersList={
+            Array [
+              Object {
+                "city": Object {
+                  "location": Object {
+                    "latitude": 52.38333,
+                    "longitude": 4.9,
+                    "zoom": 12,
+                  },
+                  "name": "City Name",
+                },
+                "id": 111,
+                "is_favorite": false,
+                "is_premium": true,
+                "location": Object {
+                  "latitude": 52.3909553943508,
+                  "longitude": 4.85309666406198,
+                  "zoom": 12,
+                },
+                "preview_image": "img/img-1.jpg",
+                "price": 120,
+                "rating": 100,
+                "title": "Some text",
+                "type": "Apartment",
+              },
+              Object {
+                "city": Object {
+                  "location": Object {
+                    "latitude": 52.38333,
+                    "longitude": 4.9,
+                    "zoom": 12,
+                  },
+                  "name": "City Name 2",
+                },
+                "id": 222,
+                "is_favorite": true,
+                "is_premium": false,
+                "location": Object {
+                  "latitude": 52.3909553943508,
+                  "longitude": 4.85309666406198,
+                  "zoom": 12,
+                },
+                "preview_image": "img/img-2.jpg",
+                "price": 120,
+                "rating": 100,
+                "title": "Some text",
+                "type": "House",
+              },
+            ]
+          }
+          onBookmarkClick={[MockFunction]}
+          onCityClick={[MockFunction]}
+          wrapperClass="wrapper-class"
+        />
       </section>
       <div
         className="cities__right-section"
       >
-        <section
-          className="cities__map map"
-        >
-          <MapComponent
-            citiesList={
-              Array [
-                "Amsterdam",
-                "Berlin",
-                "Helsinki",
-              ]
-            }
-            city="Amsterdam"
-            cityOffers={
-              Array [
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "zoom": 12,
-                    },
-                    "name": "City Name",
-                  },
-                  "id": 111,
-                  "is_favorite": false,
-                  "is_premium": true,
+        <MapComponent
+          citiesList={
+            Array [
+              "Amsterdam",
+              "Berlin",
+              "Helsinki",
+            ]
+          }
+          city="Amsterdam"
+          cityOffers={
+            Array [
+              Object {
+                "city": Object {
                   "location": Object {
-                    "latitude": 52.3909553943508,
-                    "longitude": 4.85309666406198,
+                    "latitude": 52.38333,
+                    "longitude": 4.9,
                     "zoom": 12,
                   },
-                  "preview_image": "img/img-1.jpg",
-                  "price": 120,
-                  "rating": 100,
-                  "title": "Some text",
-                  "type": "Apartment",
+                  "name": "City Name",
                 },
-                Object {
-                  "city": Object {
-                    "location": Object {
-                      "latitude": 52.38333,
-                      "longitude": 4.9,
-                      "zoom": 12,
-                    },
-                    "name": "City Name 2",
-                  },
-                  "id": 222,
-                  "is_favorite": true,
-                  "is_premium": false,
+                "id": 111,
+                "is_favorite": false,
+                "is_premium": true,
+                "location": Object {
+                  "latitude": 52.3909553943508,
+                  "longitude": 4.85309666406198,
+                  "zoom": 12,
+                },
+                "preview_image": "img/img-1.jpg",
+                "price": 120,
+                "rating": 100,
+                "title": "Some text",
+                "type": "Apartment",
+              },
+              Object {
+                "city": Object {
                   "location": Object {
-                    "latitude": 52.3909553943508,
-                    "longitude": 4.85309666406198,
+                    "latitude": 52.38333,
+                    "longitude": 4.9,
                     "zoom": 12,
                   },
-                  "preview_image": "img/img-2.jpg",
-                  "price": 120,
-                  "rating": 100,
-                  "title": "Some text",
-                  "type": "House",
+                  "name": "City Name 2",
                 },
-              ]
-            }
-            onBookmarkClick={[MockFunction]}
-            onCityClick={[MockFunction]}
-          />
-        </section>
+                "id": 222,
+                "is_favorite": true,
+                "is_premium": false,
+                "location": Object {
+                  "latitude": 52.3909553943508,
+                  "longitude": 4.85309666406198,
+                  "zoom": 12,
+                },
+                "preview_image": "img/img-2.jpg",
+                "price": 120,
+                "rating": 100,
+                "title": "Some text",
+                "type": "House",
+              },
+            ]
+          }
+          mapClass="cities__map map"
+          mapHeight="1000px"
+          offerArticleClass="offer-article"
+          offerDivClass="offer-div"
+          offersClass="offers-class"
+          offersList={
+            Array [
+              Object {
+                "city": Object {
+                  "location": Object {
+                    "latitude": 52.38333,
+                    "longitude": 4.9,
+                    "zoom": 12,
+                  },
+                  "name": "City Name",
+                },
+                "id": 111,
+                "is_favorite": false,
+                "is_premium": true,
+                "location": Object {
+                  "latitude": 52.3909553943508,
+                  "longitude": 4.85309666406198,
+                  "zoom": 12,
+                },
+                "preview_image": "img/img-1.jpg",
+                "price": 120,
+                "rating": 100,
+                "title": "Some text",
+                "type": "Apartment",
+              },
+              Object {
+                "city": Object {
+                  "location": Object {
+                    "latitude": 52.38333,
+                    "longitude": 4.9,
+                    "zoom": 12,
+                  },
+                  "name": "City Name 2",
+                },
+                "id": 222,
+                "is_favorite": true,
+                "is_premium": false,
+                "location": Object {
+                  "latitude": 52.3909553943508,
+                  "longitude": 4.85309666406198,
+                  "zoom": 12,
+                },
+                "preview_image": "img/img-2.jpg",
+                "price": 120,
+                "rating": 100,
+                "title": "Some text",
+                "type": "House",
+              },
+            ]
+          }
+          onBookmarkClick={[MockFunction]}
+          onCityClick={[MockFunction]}
+          wrapperClass="wrapper-class"
+        />
       </div>
     </div>
   </div>

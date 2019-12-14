@@ -39,9 +39,11 @@ describe(`Offer's callbacks are called by mouse events`, () => {
     onOfferHover={onOfferHover}
     onOfferLeave={onOfferLeave}
     onBookmarkClick={onBookmarkClick}
+    offerArticleClass={`offer-article-class`}
+    offerDivClass={`offer-div-class`}
   />);
 
-  const offerElement = offerComponent.find(`.place-card`);
+  const offerElement = offerComponent.find(`.offer-article-class`);
 
   it(`Callbacks are called 0 times without mouse/click events`, () => {
     expect(onOfferHover).toHaveBeenCalledTimes(0);

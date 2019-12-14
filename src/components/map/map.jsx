@@ -4,32 +4,38 @@ import {Map, Marker, TileLayer} from "react-leaflet";
 import PropTypes from "prop-types";
 
 const icon = L.icon({
-  iconUrl: `img/pin.svg`,
+  iconUrl: `/img/pin.svg`,
   iconSize: [30, 30]
 });
 
 const MapComponent = (props) => {
-  const {cityOffers} = props;
-  const cityLocation = cityOffers[0][`city`][`location`];
+  const {offersList, mapHeight} = props;
+  const cityLocation = offersList[0][`city`][`location`];
 
-  return <Map style={{height: `850px`}}
-    center={[cityLocation.latitude, cityLocation.longitude]}
-    zoom={cityLocation.zoom}
-    zoomControl={false}
-    position={[cityLocation.latitude, cityLocation.longitude]}
-  >
-    <TileLayer
-      url={`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`}
-      attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`}
-    />
-    {cityOffers.map((item) => {
-      return <Marker key={item.id} position={[item.location.latitude, item.location.longitude]} icon={icon}/>;
-    })}
-  </Map>;
+  return (
+    <section className={props.mapClass}>
+      <Map style={{height: mapHeight}}
+        center={[cityLocation.latitude, cityLocation.longitude]}
+        zoom={cityLocation.zoom}
+        zoomControl={false}
+        position={[cityLocation.latitude, cityLocation.longitude]}
+      >
+        <TileLayer
+          url={`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`}
+          attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`}
+        />
+        {offersList.map((item) => {
+          return <Marker key={item.id} position={[item.location.latitude, item.location.longitude]} icon={icon}/>;
+        })}
+      </Map>
+    </section>
+  );
 };
 
 MapComponent.propTypes = {
-  cityOffers: PropTypes
+  mapHeight: PropTypes.string.isRequired,
+  mapClass: PropTypes.string.isRequired,
+  offersList: PropTypes
     .arrayOf(PropTypes
       .shape({
         [`id`]: PropTypes.number.isRequired,

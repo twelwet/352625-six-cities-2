@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 const Offer = (props) => {
+  const {offerArticleClass, offerDivClass} = props;
   return <article
     onMouseOver={props.onOfferHover}
     onMouseLeave={props.onOfferLeave}
-    className="cities__place-card place-card"
+    className={offerArticleClass}
   >
     {props[`is_premium`] ? <div className="place-card__mark"><span>Premium</span></div> : ``}
-    <div className="cities__image-wrapper place-card__image-wrapper">
+    <div className={offerDivClass}>
       <a href="#">
         <img className="place-card__image" src={props[`preview_image`]} width="260" height="200" alt="Place image"/>
       </a>
@@ -46,6 +47,8 @@ const Offer = (props) => {
 };
 
 Offer.propTypes = {
+  offerArticleClass: PropTypes.string.isRequired,
+  offerDivClass: PropTypes.string.isRequired,
   [`id`]: PropTypes.number.isRequired,
   [`city`]: PropTypes.exact({
     [`name`]: PropTypes.string.isRequired,

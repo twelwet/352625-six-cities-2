@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import Offer from "../../components/offer/offer.jsx";
 
 const Offers = (props) => {
-  const {cityOffers, onSelect, onUnselect, onBookmarkClick} = props;
-  return <div className="cities__places-list places__list tabs__content">
-    {cityOffers.map((item, index) => {
+  const {offersList, onSelect, onUnselect, onBookmarkClick, offersClass, offerArticleClass, offerDivClass} = props;
+  return <div className={offersClass}>
+    {offersList.map((item, index) => {
       return (
         <Offer
           {...item}
@@ -13,6 +13,8 @@ const Offers = (props) => {
           onOfferHover={() => onSelect(index)}
           onOfferLeave={() => onUnselect()}
           onBookmarkClick={onBookmarkClick}
+          offerArticleClass={offerArticleClass}
+          offerDivClass={offerDivClass}
         />
       );
     })}
@@ -21,7 +23,10 @@ const Offers = (props) => {
 
 
 Offers.propTypes = {
-  cityOffers: PropTypes
+  offersClass: PropTypes.string.isRequired,
+  offerArticleClass: PropTypes.string.isRequired,
+  offerDivClass: PropTypes.string.isRequired,
+  offersList: PropTypes
     .arrayOf(PropTypes
       .shape({
         [`id`]: PropTypes.number.isRequired,

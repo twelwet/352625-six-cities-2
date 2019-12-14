@@ -1,13 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
+
 import Cities from "../cities/cities.jsx";
 import Offers from "../offers/offers.jsx";
 import MapComponent from "../map/map.jsx";
-import withActiveElement from "../../hocs/with-active-element/with-active-element.js";
-import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/data/data";
+
+import {ActionCreator} from "../../reducer/data/data.js";
 import {getCity, getCitiesList, getOffersByCity} from "../../reducer/data/selectors.js";
 import {getAuthFlag} from "../../reducer/user/selectors.js";
+
+import withActiveElement from "../../hocs/with-active-element/with-active-element.js";
+
 
 const OffersWrapped = withActiveElement(Offers);
 const CitiesWrapped = withActiveElement(Cities);
@@ -38,16 +42,23 @@ const MainScreen = (props) => {
               <li className="places__option" tabIndex="0">Top rated first</li>
             </ul>
           </form>
-          <div className="cities__places-list places__list tabs__content">
-            <OffersWrapped
-              {...props}
-            />
-          </div>
+          <OffersWrapped
+            offersList={props.cityOffers}
+            offersClass={`cities__places-list places__list tabs__content`}
+            offerArticleClass={`cities__place-card place-card`}
+            offerDivClass={`cities__image-wrapper place-card__image-wrapper`}
+            {...props}
+          />
         </section>
         <div className="cities__right-section">
-          <section className="cities__map map">
-            {props.cityOffers.length ? <MapComponent {...props}/> : null}
-          </section>
+          {props.cityOffers.length
+            ? <MapComponent
+              offersList={props.cityOffers}
+              mapHeight={`1000px`}
+              mapClass={`cities__map map`}
+              {...props}
+            />
+            : null}
         </div>
       </div>
     </div>

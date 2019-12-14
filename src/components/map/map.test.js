@@ -56,7 +56,12 @@ const offers = [
 Enzyme.configure({adapter: new Adapter()});
 
 it(`MapComponent correctly renders after relaunch`, () => {
-  const tree = mount(<MapComponent cityOffers={offers} />);
+  const tree = mount(<MapComponent
+    mapClass={`some-class`}
+    mapHeight={`500px`}
+    offersList={offers}
+
+  />);
 
   expect(toJson(tree)).toMatchSnapshot();
 });

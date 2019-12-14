@@ -65,6 +65,10 @@ it(`MainScreen correctly renders after relaunch`, () => {
     cityOffers={mockOffers}
     onCityClick={onCityClick}
     onBookmarkClick={onBookmarkClick}
+    wrapperClass={`wrapper-class`}
+    offersClass={`offers-class`}
+    offerArticleClass={`offer-article`}
+    offerDivClass={`offer-div`}
   />);
 
   expect(toJson(tree)).toMatchSnapshot();

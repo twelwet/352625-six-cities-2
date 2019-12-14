@@ -243,7 +243,7 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
                     alt="Reviews avatar"
                     className="reviews__avatar user__avatar"
                     height="54"
-                    src="img/avatar-max.jpg"
+                    src="/img/avatar-max.jpg"
                     width="54"
                   />
                 </div>
@@ -453,8 +453,140 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
         </section>
       </div>
     </div>
-    <section
-      className="property__map map"
+    <MapComponent
+      id={1}
+      mapClass="property__map map"
+      mapHeight="600px"
+      nearestOffers={
+        Array [
+          Object {
+            "city": Object {
+              "location": Object {
+                "latitude": 52.38333,
+                "longitude": 4.9,
+                "zoom": 12,
+              },
+              "name": "City Name",
+            },
+            "id": 111,
+            "is_favorite": false,
+            "is_premium": true,
+            "location": Object {
+              "latitude": 52.3909553943508,
+              "longitude": 4.85309666406198,
+              "zoom": 12,
+            },
+            "preview_image": "img/img-1.jpg",
+            "price": 120,
+            "rating": 100,
+            "title": "Some text",
+            "type": "Apartment",
+          },
+          Object {
+            "city": Object {
+              "location": Object {
+                "latitude": 52.38333,
+                "longitude": 4.9,
+                "zoom": 12,
+              },
+              "name": "City Name 2",
+            },
+            "id": 222,
+            "is_favorite": true,
+            "is_premium": false,
+            "location": Object {
+              "latitude": 52.3909553943508,
+              "longitude": 4.85309666406198,
+              "zoom": 12,
+            },
+            "preview_image": "img/img-2.jpg",
+            "price": 120,
+            "rating": 100,
+            "title": "Some text",
+            "type": "House",
+          },
+        ]
+      }
+      offer={
+        Object {
+          "bedrooms": 2,
+          "description": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
+          "goods": Array [
+            "Wifi",
+            "Heating",
+            "Kitchen",
+          ],
+          "host": Object {
+            "avatar_url": "path to file",
+            "id": 24,
+            "is_pro": false,
+            "name": "Name",
+          },
+          "images": Array [
+            "img-1.jpg",
+            "img-2.jpg",
+            "img-3.jpg",
+          ],
+          "is_favorite": true,
+          "max_adults": 3,
+          "price": 148,
+          "rating": 4.3,
+          "title": "Title",
+          "type": "flat",
+        }
+      }
+      offersList={
+        Array [
+          Object {
+            "city": Object {
+              "location": Object {
+                "latitude": 52.38333,
+                "longitude": 4.9,
+                "zoom": 12,
+              },
+              "name": "City Name",
+            },
+            "id": 111,
+            "is_favorite": false,
+            "is_premium": true,
+            "location": Object {
+              "latitude": 52.3909553943508,
+              "longitude": 4.85309666406198,
+              "zoom": 12,
+            },
+            "preview_image": "img/img-1.jpg",
+            "price": 120,
+            "rating": 100,
+            "title": "Some text",
+            "type": "Apartment",
+          },
+          Object {
+            "city": Object {
+              "location": Object {
+                "latitude": 52.38333,
+                "longitude": 4.9,
+                "zoom": 12,
+              },
+              "name": "City Name 2",
+            },
+            "id": 222,
+            "is_favorite": true,
+            "is_premium": false,
+            "location": Object {
+              "latitude": 52.3909553943508,
+              "longitude": 4.85309666406198,
+              "zoom": 12,
+            },
+            "preview_image": "img/img-2.jpg",
+            "price": 120,
+            "rating": 100,
+            "title": "Some text",
+            "type": "House",
+          },
+        ]
+      }
+      onBookmarkClick={[Function]}
+      wrapperClass="something"
     />
   </section>
   <div
@@ -473,7 +605,16 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
       >
         <article
           className="near-places__card place-card"
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
         >
+          <div
+            className="place-card__mark"
+          >
+            <span>
+              Premium
+            </span>
+          </div>
           <div
             className="near-places__image-wrapper place-card__image-wrapper"
           >
@@ -484,7 +625,7 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
                 alt="Place image"
                 className="place-card__image"
                 height="200"
-                src="img/room.jpg"
+                src="img/img-1.jpg"
                 width="260"
               />
             </a>
@@ -501,7 +642,101 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
                 <b
                   className="place-card__price-value"
                 >
-                  €80
+                  €
+                  120
+                </b>
+                <span
+                  className="place-card__price-text"
+                >
+                  / night
+                </span>
+              </div>
+              <button
+                className="place-card__bookmark-button button"
+                onClick={[Function]}
+                type="button"
+              >
+                <svg
+                  className="place-card__bookmark-icon"
+                  height="19"
+                  width="18"
+                >
+                  <use
+                    xlinkHref="#icon-bookmark"
+                  />
+                </svg>
+                <span
+                  className="visually-hidden"
+                >
+                  To bookmarks
+                </span>
+              </button>
+            </div>
+            <div
+              className="place-card__rating rating"
+            >
+              <div
+                className="place-card__stars rating__stars"
+              >
+                <span
+                  style={
+                    Object {
+                      "width": "2000%",
+                    }
+                  }
+                />
+                <span
+                  className="visually-hidden"
+                >
+                  Rating
+                </span>
+              </div>
+            </div>
+            <h2
+              className="place-card__name"
+            />
+            <p
+              className="place-card__type"
+            >
+              Apartment
+            </p>
+          </div>
+        </article>
+        <article
+          className="near-places__card place-card"
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+        >
+          
+          <div
+            className="near-places__image-wrapper place-card__image-wrapper"
+          >
+            <a
+              href="#"
+            >
+              <img
+                alt="Place image"
+                className="place-card__image"
+                height="200"
+                src="img/img-2.jpg"
+                width="260"
+              />
+            </a>
+          </div>
+          <div
+            className="place-card__info"
+          >
+            <div
+              className="place-card__price-wrapper"
+            >
+              <div
+                className="place-card__price"
+              >
+                <b
+                  className="place-card__price-value"
+                >
+                  €
+                  120
                 </b>
                 <span
                   className="place-card__price-text"
@@ -511,100 +746,7 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
               </div>
               <button
                 className="place-card__bookmark-button place-card__bookmark-button--active button"
-                type="button"
-              >
-                <svg
-                  className="place-card__bookmark-icon"
-                  height="19"
-                  width="18"
-                >
-                  <use
-                    xlinkHref="#icon-bookmark"
-                  />
-                </svg>
-                <span
-                  className="visually-hidden"
-                >
-                  In bookmarks
-                </span>
-              </button>
-            </div>
-            <div
-              className="place-card__rating rating"
-            >
-              <div
-                className="place-card__stars rating__stars"
-              >
-                <span
-                  style={
-                    Object {
-                      "width": "80%",
-                    }
-                  }
-                />
-                <span
-                  className="visually-hidden"
-                >
-                  Rating
-                </span>
-              </div>
-            </div>
-            <h2
-              className="place-card__name"
-            >
-              <a
-                href="#"
-              >
-                Wood and stone place
-              </a>
-            </h2>
-            <p
-              className="place-card__type"
-            >
-              Private room
-            </p>
-          </div>
-        </article>
-        <article
-          className="near-places__card place-card"
-        >
-          <div
-            className="near-places__image-wrapper place-card__image-wrapper"
-          >
-            <a
-              href="#"
-            >
-              <img
-                alt="Place image"
-                className="place-card__image"
-                height="200"
-                src="img/apartment-02.jpg"
-                width="260"
-              />
-            </a>
-          </div>
-          <div
-            className="place-card__info"
-          >
-            <div
-              className="place-card__price-wrapper"
-            >
-              <div
-                className="place-card__price"
-              >
-                <b
-                  className="place-card__price-value"
-                >
-                  €132
-                </b>
-                <span
-                  className="place-card__price-text"
-                >
-                  / night
-                </span>
-              </div>
-              <button
-                className="place-card__bookmark-button button"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -632,7 +774,7 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
                 <span
                   style={
                     Object {
-                      "width": "80%",
+                      "width": "2000%",
                     }
                   }
                 />
@@ -645,111 +787,11 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
             </div>
             <h2
               className="place-card__name"
-            >
-              <a
-                href="#"
-              >
-                Canal View Prinsengracht
-              </a>
-            </h2>
+            />
             <p
               className="place-card__type"
             >
-              Apartment
-            </p>
-          </div>
-        </article>
-        <article
-          className="near-places__card place-card"
-        >
-          <div
-            className="near-places__image-wrapper place-card__image-wrapper"
-          >
-            <a
-              href="#"
-            >
-              <img
-                alt="Place image"
-                className="place-card__image"
-                height="200"
-                src="img/apartment-03.jpg"
-                width="260"
-              />
-            </a>
-          </div>
-          <div
-            className="place-card__info"
-          >
-            <div
-              className="place-card__price-wrapper"
-            >
-              <div
-                className="place-card__price"
-              >
-                <b
-                  className="place-card__price-value"
-                >
-                  €180
-                </b>
-                <span
-                  className="place-card__price-text"
-                >
-                  / night
-                </span>
-              </div>
-              <button
-                className="place-card__bookmark-button button"
-                type="button"
-              >
-                <svg
-                  className="place-card__bookmark-icon"
-                  height="19"
-                  width="18"
-                >
-                  <use
-                    xlinkHref="#icon-bookmark"
-                  />
-                </svg>
-                <span
-                  className="visually-hidden"
-                >
-                  To bookmarks
-                </span>
-              </button>
-            </div>
-            <div
-              className="place-card__rating rating"
-            >
-              <div
-                className="place-card__stars rating__stars"
-              >
-                <span
-                  style={
-                    Object {
-                      "width": "100%",
-                    }
-                  }
-                />
-                <span
-                  className="visually-hidden"
-                >
-                  Rating
-                </span>
-              </div>
-            </div>
-            <h2
-              className="place-card__name"
-            >
-              <a
-                href="#"
-              >
-                Nice, cozy, warm big bed apartment
-              </a>
-            </h2>
-            <p
-              className="place-card__type"
-            >
-              Apartment
+              House
             </p>
           </div>
         </article>

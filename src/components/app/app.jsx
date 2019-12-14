@@ -63,7 +63,8 @@ const App = (props) => {
         render={({match}) => (
           <OfferDetailsWrapped
             wrapperClass="page"
-            id={Number(match.params.id)} />
+            id={Number(match.params.id)}
+          />
         )}
       />
     </Switch>);

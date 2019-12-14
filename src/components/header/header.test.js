@@ -8,7 +8,7 @@ jest.mock(`react-router-dom`, () => ({
 
 jest.mock(`../../components/user/user.jsx`, () => `User`);
 
-it(`Footer correctly renders after relaunch`, () => {
+it(`Header correctly renders after relaunch`, () => {
   const tree = renderer
     .create(<Header />);
 

@@ -10,7 +10,7 @@ jest.mock(`../../components/user/user.jsx`, () => `User`);
 
 const props = {
   wrapperClass: `class`
-}
+};
 
 const MockComponent = () => {
   return <div>Mock</div>;
