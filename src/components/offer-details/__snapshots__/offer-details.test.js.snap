@@ -48,7 +48,7 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
       <div
         className="property__wrapper"
       >
-        
+
         <div
           className="property__name-wrapper"
         >
@@ -120,7 +120,7 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
           <li
             className="property__feature property__feature--adults"
           >
-            Max 
+            Max
             3
              adults
           </li>
@@ -195,7 +195,7 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
             >
               Name
             </span>
-            
+
           </div>
           <div
             className="property__description"
@@ -209,7 +209,7 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
             <p
               className="property__text"
             >
-              
+
               .
             </p>
           </div>
@@ -220,7 +220,7 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
           <h2
             className="reviews__title"
           >
-            Reviews · 
+            Comments ·
             <span
               className="reviews__amount"
             >
@@ -240,7 +240,7 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
                   className="reviews__avatar-wrapper user__avatar-wrapper"
                 >
                   <img
-                    alt="Reviews avatar"
+                    alt="Comments avatar"
                     className="reviews__avatar user__avatar"
                     height="54"
                     src="/img/avatar-max.jpg"
@@ -427,13 +427,13 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
               <p
                 className="reviews__help"
               >
-                To submit review please make sure to set 
+                To submit review please make sure to set
                 <span
                   className="reviews__star"
                 >
                   rating
                 </span>
-                 and describe your stay with at least 
+                 and describe your stay with at least
                 <b
                   className="reviews__text-amount"
                 >
@@ -707,7 +707,7 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
-          
+
           <div
             className="near-places__image-wrapper place-card__image-wrapper"
           >
