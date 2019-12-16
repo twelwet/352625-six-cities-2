@@ -60,7 +60,7 @@ const MainScreen = (props) => {
           {props.cityOffers.length
             ? <MapComponent
               offersList={props.cityOffers}
-              mapHeight={`1000px`}
+              mapHeight={`100%`}
               mapClass={`cities__map map`}
               {...props}
             />

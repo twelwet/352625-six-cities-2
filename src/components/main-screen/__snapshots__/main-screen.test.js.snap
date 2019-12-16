@@ -334,7 +334,7 @@ exports[`MainScreen correctly renders after relaunch 1`] = `
             ]
           }
           mapClass="cities__map map"
-          mapHeight="1000px"
+          mapHeight="100%"
           offerArticleClass="offer-article"
           offerDivClass="offer-div"
           offersClass="offers-class"
