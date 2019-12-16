@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import Cities from "../cities/cities.jsx";
 import Offers from "../offers/offers.jsx";
 import MapComponent from "../map/map.jsx";
+import Loading from "../loading/loading.jsx";
 
 import {ActionCreator} from "../../reducer/data/data.js";
 import {getCity, getCitiesList, getOffersByCity} from "../../reducer/data/selectors.js";
@@ -17,6 +18,11 @@ const OffersWrapped = withActiveElement(Offers);
 const CitiesWrapped = withActiveElement(Cities);
 
 const MainScreen = (props) => {
+
+  if (props.city === null) {
+    return <Loading/>;
+  }
+
   return <main className="page__main page__main--index">
     <h1 className="visually-hidden">Cities</h1>
     <div className="tabs">

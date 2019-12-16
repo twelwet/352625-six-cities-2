@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 import Offers from "../offers/offers.jsx";
+import Loading from "../loading/loading.jsx";
 
 import {getOfferById, getNearestOffers} from "../../reducer/data/selectors.js";
 import {ActionCreator} from "../../reducer/data/data.js";
@@ -17,8 +18,39 @@ const Image = {
   MAX_COUNT: 6
 };
 
-const OfferDetails = (props) => {
-  const {images, title, rating, bedrooms, type, price, goods, host, description} = props.offer;
+const defaultProps = {
+  wrapperClass: ``,
+  id: ``,
+  offer: {
+    images: [],
+    title: ``,
+    rating: ``,
+    [`is_favorite`]: ``,
+    bedrooms: ``,
+    [`max_adults`]: ``,
+    type: ``,
+    price: ``,
+    goods: ``,
+    host: {
+      [`avatar_url`]: ``,
+      id: ``,
+      [`is_pro`]: ``,
+      name: ``
+    },
+    description: ``
+  },
+  nearestOffers: [],
+  onBookmarkClick: ``
+};
+
+const OfferDetails = (props = defaultProps) => {
+  const {offer, nearestOffers} = props;
+
+  if (!offer) {
+    return <Loading />;
+  }
+
+  const {images, title, rating, bedrooms, type, price, goods, host, description} = offer;
   return (
     <main className="page__main page__main--property">
       <section className="property">
@@ -180,9 +212,9 @@ const OfferDetails = (props) => {
             </section>
           </div>
         </div>
-        {props.nearestOffers.length
+        {nearestOffers.length
           ? <MapComponent
-            offersList={props.nearestOffers}
+            offersList={nearestOffers}
             mapHeight={`600px`}
             mapClass={`property__map map`}
             {...props}
@@ -193,7 +225,7 @@ const OfferDetails = (props) => {
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
           <OffersWrapped
-            offersList={props.nearestOffers}
+            offersList={nearestOffers}
             offersClass={`near-places__list places__list`}
             offerArticleClass={`near-places__card place-card`}
             offerDivClass={`near-places__image-wrapper place-card__image-wrapper`}
