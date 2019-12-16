@@ -45,4 +45,8 @@ const getNearestOffers = (state, targetId, quantity = 3) => {
   return nearestOffers.slice(1, quantity + 1);
 };
 
-export {getAllOffers, getCity, getCitiesList, getOffersByCity, getOfferById, getNearestOffers};
+const getComments = (state) => {
+  return state[NAME_SPACE].comments;
+}
+
+export {getAllOffers, getCity, getCitiesList, getOffersByCity, getOfferById, getNearestOffers, getComments};

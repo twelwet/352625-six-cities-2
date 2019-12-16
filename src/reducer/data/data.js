@@ -38,7 +38,7 @@ const ActionCreator = {
   },
   loadComments: (comments) => {
     return {
-      type: ActionType.LOAD_OFFERS,
+      type: ActionType.LOAD_COMMENTS,
       error: false,
       payload: comments
     };
