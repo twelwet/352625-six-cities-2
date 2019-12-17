@@ -47,6 +47,6 @@ const getNearestOffers = (state, targetId, quantity = 3) => {
 
 const getComments = (state) => {
   return state[NAME_SPACE].comments;
-}
+};
 
 export {getAllOffers, getCity, getCitiesList, getOffersByCity, getOfferById, getNearestOffers, getComments};

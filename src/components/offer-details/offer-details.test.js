@@ -77,7 +77,34 @@ const props = {
       [`is_favorite`]: true
     }
   ],
-  onBookmarkClick: () => {}
+  comments: [
+    {
+      comment: `some text about property 1`,
+      date: `2019-11-25T12:13:30.711Z`,
+      id: 1,
+      rating: 4.5,
+      user: {
+        [`avatar_url`]: `filepath`,
+        id: 12,
+        [`is_pro`]: true,
+        name: `Pamela`
+      }
+    },
+    {
+      comment: `some text about property 2`,
+      date: `2019-11-25T12:13:30.711Z`,
+      id: 2,
+      rating: 3.8,
+      user: {
+        [`avatar_url`]: `filepath`,
+        id: 13,
+        [`is_pro`]: false,
+        name: `James`
+      }
+    },
+  ],
+  onBookmarkClick: () => {},
+  onComponentMount: () => {}
 };
 
 it(`OfferDetails correctly renders after relaunch`, () => {
