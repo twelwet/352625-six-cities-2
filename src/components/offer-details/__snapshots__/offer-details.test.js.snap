@@ -283,10 +283,9 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
                 </p>
                 <time
                   className="reviews__time"
-                  dateTime="2019-04-24"
+                  dateTime="2019-11-25"
                 >
-                  April 2019
-                  2019-11-25T12:13:30.711Z
+                  November 2019
                 </time>
               </div>
             </li>
@@ -343,10 +342,9 @@ exports[`OfferDetails correctly renders after relaunch 1`] = `
                 </p>
                 <time
                   className="reviews__time"
-                  dateTime="2019-04-24"
+                  dateTime="2019-11-25"
                 >
-                  April 2019
-                  2019-11-25T12:13:30.711Z
+                  November 2019
                 </time>
               </div>
             </li>
