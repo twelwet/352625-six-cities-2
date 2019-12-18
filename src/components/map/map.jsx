@@ -10,6 +10,11 @@ const icon = L.icon({
 
 const MapComponent = (props) => {
   const {offersList, mapHeight} = props;
+
+  if (props.offersList.length === 0) {
+    return <section className={props.mapClass} />;
+  }
+
   const cityLocation = offersList[0][`city`][`location`];
 
   return (

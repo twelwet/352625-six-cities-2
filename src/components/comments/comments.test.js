@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import Comments from "./comments.jsx";
 
 const props = {
+  isAuthRequired: true,
   comments: [
     {
       comment: `some comment text`,

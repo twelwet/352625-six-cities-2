@@ -57,14 +57,12 @@ const MainScreen = (props) => {
           />
         </section>
         <div className="cities__right-section">
-          {props.cityOffers.length
-            ? <MapComponent
-              offersList={props.cityOffers}
-              mapHeight={`100%`}
-              mapClass={`cities__map map`}
-              {...props}
-            />
-            : null}
+          <MapComponent
+            offersList={props.cityOffers}
+            mapHeight={`100%`}
+            mapClass={`cities__map map`}
+            {...props}
+          />
         </div>
       </div>
     </div>

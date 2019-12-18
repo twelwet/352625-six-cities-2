@@ -9,6 +9,7 @@ jest.mock(`react-router-dom`, () => ({
 jest.mock(`../../components/map/map.jsx`, () => `MapComponent`);
 
 const props = {
+  isAuthRequired: true,
   wrapperClass: `something`,
   id: 1,
   offer: {

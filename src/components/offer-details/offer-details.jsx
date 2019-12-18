@@ -8,6 +8,7 @@ import Comments from "../comments/comments.jsx";
 import MapComponent from "../map/map.jsx";
 
 import {getOfferById, getNearestOffers, getComments} from "../../reducer/data/selectors.js";
+import {getAuthFlag} from "../../reducer/user/selectors.js";
 import {Operation, ActionCreator} from "../../reducer/data/data.js";
 
 import withActiveElement from "../../hocs/with-active-element/with-active-element.js";
@@ -20,6 +21,7 @@ const Image = {
 };
 
 const defaultProps = {
+  isAuthRequired: ``,
   wrapperClass: ``,
   id: ``,
   offer: {
@@ -41,8 +43,8 @@ const defaultProps = {
     description: ``
   },
   nearestOffers: [],
-  onBookmarkClick: ``,
-  onComponentMount: ``
+  onBookmarkClick: () => {},
+  onComponentMount: () => {}
 };
 
 class OfferDetails extends React.PureComponent {
@@ -56,8 +58,15 @@ class OfferDetails extends React.PureComponent {
     onComponentMount(id);
   }
 
+  componentDidUpdate(prevProps) {
+    const {id, onComponentMount} = this.props;
+    if (id !== prevProps.id) {
+      onComponentMount(id);
+    }
+  }
+
   render() {
-    const {id, offer, nearestOffers, onBookmarkClick, comments} = this.props;
+    const {id, offer, nearestOffers, onBookmarkClick, comments, isAuthRequired} = this.props;
 
     if (!offer) {
       return <Loading />;
@@ -153,17 +162,18 @@ class OfferDetails extends React.PureComponent {
                   })}
                 </div>
               </div>
-              <Comments comments={comments} />
+              <Comments
+                comments={comments}
+                isAuthRequired={isAuthRequired}
+              />
             </div>
           </div>
-          {nearestOffers.length
-            ? <MapComponent
-              offersList={nearestOffers}
-              mapHeight={`600px`}
-              mapClass={`property__map map`}
-              {...this.props}
-            />
-            : null}
+          <MapComponent
+            offersList={nearestOffers}
+            mapHeight={`600px`}
+            mapClass={`property__map map`}
+            {...this.props}
+          />
         </section>
         <div className="container">
           <section className="near-places places">
@@ -183,6 +193,7 @@ class OfferDetails extends React.PureComponent {
 }
 
 const mapStateToProps = (state, props) => ({
+  isAuthRequired: getAuthFlag(state),
   offer: getOfferById(state, props.id),
   nearestOffers: getNearestOffers(state, props.id),
   comments: getComments(state)
@@ -198,6 +209,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 OfferDetails.propTypes = {
+  isAuthRequired: PropTypes.bool.isRequired,
   wrapperClass: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   offer: PropTypes
